@@ -15,6 +15,9 @@
 		810C18FE1EECD8AA0023BB61 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 810C18FC1EECD8AA0023BB61 /* LaunchScreen.storyboard */; };
 		810C19091EECD8AA0023BB61 /* healTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 810C19081EECD8AA0023BB61 /* healTests.swift */; };
 		810C19141EECD8AA0023BB61 /* healUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 810C19131EECD8AA0023BB61 /* healUITests.swift */; };
+		81D939BA1EF1498F00A30138 /* DateManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81D939B91EF1498F00A30138 /* DateManager.swift */; };
+		81D939BD1EF152D300A30138 /* CalendarCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81D939BB1EF152D300A30138 /* CalendarCell.swift */; };
+		81D939BE1EF152D300A30138 /* CalendarCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 81D939BC1EF152D300A30138 /* CalendarCell.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -49,6 +52,9 @@
 		810C190F1EECD8AA0023BB61 /* healUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = healUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		810C19131EECD8AA0023BB61 /* healUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = healUITests.swift; sourceTree = "<group>"; };
 		810C19151EECD8AA0023BB61 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		81D939B91EF1498F00A30138 /* DateManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DateManager.swift; sourceTree = "<group>"; };
+		81D939BB1EF152D300A30138 /* CalendarCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalendarCell.swift; sourceTree = "<group>"; };
+		81D939BC1EF152D300A30138 /* CalendarCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CalendarCell.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -101,6 +107,9 @@
 			children = (
 				810C18F01EECD8A90023BB61 /* AppDelegate.swift */,
 				810C18F21EECD8A90023BB61 /* ViewController.swift */,
+				81D939B91EF1498F00A30138 /* DateManager.swift */,
+				81D939BB1EF152D300A30138 /* CalendarCell.swift */,
+				81D939BC1EF152D300A30138 /* CalendarCell.xib */,
 				810C18F41EECD8AA0023BB61 /* Main.storyboard */,
 				810C18FA1EECD8AA0023BB61 /* Assets.xcassets */,
 				810C18FC1EECD8AA0023BB61 /* LaunchScreen.storyboard */,
@@ -241,6 +250,7 @@
 				810C18FE1EECD8AA0023BB61 /* LaunchScreen.storyboard in Resources */,
 				810C18FB1EECD8AA0023BB61 /* Assets.xcassets in Resources */,
 				810C18F61EECD8AA0023BB61 /* Main.storyboard in Resources */,
+				81D939BE1EF152D300A30138 /* CalendarCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -266,8 +276,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				810C18F91EECD8AA0023BB61 /* heal.xcdatamodeld in Sources */,
+				81D939BA1EF1498F00A30138 /* DateManager.swift in Sources */,
 				810C18F31EECD8A90023BB61 /* ViewController.swift in Sources */,
 				810C18F11EECD8A90023BB61 /* AppDelegate.swift in Sources */,
+				81D939BD1EF152D300A30138 /* CalendarCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -518,6 +530,7 @@
 				810C191A1EECD8AA0023BB61 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		810C191B1EECD8AA0023BB61 /* Build configuration list for PBXNativeTarget "healTests" */ = {
 			isa = XCConfigurationList;
@@ -526,6 +539,7 @@
 				810C191D1EECD8AA0023BB61 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		810C191E1EECD8AA0023BB61 /* Build configuration list for PBXNativeTarget "healUITests" */ = {
 			isa = XCConfigurationList;
@@ -534,6 +548,7 @@
 				810C19201EECD8AA0023BB61 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 
