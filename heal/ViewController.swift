@@ -12,7 +12,7 @@ class ViewController: UIViewController ,UICollectionViewDelegate,UICollectionVie
     
     private var myCollectView:UICollectionView!
     //セルの余白
-    let cellMargin:CGFloat = 2.0
+    let cellMargin:CGFloat = 0.0
     //１週間に何日あるか(行数)
     let daysPerWeek:Int = 7
     let dateManager = DateManager()
@@ -28,7 +28,7 @@ class ViewController: UIViewController ,UICollectionViewDelegate,UICollectionVie
         
         //コレクションビューを設置していくよ
         myCollectView = UICollectionView(frame: self.view.frame, collectionViewLayout: layout)
-        myCollectView.frame = CGRect(x:0,y:barHeight + 50,width:width,height:height - barHeight - 50)
+        myCollectView.frame = CGRect(x:0,y:barHeight + 50,width:width,height:height - barHeight - 100)
         myCollectView.register(UINib(nibName: "CalendarCell", bundle: nil), forCellWithReuseIdentifier: "collectCell")
         myCollectView.delegate = self
         myCollectView.dataSource = self
@@ -38,9 +38,6 @@ class ViewController: UIViewController ,UICollectionViewDelegate,UICollectionVie
         
         let date = Date()
         var components = NSCalendar.current.dateComponents([.year ,.month, .day], from:date)
-        components.day = 1
-        components.month = 10
-        components.year = 2015
         startDate = NSCalendar.current.date(from: components)
         
         let month:Int = Int(dateManager.monthTag(row:6,startDate:startDate))!
@@ -90,7 +87,7 @@ class ViewController: UIViewController ,UICollectionViewDelegate,UICollectionVie
     
     //選択した時
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        print(monthLabel.text! + dateManager.conversionDateFormat(row:indexPath.row,startDate:startDate))
+        print(monthLabel.text! + dateManager.conversionDateFormat(row:indexPath.row,startDate:startDate) + "日")
     }
     
     //セルの総数
@@ -112,7 +109,7 @@ class ViewController: UIViewController ,UICollectionViewDelegate,UICollectionVie
         }
         cell.tag = Int(dateManager.monthTag(row:indexPath.row,startDate:startDate))!
         //セルの日付を取得し
-        cell.textLabel.text = dateManager.conversionDateFormat(row:indexPath.row,startDate:startDate)
+        cell.textLabel.text = "  " + dateManager.conversionDateFormat(row:indexPath.row,startDate:startDate)
         
         //セルの日付を取得
         let day = Int(dateManager.conversionDateFormat(row:indexPath.row,startDate:startDate!))!

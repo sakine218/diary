@@ -19,20 +19,19 @@
                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 <subviews>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aAJ-Ta-ctn">
-                        <rect key="frame" x="13" y="3" width="85" height="43"/>
-                        <constraints>
-                            <constraint firstAttribute="height" constant="43" id="BkK-JK-g0O"/>
-                        </constraints>
-                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                        <rect key="frame" x="0.0" y="0.0" width="119" height="119"/>
+                        <fontDescription key="fontDescription" name=".AppleSystemUIFont" family=".AppleSystemUIFont" pointSize="15"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
+                        <size key="shadowOffset" width="0.0" height="0.0"/>
                     </label>
                 </subviews>
             </view>
             <constraints>
-                <constraint firstItem="aAJ-Ta-ctn" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="13" id="O3E-Q3-lk3"/>
-                <constraint firstAttribute="trailing" secondItem="aAJ-Ta-ctn" secondAttribute="trailing" constant="21" id="woz-2t-3QB"/>
-                <constraint firstItem="aAJ-Ta-ctn" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" constant="3" id="xct-Fy-vdT"/>
+                <constraint firstItem="aAJ-Ta-ctn" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="4ex-gX-iu8"/>
+                <constraint firstItem="aAJ-Ta-ctn" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="Ffc-86-7fE"/>
+                <constraint firstAttribute="bottom" secondItem="aAJ-Ta-ctn" secondAttribute="bottom" id="NzW-D5-q4K"/>
+                <constraint firstAttribute="trailing" secondItem="aAJ-Ta-ctn" secondAttribute="trailing" id="af9-1T-aZe"/>
             </constraints>
             <size key="customSize" width="119" height="119"/>
             <connections>
