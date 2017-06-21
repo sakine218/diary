@@ -15,6 +15,12 @@
 		810C18FE1EECD8AA0023BB61 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 810C18FC1EECD8AA0023BB61 /* LaunchScreen.storyboard */; };
 		810C19091EECD8AA0023BB61 /* healTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 810C19081EECD8AA0023BB61 /* healTests.swift */; };
 		810C19141EECD8AA0023BB61 /* healUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 810C19131EECD8AA0023BB61 /* healUITests.swift */; };
+		817D5A2C1EFA81FA00CBD0CD /* AddDiaryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 817D5A2B1EFA81FA00CBD0CD /* AddDiaryViewController.swift */; };
+		817D5A2E1EFA829700CBD0CD /* RecordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 817D5A2D1EFA829700CBD0CD /* RecordViewController.swift */; };
+		817D5A301EFA82AD00CBD0CD /* SettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 817D5A2F1EFA82AD00CBD0CD /* SettingViewController.swift */; };
+		817D5A331EFA82DB00CBD0CD /* DiaryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 817D5A311EFA82DB00CBD0CD /* DiaryCell.swift */; };
+		817D5A341EFA82DB00CBD0CD /* DiaryCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 817D5A321EFA82DB00CBD0CD /* DiaryCell.xib */; };
+		817D5A361EFA876000CBD0CD /* DiaryTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 817D5A351EFA876000CBD0CD /* DiaryTableViewController.swift */; };
 		81D939BA1EF1498F00A30138 /* DateManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81D939B91EF1498F00A30138 /* DateManager.swift */; };
 		81D939BD1EF152D300A30138 /* CalendarCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81D939BB1EF152D300A30138 /* CalendarCell.swift */; };
 		81D939BE1EF152D300A30138 /* CalendarCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 81D939BC1EF152D300A30138 /* CalendarCell.xib */; };
@@ -52,6 +58,12 @@
 		810C190F1EECD8AA0023BB61 /* healUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = healUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		810C19131EECD8AA0023BB61 /* healUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = healUITests.swift; sourceTree = "<group>"; };
 		810C19151EECD8AA0023BB61 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		817D5A2B1EFA81FA00CBD0CD /* AddDiaryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddDiaryViewController.swift; sourceTree = "<group>"; };
+		817D5A2D1EFA829700CBD0CD /* RecordViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecordViewController.swift; sourceTree = "<group>"; };
+		817D5A2F1EFA82AD00CBD0CD /* SettingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingViewController.swift; sourceTree = "<group>"; };
+		817D5A311EFA82DB00CBD0CD /* DiaryCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DiaryCell.swift; sourceTree = "<group>"; };
+		817D5A321EFA82DB00CBD0CD /* DiaryCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DiaryCell.xib; sourceTree = "<group>"; };
+		817D5A351EFA876000CBD0CD /* DiaryTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DiaryTableViewController.swift; sourceTree = "<group>"; };
 		81D939B91EF1498F00A30138 /* DateManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DateManager.swift; sourceTree = "<group>"; };
 		81D939BB1EF152D300A30138 /* CalendarCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalendarCell.swift; sourceTree = "<group>"; };
 		81D939BC1EF152D300A30138 /* CalendarCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CalendarCell.xib; sourceTree = "<group>"; };
@@ -109,8 +121,14 @@
 				810C18F21EECD8A90023BB61 /* ViewController.swift */,
 				81D939B91EF1498F00A30138 /* DateManager.swift */,
 				81D939BB1EF152D300A30138 /* CalendarCell.swift */,
-				81D939BC1EF152D300A30138 /* CalendarCell.xib */,
+				817D5A351EFA876000CBD0CD /* DiaryTableViewController.swift */,
+				817D5A311EFA82DB00CBD0CD /* DiaryCell.swift */,
+				817D5A2B1EFA81FA00CBD0CD /* AddDiaryViewController.swift */,
+				817D5A2D1EFA829700CBD0CD /* RecordViewController.swift */,
+				817D5A2F1EFA82AD00CBD0CD /* SettingViewController.swift */,
 				810C18F41EECD8AA0023BB61 /* Main.storyboard */,
+				81D939BC1EF152D300A30138 /* CalendarCell.xib */,
+				817D5A321EFA82DB00CBD0CD /* DiaryCell.xib */,
 				810C18FA1EECD8AA0023BB61 /* Assets.xcassets */,
 				810C18FC1EECD8AA0023BB61 /* LaunchScreen.storyboard */,
 				810C18FF1EECD8AA0023BB61 /* Info.plist */,
@@ -249,6 +267,7 @@
 			files = (
 				810C18FE1EECD8AA0023BB61 /* LaunchScreen.storyboard in Resources */,
 				810C18FB1EECD8AA0023BB61 /* Assets.xcassets in Resources */,
+				817D5A341EFA82DB00CBD0CD /* DiaryCell.xib in Resources */,
 				810C18F61EECD8AA0023BB61 /* Main.storyboard in Resources */,
 				81D939BE1EF152D300A30138 /* CalendarCell.xib in Resources */,
 			);
@@ -277,9 +296,14 @@
 			files = (
 				810C18F91EECD8AA0023BB61 /* heal.xcdatamodeld in Sources */,
 				81D939BA1EF1498F00A30138 /* DateManager.swift in Sources */,
+				817D5A2C1EFA81FA00CBD0CD /* AddDiaryViewController.swift in Sources */,
+				817D5A331EFA82DB00CBD0CD /* DiaryCell.swift in Sources */,
+				817D5A2E1EFA829700CBD0CD /* RecordViewController.swift in Sources */,
 				810C18F31EECD8A90023BB61 /* ViewController.swift in Sources */,
+				817D5A301EFA82AD00CBD0CD /* SettingViewController.swift in Sources */,
 				810C18F11EECD8A90023BB61 /* AppDelegate.swift in Sources */,
 				81D939BD1EF152D300A30138 /* CalendarCell.swift in Sources */,
+				817D5A361EFA876000CBD0CD /* DiaryTableViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

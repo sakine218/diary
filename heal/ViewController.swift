@@ -109,7 +109,8 @@ class ViewController: UIViewController ,UICollectionViewDelegate,UICollectionVie
         }
         cell.tag = Int(dateManager.monthTag(row:indexPath.row,startDate:startDate))!
         //セルの日付を取得し
-        cell.textLabel.text = "  " + dateManager.conversionDateFormat(row:indexPath.row,startDate:startDate)
+        cell.textLabel.numberOfLines = 3
+        cell.textLabel.text = "  " + dateManager.conversionDateFormat(row:indexPath.row,startDate:startDate) + " \n \n"
         
         //セルの日付を取得
         let day = Int(dateManager.conversionDateFormat(row:indexPath.row,startDate:startDate!))!

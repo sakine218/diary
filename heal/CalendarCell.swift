@@ -19,6 +19,5 @@ class CalendarCell: UICollectionViewCell {
     override init(frame:CGRect){
         super.init(frame:frame)
         //UILabelを生成
-        
     }
 }
