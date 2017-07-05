@@ -44,7 +44,8 @@ class AddDiaryViewController: UIViewController, UIScrollViewDelegate, UIToolbarD
         // 入力欄の設定
         dateTextField.backgroundColor = UIColor.white
         dateTextField.cornerRadius = 7
-        dateTextField.frame = CGRect(x: 84,y: 20,width: 200, height: 20)
+        dateTextField.minimumFontSize = 20
+        dateTextField.frame = CGRect(x: 84,y: 20,width: 200, height: 50)
         dateTextField.placeholder = dateToString(date: Date())
         dateTextField.text = dateToString(date: Date())
         self.scrollView.addSubview(dateTextField)
@@ -108,7 +109,7 @@ class AddDiaryViewController: UIViewController, UIScrollViewDelegate, UIToolbarD
         var weekdays: [String]  = [ "日", "月", "火", "水", "木", "金", "土"]
         
         date_formatter.locale     = Locale(identifier: "ja")
-        date_formatter.dateFormat = "　yyyy年MM月dd日 "
+        date_formatter.dateFormat = "　 yyyy年MM月dd日 "
         
         return date_formatter.string(from: date) + "(\(weekdays[comps.weekday! - 1]))"
     }

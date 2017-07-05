@@ -8,67 +8,79 @@
 
 import UIKit
 
-class DateManager: NSDate {
+class DateManager {
     
     //現在の日付
-    private var selectedDate = Date()
+    private var date = Date()
     
-    //１週間に何日あるか
-    private let daysPerWeek:Int = 7
+    var paging: Int = 1
     
-    //セルの個数(nilが入らないようにする)
-    private var numberOfItems:Int = 0
+    private var number: Int = 0
     
-    /*      指定した月から現在の月までのセルの数を返すメソッド
-     引数　-> startDate 指定した月 カレンダーを始める月
-     return -> セルの総数                             　*/
-    func cellCount(startDate:Date) -> Int{
-        //startDate(1番最初の日時)の年月を取り出す
-        let startDateComponents = NSCalendar.current.dateComponents([.year ,.month], from:startDate as Date)
+    private var calendar = Calendar.current
+    
+    private var dayDateFormatter: DateFormatter {
         
-        //currentDate(現在の日時)の年月を取り出す
-        let currentDateComponents = NSCalendar.current.dateComponents([.year ,.month], from:selectedDate as Date)
+        let formatter: DateFormatter = DateFormatter()
+        formatter.locale = Locale(identifier: "ja_JP")
+        formatter.dateFormat = "d"
+        return formatter
+    }
+    
+    private var ymDateFormatter: DateFormatter {
         
-        //startDateとcurrentDateが何ヶ月離れているか fromとtoの差を取り出す
-        let components = NSCalendar.current.dateComponents([.year,.month], from: startDateComponents, to: currentDateComponents)
+        let formatter: DateFormatter = DateFormatter()
+        formatter.dateFormat = "YM"
+        return formatter
+    }
+    
+    init() {
         
-        //startDateとcurrentDateが何ヶ月離れているか計算する
-        let numberOfMonth = components.month! + components.year! * 12
-        
-        //１月ずつ何日あるか見ていく
-        for i in 0 ..< numberOfMonth + 1{
-            
-            //monthをiに設定したdateComponentsを用意し、startDateからi月分足した日付(date)を取得する
-            let dateComponents = NSDateComponents()
-            dateComponents.month = i
-            let date = NSCalendar.current.date(byAdding: dateComponents as DateComponents, to: startDate)
-            
-            //取得した月に週がいくつあるかを取得　in(その月)にof(週)が何個あるか
-            let dateRange = NSCalendar.current.range(of: .weekOfMonth, in: .month, for: date!)
-            
-            //月の初日が何曜日かを取得 日曜日==1
-            let ordinalityOfFirstDay = NSCalendar.current.ordinality(of: .day, in: .weekOfMonth, for: firstDateOfMonth(date:date!))
-            
-            //その月の始まりが日曜日かどうかで場合分け
-            if(ordinalityOfFirstDay == 1 || i == 0){
-                numberOfItems = numberOfItems + dateRange!.count * daysPerWeek
-            }else{
-                numberOfItems = numberOfItems + (dateRange!.count - 1) * daysPerWeek
-            }
-        }
-        //セルの総数を返す
-        return numberOfItems
+        calendar.locale = Locale(identifier: "ja_JP")
     }
     
     
+    // 現在の月から指定したpagingの分だけセルの数を返す
+    // 引数のpagingが1増えるごとに2月分のセルの数を増やす
+    func numberOfItems() -> Int {
+        
+        let numberOfMonth = paging * 2
+        
+        var monthComponent = calendar.dateComponents([.year,.month], from: self.date)
+        monthComponent.month = monthComponent.month! - numberOfMonth
+        monthComponent.day = 1
+        let firstDay = calendar.date(from: monthComponent)!
+        
+        let days = calendar.dateComponents([.day], from: firstDay, to: self.lastDateOfMonth()).day! + 1
+        
+        let firstWeekday = calendar.component(.weekday, from: firstDay)
+        let firstGap = firstWeekday - 1
+        
+        let lastWeekday = calendar.component(.weekday, from: lastDateOfMonth())
+        let lastGap = 7 - lastWeekday
+        
+        number = days + firstGap + lastGap
+        return number
+        
+        
+    }
     
-    /*      指定された月の初日を取得        */
-    func firstDateOfMonth(date:Date) -> Date{
-        //渡された日時から日にちを１にした日付を返す
-        var components = NSCalendar.current.dateComponents([.year ,.month, .day], from:date)
+    // 指定された月の最後の日
+    private func lastDateOfMonth() -> Date {
+        
+        var components = calendar.dateComponents([.month, .day, .year], from: date)
+        components.month = components.month! + 1
         components.day = 1
-        let firstDateMonth = NSCalendar.current.date(from: components)
-        return firstDateMonth!
+        let nextMonthFirst = calendar.date(from: components)!
+        var lastDateComponents = calendar.dateComponents([.day], from: nextMonthFirst)
+        lastDateComponents.day = -1
+        let lastDateMonth = calendar.date(byAdding: lastDateComponents, to: nextMonthFirst)
+        return lastDateMonth!
+    }
+    
+    func firstDate() -> Date {
+        
+        return Date()
     }
     
     
@@ -76,13 +88,13 @@ class DateManager: NSDate {
      引数　row          ->  UICollectionViewのIndexPath.row
      startDate    ->  指定した月　カレンダーを始める月
      return  date      ->  セルに入れる日付                  */
-    func dateForCellAtIndexPathWeeks(row:Int,startDate:Date) -> Date{
+    func dateForCellAtIndexPathWeeks(row: Int) -> Date {
         //始まりの日が週の何番目かを計算(日曜日が１) 指定した月の初日から数える
-        let ordinalityOfFirstDay = NSCalendar.current.ordinality(of: .day, in: .weekOfMonth, for: firstDateOfMonth(date:startDate))
-        let dateComponents = NSDateComponents()
-        dateComponents.day = row - (ordinalityOfFirstDay! - 1)
+        var dateComponents = DateComponents()
+        dateComponents.day = row + 2 - self.number
         //計算して、基準の日から何日マイナス、加算するか dateComponents.day = -2 とか
-        let date = NSCalendar.current.date(byAdding:dateComponents as DateComponents,to:firstDateOfMonth(date:startDate))
+        let date = calendar.date(byAdding: dateComponents, to: lastDateOfMonth())
+        print("row...\(row), date... \(date ?? Date())")
         return date!
     }
     
@@ -93,21 +105,16 @@ class DateManager: NSDate {
      startDate   -> 指定した月　カレンダーを始める月
      return  String   -> セルに入れる日付をString型にしたもの
      */
-    func conversionDateFormat(row:Int,startDate:Date) -> String{
-        let cellDate = dateForCellAtIndexPathWeeks(row: row,startDate:startDate)
-        let formatter:DateFormatter = DateFormatter()
-        formatter.dateFormat = "d"
-        return formatter.string(from: cellDate)
-        
+    func conversionDateFormat(row: Int) -> String {
+        let cellDate = dateForCellAtIndexPathWeeks(row: row)
+        return dayDateFormatter.string(from: cellDate)
     }
     
     
     //月を返す
-    func monthTag(row:Int,startDate:Date) -> String{
-        let cellDate = dateForCellAtIndexPathWeeks(row: row,startDate:startDate)
-        let formatter:DateFormatter = DateFormatter()
-        formatter.dateFormat = "YM"
-        return formatter.string(from:cellDate)
+    func monthTag(row: Int) -> String {
+        let cellDate = dateForCellAtIndexPathWeeks(row: row)
+        return ymDateFormatter.string(from: cellDate)
     }
     
 }

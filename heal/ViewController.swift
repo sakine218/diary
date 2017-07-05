@@ -36,11 +36,9 @@ class ViewController: UIViewController ,UICollectionViewDelegate,UICollectionVie
         
         self.view.addSubview(myCollectView)
         
-        let date = Date()
-        var components = NSCalendar.current.dateComponents([.year ,.month, .day], from:date)
-        startDate = NSCalendar.current.date(from: components)
+        startDate = Date()
         
-        let month:Int = Int(dateManager.monthTag(row:6,startDate:startDate))!
+        let month:Int = Int(dateManager.monthTag(row: 6))!
         let digit = numberOfDigit(month: month)
         
         monthLabel = UILabel()
@@ -55,14 +53,16 @@ class ViewController: UIViewController ,UICollectionViewDelegate,UICollectionVie
             monthLabel.text = String(month / 100) + "年" + String(month % 100) + "月"
         }
         self.view.addSubview(monthLabel)
+        
+        
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        myCollectView.scrollToItem(at: IndexPath(item: dateManager.numberOfItems() - 1, section: 0) , at: .bottom, animated: false)
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-    }
-    
-    override func viewDidAppear(_ animated: Bool){
-        myCollectView.setContentOffset(CGPoint(x:0,y:self.myCollectView.contentSize.height - self.myCollectView.frame.size.height), animated: false)
     }
     
     func collectionView(_ collectionView:UICollectionView,layout collectionViewLayout:UICollectionViewLayout,minimumLineSpacingForSectionAt section:Int) -> CGFloat{
@@ -87,12 +87,12 @@ class ViewController: UIViewController ,UICollectionViewDelegate,UICollectionVie
     
     //選択した時
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        print(monthLabel.text! + dateManager.conversionDateFormat(row:indexPath.row,startDate:startDate) + "日")
+        print(dateManager.dateForCellAtIndexPathWeeks(row: indexPath.item))
     }
     
     //セルの総数
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return dateManager.cellCount(startDate:startDate)
+        return dateManager.numberOfItems()
     }
     
     //セルの設定
@@ -100,20 +100,20 @@ class ViewController: UIViewController ,UICollectionViewDelegate,UICollectionVie
         let cell:CalendarCell = collectionView.dequeueReusableCell(withReuseIdentifier:"collectCell",for:indexPath as IndexPath) as! CalendarCell
         
         //土曜日は赤　日曜日は青　にテキストカラーを変更する
-        if(indexPath.row % 7 == 0){
+        if(indexPath.item % 7 == 0){
             cell.textLabel.textColor = UIColor.red
-        }else if(indexPath.row % 7 == 6){
+        }else if(indexPath.item % 7 == 6){
             cell.textLabel.textColor = UIColor.blue
         }else{
             cell.textLabel.textColor = UIColor.gray
         }
-        cell.tag = Int(dateManager.monthTag(row:indexPath.row,startDate:startDate))!
+        cell.tag = Int(dateManager.monthTag(row: indexPath.item))!
         //セルの日付を取得し
         cell.textLabel.numberOfLines = 3
-        cell.textLabel.text = "  " + dateManager.conversionDateFormat(row:indexPath.row,startDate:startDate) + " \n \n"
+        let day = Int(dateManager.conversionDateFormat(row: indexPath.item))!
+        cell.textLabel.text = "  " + "\(day)" + " \n \n"
         
         //セルの日付を取得
-        let day = Int(dateManager.conversionDateFormat(row:indexPath.row,startDate:startDate!))!
         if(day == 1){
             cell.textLabel.border(positions:[.Top,.Left],borderWidth:1,borderColor:UIColor.black)
         }else if(day <= 7){
@@ -125,13 +125,14 @@ class ViewController: UIViewController ,UICollectionViewDelegate,UICollectionVie
     }
     
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        
         let visibleCell = myCollectView.visibleCells.filter{
             return myCollectView.bounds.contains($0.frame)
         }
         
         var visibleCellTag = Array<Int>()
         if(visibleCell != []){
-            visibleCellTag = visibleCell.map{$0.tag}
+            visibleCellTag = visibleCell.map{ $0.tag }
             //月は奇数か偶数か　割り切れるものだけを取り出す
             let even = visibleCellTag.filter{
                 return $0 % 2 == 0
@@ -152,6 +153,28 @@ class ViewController: UIViewController ,UICollectionViewDelegate,UICollectionVie
         }
     }
     
+    func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
+        
+        if myCollectView.contentOffset.y <= 0,
+            let visibleCell = myCollectView.visibleCells.first {
+            
+            
+            self.dateManager.paging += 1
+            self.myCollectView.reloadData()
+            self.myCollectView.performBatchUpdates({}, completion: { [weak self] isFinished in
+                
+                if isFinished {
+                    if let indexPath = self?.myCollectView.indexPath(for: visibleCell) {
+                        
+                        self?.myCollectView.scrollToItem(at: indexPath, at: .top, animated: false)
+                    }
+                }
+            })
+        }
+    }
+    
+    
+    
     func numberOfDigit(month:Int) -> Int{
         var num = month
         var cnt = 1
@@ -162,12 +185,8 @@ class ViewController: UIViewController ,UICollectionViewDelegate,UICollectionVie
         return cnt
         
     }
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-    
 }
+
 
 extension UIView {
     
