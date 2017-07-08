@@ -21,6 +21,8 @@
 		817D5A331EFA82DB00CBD0CD /* DiaryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 817D5A311EFA82DB00CBD0CD /* DiaryCell.swift */; };
 		817D5A341EFA82DB00CBD0CD /* DiaryCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 817D5A321EFA82DB00CBD0CD /* DiaryCell.xib */; };
 		817D5A361EFA876000CBD0CD /* DiaryTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 817D5A351EFA876000CBD0CD /* DiaryTableViewController.swift */; };
+		81CE9A621F11159C0039B7EC /* TimeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81CE9A601F11159C0039B7EC /* TimeTableViewCell.swift */; };
+		81CE9A631F11159C0039B7EC /* TimeTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 81CE9A611F11159C0039B7EC /* TimeTableViewCell.xib */; };
 		81D939BA1EF1498F00A30138 /* DateManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81D939B91EF1498F00A30138 /* DateManager.swift */; };
 		81D939BD1EF152D300A30138 /* CalendarCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81D939BB1EF152D300A30138 /* CalendarCell.swift */; };
 		81D939BE1EF152D300A30138 /* CalendarCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 81D939BC1EF152D300A30138 /* CalendarCell.xib */; };
@@ -64,6 +66,8 @@
 		817D5A311EFA82DB00CBD0CD /* DiaryCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DiaryCell.swift; sourceTree = "<group>"; };
 		817D5A321EFA82DB00CBD0CD /* DiaryCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DiaryCell.xib; sourceTree = "<group>"; };
 		817D5A351EFA876000CBD0CD /* DiaryTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DiaryTableViewController.swift; sourceTree = "<group>"; };
+		81CE9A601F11159C0039B7EC /* TimeTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimeTableViewCell.swift; sourceTree = "<group>"; };
+		81CE9A611F11159C0039B7EC /* TimeTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TimeTableViewCell.xib; sourceTree = "<group>"; };
 		81D939B91EF1498F00A30138 /* DateManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DateManager.swift; sourceTree = "<group>"; };
 		81D939BB1EF152D300A30138 /* CalendarCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalendarCell.swift; sourceTree = "<group>"; };
 		81D939BC1EF152D300A30138 /* CalendarCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CalendarCell.xib; sourceTree = "<group>"; };
@@ -124,11 +128,13 @@
 				817D5A351EFA876000CBD0CD /* DiaryTableViewController.swift */,
 				817D5A311EFA82DB00CBD0CD /* DiaryCell.swift */,
 				817D5A2B1EFA81FA00CBD0CD /* AddDiaryViewController.swift */,
+				81CE9A601F11159C0039B7EC /* TimeTableViewCell.swift */,
 				817D5A2D1EFA829700CBD0CD /* RecordViewController.swift */,
 				817D5A2F1EFA82AD00CBD0CD /* SettingViewController.swift */,
 				810C18F41EECD8AA0023BB61 /* Main.storyboard */,
 				81D939BC1EF152D300A30138 /* CalendarCell.xib */,
 				817D5A321EFA82DB00CBD0CD /* DiaryCell.xib */,
+				81CE9A611F11159C0039B7EC /* TimeTableViewCell.xib */,
 				810C18FA1EECD8AA0023BB61 /* Assets.xcassets */,
 				810C18FC1EECD8AA0023BB61 /* LaunchScreen.storyboard */,
 				810C18FF1EECD8AA0023BB61 /* Info.plist */,
@@ -269,6 +275,7 @@
 				810C18FB1EECD8AA0023BB61 /* Assets.xcassets in Resources */,
 				817D5A341EFA82DB00CBD0CD /* DiaryCell.xib in Resources */,
 				810C18F61EECD8AA0023BB61 /* Main.storyboard in Resources */,
+				81CE9A631F11159C0039B7EC /* TimeTableViewCell.xib in Resources */,
 				81D939BE1EF152D300A30138 /* CalendarCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -300,6 +307,7 @@
 				817D5A331EFA82DB00CBD0CD /* DiaryCell.swift in Sources */,
 				817D5A2E1EFA829700CBD0CD /* RecordViewController.swift in Sources */,
 				810C18F31EECD8A90023BB61 /* ViewController.swift in Sources */,
+				81CE9A621F11159C0039B7EC /* TimeTableViewCell.swift in Sources */,
 				817D5A301EFA82AD00CBD0CD /* SettingViewController.swift in Sources */,
 				810C18F11EECD8A90023BB61 /* AppDelegate.swift in Sources */,
 				81D939BD1EF152D300A30138 /* CalendarCell.swift in Sources */,

@@ -8,7 +8,7 @@
 
 import UIKit
 
-class AddDiaryViewController: UIViewController, UIScrollViewDelegate, UIToolbarDelegate {
+class AddDiaryViewController: UIViewController, UIScrollViewDelegate, UIToolbarDelegate,UITableViewDelegate,UITableViewDataSource {
     
     @IBOutlet var scrollView: UIScrollView!
     var dateTextField: UITextField = UITextField()
@@ -19,19 +19,23 @@ class AddDiaryViewController: UIViewController, UIScrollViewDelegate, UIToolbarD
     let label1: UILabel = UILabel()
     let label2: UILabel = UILabel()
     let label3: UILabel = UILabel()
+    var tableView: UITableView = UITableView()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         scrollView.delegate = self
+        tableView.delegate = self
+        tableView.dataSource = self
         scrollView.indicatorStyle = .white
         scrollView.scrollIndicatorInsets = UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 10)
-        scrollView.contentSize = CGSize(width: 343, height: 1000)
+        scrollView.contentSize = CGSize(width: 343, height: 960)
         addView()
         addDateTextField()
         addLabels()
         addSlider()
         addTextView()
         addSwitch()
+        addTableView()
         addButton()
         // Do any additional setup after loading the view.
     }
@@ -43,7 +47,7 @@ class AddDiaryViewController: UIViewController, UIScrollViewDelegate, UIToolbarD
     
     func addView() {
         let view: UIView = UIView()
-        view.frame = CGRect(x:16,y:0,width:343,height:980)
+        view.frame = CGRect(x:16,y:0,width:343,height:950)
         view.cornerRadius = 20
         view.backgroundColor = UIColor.red
         scrollView.addSubview(view)
@@ -156,9 +160,36 @@ class AddDiaryViewController: UIViewController, UIScrollViewDelegate, UIToolbarD
         self.scrollView.addSubview(scheduleSwitch)
     }
     
+    func addTableView() {
+        self.tableView.register(UINib(nibName: "TimeTableViewCell", bundle: nil), forCellReuseIdentifier: "Cell")
+        self.tableView.separatorStyle = .none
+        tableView.frame = CGRect(x: 44, y: 480, width: 280, height: 360)
+        self.scrollView.addSubview(tableView)
+    }
+    
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return 1
+    }
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return 6
+    }
+    
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as! TimeTableViewCell
+        
+        
+        return cell
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 60
+    }
+    
     func addButton() {
         let okButton: UIButton = UIButton()
-        okButton.frame = CGRect(x: 140, y: 900, width: 100, height: 50)
+        okButton.frame = CGRect(x: 140, y: 870, width: 100, height: 50)
         okButton.setTitle("OK", for: .normal)
         okButton.setTitleColor(UIColor.black, for: .normal)
         okButton.backgroundColor = UIColor.white
