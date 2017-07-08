@@ -16,10 +16,9 @@ class AddDiaryViewController: UIViewController, UIScrollViewDelegate, UIToolbarD
     var datePicker: UIDatePicker = UIDatePicker()
     let toolBarBtn      = UIBarButtonItem(title: "完了", style: .plain, target: self, action: #selector(tappedToolBarBtn(sender:)))
     let toolBarBtnToday = UIBarButtonItem(title: "今日", style: .plain, target: self, action: #selector(tappedToolBarBtnToday(sender:)))
-    var label1: UILabel = UILabel()
-    var label2: UILabel = UILabel()
-    var label3: UILabel = UILabel()
-    var label4: UILabel = UILabel()
+    let label1: UILabel = UILabel()
+    let label2: UILabel = UILabel()
+    let label3: UILabel = UILabel()
     
     override func viewDidLoad() {
         super.viewDidLoad()
