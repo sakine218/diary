@@ -16,6 +16,11 @@ class AddDiaryViewController: UIViewController, UIScrollViewDelegate, UIToolbarD
     var datePicker: UIDatePicker = UIDatePicker()
     let toolBarBtn      = UIBarButtonItem(title: "完了", style: .plain, target: self, action: #selector(tappedToolBarBtn(sender:)))
     let toolBarBtnToday = UIBarButtonItem(title: "今日", style: .plain, target: self, action: #selector(tappedToolBarBtnToday(sender:)))
+    var label1: UILabel = UILabel()
+    var label2: UILabel = UILabel()
+    var label3: UILabel = UILabel()
+    var label4: UILabel = UILabel()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         scrollView.delegate = self
@@ -24,7 +29,12 @@ class AddDiaryViewController: UIViewController, UIScrollViewDelegate, UIToolbarD
         scrollView.contentSize = CGSize(width: 343, height: 1000)
         addView()
         addDateTextField()
-                // Do any additional setup after loading the view.
+        addLabels()
+        addSlider()
+        addTextView()
+        addSwitch()
+        addButton()
+        // Do any additional setup after loading the view.
     }
     
     override func didReceiveMemoryWarning() {
@@ -75,6 +85,7 @@ class AddDiaryViewController: UIViewController, UIScrollViewDelegate, UIToolbarD
     
     func tappedToolBarBtn(sender: UIBarButtonItem) {
         dateTextField.resignFirstResponder()
+        print(dateTextField.text!)
     }
     
     // 「今日」を押すと今日の日付をセットする
@@ -113,6 +124,54 @@ class AddDiaryViewController: UIViewController, UIScrollViewDelegate, UIToolbarD
         
         return date_formatter.string(from: date) + "(\(weekdays[comps.weekday! - 1]))"
     }
+    
+    func addLabels() {
+        let textArray: [String] = ["症状","Note","Schedule"]
+        label1.text = textArray[0]
+        label1.frame = CGRect(x: 44, y: 80, width: 280, height: 50)
+        label2.text = textArray[1]
+        label2.frame = CGRect(x: 44, y: 160, width: 280, height: 50)
+        label3.text = textArray[2]
+        label3.frame = CGRect(x: 44, y: 420, width: 280, height: 50)
+        self.scrollView.addSubview(label1)
+        self.scrollView.addSubview(label2)
+        self.scrollView.addSubview(label3)
+    }
+    
+    func addSlider() {
+        let slider: UISlider = UISlider()
+        slider.frame = CGRect(x: 44, y: 100, width: 280, height: 80)
+        self.scrollView.addSubview(slider)
+    }
+    
+    func addTextView() {
+        let textView: UITextView = UITextView()
+        textView.frame = CGRect(x: 44, y: 210, width: 280, height: 200)
+        textView.cornerRadius = 10
+        self.scrollView.addSubview(textView)
+    }
+    
+    func addSwitch() {
+        let scheduleSwitch: UISwitch = UISwitch()
+        scheduleSwitch.frame = CGRect(x: 284, y: 430, width: 50, height: 50)
+        self.scrollView.addSubview(scheduleSwitch)
+    }
+    
+    func addButton() {
+        let okButton: UIButton = UIButton()
+        okButton.frame = CGRect(x: 140, y: 900, width: 100, height: 50)
+        okButton.setTitle("OK", for: .normal)
+        okButton.setTitleColor(UIColor.black, for: .normal)
+        okButton.backgroundColor = UIColor.white
+        okButton.cornerRadius = 7
+        self.scrollView.addSubview(okButton)
+    }
+    
+    @IBAction func tapScreen(sender: UITapGestureRecognizer) {
+        self.view.endEditing(true)
+    }
+    
+    
     
 
     /*

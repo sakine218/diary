@@ -87,7 +87,7 @@ class ViewController: UIViewController ,UICollectionViewDelegate,UICollectionVie
     
     //選択した時
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        print(dateManager.dateForCellAtIndexPathWeeks(row: indexPath.item))
+        print(dateManager.dateForCellAtIndexPathWeeks(row: indexPath.item + 1))
     }
     
     //セルの総数

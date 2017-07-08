@@ -5,7 +5,6 @@
 //  Created by 西林咲音 on 2017/06/14.
 //  Copyright © 2017年 西林咲音. All rights reserved.
 //
-
 import UIKit
 
 class DateManager {
@@ -37,6 +36,7 @@ class DateManager {
     init() {
         
         calendar.locale = Locale(identifier: "ja_JP")
+        date = Date()
     }
     
     
@@ -78,9 +78,18 @@ class DateManager {
         return lastDateMonth!
     }
     
-    func firstDate() -> Date {
+    // CollectionViewに表示する最後の日付を生成
+    private func lastDateForDisplay() -> Date {
         
-        return Date()
+        let lastDay = self.lastDateOfMonth()
+        
+        let lastWeekDay = calendar.component(.weekday, from: lastDay)
+        let lastGap = 7 - lastWeekDay
+        
+        var components = DateComponents()
+        components.day = lastGap
+        return calendar.date(byAdding: components, to: lastDay)!
+        
     }
     
     
@@ -91,9 +100,9 @@ class DateManager {
     func dateForCellAtIndexPathWeeks(row: Int) -> Date {
         //始まりの日が週の何番目かを計算(日曜日が１) 指定した月の初日から数える
         var dateComponents = DateComponents()
-        dateComponents.day = row + 2 - self.number
+        dateComponents.day = row + 1 - self.number
         //計算して、基準の日から何日マイナス、加算するか dateComponents.day = -2 とか
-        let date = calendar.date(byAdding: dateComponents, to: lastDateOfMonth())
+        let date = calendar.date(byAdding: dateComponents, to: self.lastDateForDisplay())
         print("row...\(row), date... \(date ?? Date())")
         return date!
     }
