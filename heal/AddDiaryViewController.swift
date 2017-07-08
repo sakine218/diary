@@ -34,9 +34,10 @@ class AddDiaryViewController: UIViewController, UIScrollViewDelegate, UIToolbarD
         addLabels()
         addSlider()
         addTextView()
+        addChangeButton()
         addSwitch()
         addTableView()
-        addButton()
+        addOkButton()
         // Do any additional setup after loading the view.
     }
     
@@ -131,11 +132,11 @@ class AddDiaryViewController: UIViewController, UIScrollViewDelegate, UIToolbarD
     func addLabels() {
         let textArray: [String] = ["症状","Note","Schedule"]
         label1.text = textArray[0]
-        label1.frame = CGRect(x: 44, y: 80, width: 280, height: 50)
+        label1.frame = CGRect(x: 44, y: 80, width: 285, height: 50)
         label2.text = textArray[1]
-        label2.frame = CGRect(x: 44, y: 160, width: 280, height: 50)
+        label2.frame = CGRect(x: 44, y: 160, width: 285, height: 50)
         label3.text = textArray[2]
-        label3.frame = CGRect(x: 44, y: 420, width: 280, height: 50)
+        label3.frame = CGRect(x: 44, y: 420, width: 285, height: 50)
         self.scrollView.addSubview(label1)
         self.scrollView.addSubview(label2)
         self.scrollView.addSubview(label3)
@@ -143,15 +144,25 @@ class AddDiaryViewController: UIViewController, UIScrollViewDelegate, UIToolbarD
     
     func addSlider() {
         let slider: UISlider = UISlider()
-        slider.frame = CGRect(x: 44, y: 100, width: 280, height: 80)
+        slider.frame = CGRect(x: 44, y: 100, width: 285, height: 80)
         self.scrollView.addSubview(slider)
     }
     
     func addTextView() {
         let textView: UITextView = UITextView()
-        textView.frame = CGRect(x: 44, y: 210, width: 280, height: 200)
+        textView.frame = CGRect(x: 44, y: 210, width: 285, height: 200)
         textView.cornerRadius = 10
         self.scrollView.addSubview(textView)
+    }
+    
+    func addChangeButton() {
+        let changeButton: UIButton = UIButton()
+        changeButton.frame = CGRect(x: 210, y: 430, width: 60, height: 30)
+        changeButton.setTitle("変更", for: .normal)
+        changeButton.setTitleColor(UIColor.black, for: .normal)
+        changeButton.backgroundColor = UIColor.white
+        changeButton.cornerRadius = 7
+        self.scrollView.addSubview(changeButton)
     }
     
     func addSwitch() {
@@ -163,7 +174,7 @@ class AddDiaryViewController: UIViewController, UIScrollViewDelegate, UIToolbarD
     func addTableView() {
         self.tableView.register(UINib(nibName: "TimeTableViewCell", bundle: nil), forCellReuseIdentifier: "Cell")
         self.tableView.separatorStyle = .none
-        tableView.frame = CGRect(x: 44, y: 480, width: 280, height: 360)
+        tableView.frame = CGRect(x: 74, y: 480, width: 225, height: 360)
         self.scrollView.addSubview(tableView)
     }
     
@@ -187,7 +198,7 @@ class AddDiaryViewController: UIViewController, UIScrollViewDelegate, UIToolbarD
         return 60
     }
     
-    func addButton() {
+    func addOkButton() {
         let okButton: UIButton = UIButton()
         okButton.frame = CGRect(x: 140, y: 870, width: 100, height: 50)
         okButton.setTitle("OK", for: .normal)
