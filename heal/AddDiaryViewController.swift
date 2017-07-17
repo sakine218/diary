@@ -205,15 +205,30 @@ class AddDiaryViewController: UIViewController, UIScrollViewDelegate, UIToolbarD
         okButton.setTitleColor(UIColor.black, for: .normal)
         okButton.backgroundColor = UIColor.white
         okButton.cornerRadius = 7
+        okButton.addTarget(self, action: #selector(buttonEvent(sender:)), for: .touchUpInside)
         self.scrollView.addSubview(okButton)
     }
+    
+    func buttonEvent(sender: UIButton) {
+        let alertController: UIAlertController = UIAlertController()
+        let alert = UIAlertController(
+            title: "完了",
+            message: "投稿が完了しました！",
+            preferredStyle: .alert)
+        // アラートにボタンをつける
+        alert.addAction(UIAlertAction(title: "OK", style: .default))
+        // アラート表示
+        self.present(alert, animated: true, completion: nil)
+    }
+    
+    
+    
+    
+    
     
     @IBAction func tapScreen(sender: UITapGestureRecognizer) {
         self.view.endEditing(true)
     }
-    
-    
-    
 
     /*
     // MARK: - Navigation

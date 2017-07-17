@@ -65,24 +65,118 @@
             </objects>
             <point key="canvasLocation" x="1079" y="-264"/>
         </scene>
-        <!--Setting-->
-        <scene sceneID="egl-R6-ro7">
+        <!--Item-->
+        <scene sceneID="yP4-Ow-ww5">
             <objects>
-                <viewController id="GzF-3W-8EQ" customClass="SettingViewController" customModule="heal" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="J9b-XF-791" customClass="SettingViewController" customModule="heal" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="019-XE-eNm"/>
-                        <viewControllerLayoutGuide type="bottom" id="KsM-aw-eLQ"/>
+                        <viewControllerLayoutGuide type="top" id="aMa-Jj-75X"/>
+                        <viewControllerLayoutGuide type="bottom" id="D7h-Fu-opT"/>
                     </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="A8W-BB-tXD">
+                    <view key="view" contentMode="scaleToFill" id="fBG-Mi-Wle">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="08Q-hR-ONR">
+                                <rect key="frame" x="61" y="136" width="252" height="164"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="25"/>
+                                <state key="normal" title="時間割"/>
+                                <connections>
+                                    <segue destination="vYV-q5-MBg" kind="show" id="Nbk-XD-1W2"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sLU-Hf-W1Y">
+                                <rect key="frame" x="61" y="367" width="252" height="164"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="25"/>
+                                <state key="normal" title="使い方"/>
+                                <connections>
+                                    <action selector="howButton:" destination="J9b-XF-791" eventType="touchUpInside" id="wJP-RL-Pee"/>
+                                </connections>
+                            </button>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Setting" id="0N4-C8-qWu"/>
+                    <tabBarItem key="tabBarItem" title="Item" id="Wno-go-rwn"/>
+                    <connections>
+                        <outlet property="howButton" destination="sLU-Hf-W1Y" id="0H4-ly-aGP"/>
+                        <outlet property="scheduleButton" destination="08Q-hR-ONR" id="c2Y-yd-OuR"/>
+                    </connections>
                 </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="TcA-5w-zZ8" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="3rf-t7-Ex4" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1774" y="-264"/>
+            <point key="canvasLocation" x="1773.5999999999999" y="-264.01799100449779"/>
+        </scene>
+        <!--Schedule View Controller-->
+        <scene sceneID="MxT-Ca-9od">
+            <objects>
+                <viewController id="vYV-q5-MBg" customClass="ScheduleViewController" customModule="heal" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="utg-Pq-AMN"/>
+                        <viewControllerLayoutGuide type="bottom" id="mgA-eA-NyS"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="h92-Zq-oPR">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ViF-WL-bbw">
+                                <rect key="frame" x="287" y="28" width="72" height="47"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="変更"/>
+                                <connections>
+                                    <action selector="changeButton:" destination="vYV-q5-MBg" eventType="touchUpInside" id="tGz-Oa-EYJ"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="時間割" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="77u-rD-KIc">
+                                <rect key="frame" x="110" y="28" width="154" height="47"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jsL-l5-Vlc">
+                                <rect key="frame" x="16" y="28" width="72" height="47"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="30"/>
+                                <state key="normal" title="×"/>
+                                <connections>
+                                    <action selector="backButton:" destination="vYV-q5-MBg" eventType="touchUpInside" id="bB6-1n-CIy"/>
+                                </connections>
+                            </button>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="ExF-ck-7sV">
+                                <rect key="frame" x="47" y="108" width="280" height="450"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="RjP-iO-OHu">
+                                    <size key="itemSize" width="50" height="50"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                                <cells>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="Cell" id="aUM-3e-u7F" customClass="ScheduleCell" customModule="heal" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                            <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </view>
+                                    </collectionViewCell>
+                                </cells>
+                            </collectionView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <connections>
+                        <outlet property="changeButton" destination="ViF-WL-bbw" id="5Gb-3O-T5y"/>
+                        <outlet property="collectionView" destination="ExF-ck-7sV" id="Ir6-cy-oKw"/>
+                        <outlet property="titleLabel" destination="77u-rD-KIc" id="Vpz-wj-Rd6"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="q0G-iT-Yyo" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2461.5999999999999" y="-264.01799100449779"/>
         </scene>
         <!--Calendar-->
         <scene sceneID="rGD-w8-sZ3">
@@ -156,7 +250,7 @@
                         <segue destination="oPW-sc-wxi" kind="relationship" relationship="viewControllers" id="bM4-I4-U1x"/>
                         <segue destination="DhW-6d-m5T" kind="relationship" relationship="viewControllers" id="wps-1x-tKb"/>
                         <segue destination="PcO-Wx-dW5" kind="relationship" relationship="viewControllers" id="dY5-Qp-hum"/>
-                        <segue destination="GzF-3W-8EQ" kind="relationship" relationship="viewControllers" id="iIH-aK-wZE"/>
+                        <segue destination="J9b-XF-791" kind="relationship" relationship="viewControllers" id="u8p-iz-jb2"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2io-1s-XwM" userLabel="First Responder" sceneMemberID="firstResponder"/>
