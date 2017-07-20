@@ -18,14 +18,12 @@ class ScheduleViewController: UIViewController, UICollectionViewDelegate, UIColl
     let weekArray = ["","Mon", "Tue", "Wed", "Thu", "Fri", "Sat"]
     let numOfDays = 7
     let cellMargin : CGFloat = 2.0
-    let layout: UICollectionViewFlowLayout = UICollectionViewFlowLayout()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         collectionView.delegate = self
         collectionView.dataSource = self
         collectionView.register(UINib(nibName: "ScheduleCell", bundle: nil), forCellWithReuseIdentifier: "Cell")
-        layout.sectionInset = UIEdgeInsetsMake(10, 0, 0, 0)
     }
 
     override func didReceiveMemoryWarning() {
@@ -98,7 +96,7 @@ class ScheduleViewController: UIViewController, UICollectionViewDelegate, UIColl
     
     //セルのアイテムのマージンを設定
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
-        return UIEdgeInsetsMake(0.0 , 0.0 , 0.0 , 0.0 )  //マージン(top , left , bottom , right)
+        return UIEdgeInsetsMake(5.0 , 0.0 , 0.0 , 0.0 )  //マージン(top , left , bottom , right)
     }
     
     //セルの水平方向のマージンを設定
