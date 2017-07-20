@@ -19,7 +19,12 @@ class AddDiaryViewController: UIViewController, UIScrollViewDelegate, UIToolbarD
     let label1: UILabel = UILabel()
     let label2: UILabel = UILabel()
     let label3: UILabel = UILabel()
+    let slider: UISlider = UISlider()
+    let bgView: UIView = UIView()
     var tableView: UITableView = UITableView()
+    var redValue: CGFloat = 180
+    var greenValue: CGFloat = 255
+    var blueValue: CGFloat = 255
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -47,11 +52,10 @@ class AddDiaryViewController: UIViewController, UIScrollViewDelegate, UIToolbarD
     }
     
     func addView() {
-        let view: UIView = UIView()
-        view.frame = CGRect(x:16,y:0,width:343,height:950)
-        view.cornerRadius = 20
-        view.backgroundColor = UIColor.red
-        scrollView.addSubview(view)
+        bgView.frame = CGRect(x:16,y:0,width:343,height:950)
+        bgView.cornerRadius = 20
+        bgView.backgroundColor = UIColor(red: redValue / 255, green: greenValue / 255, blue: blueValue / 255, alpha:1.0)
+        scrollView.addSubview(bgView)
     }
     
     func addDateTextField() {
@@ -143,9 +147,19 @@ class AddDiaryViewController: UIViewController, UIScrollViewDelegate, UIToolbarD
     }
     
     func addSlider() {
-        let slider: UISlider = UISlider()
         slider.frame = CGRect(x: 44, y: 100, width: 285, height: 80)
+        slider.addTarget(self, action: #selector(changeSlider(_:)) , for: .valueChanged)
         self.scrollView.addSubview(slider)
+    }
+    
+    func changeSlider(_ sender: UISlider) {
+        if sender.value <= 0.5 {
+            redValue = 180 + CGFloat(sender.value * 150 )
+            blueValue = 255 - CGFloat(sender.value * 250)
+        } else {
+            greenValue = 255 - CGFloat(sender.value - 0.5) * 210
+        }
+        bgView.backgroundColor = UIColor(red: redValue / 255, green: greenValue / 255, blue: blueValue / 255, alpha:1.0)
     }
     
     func addTextView() {

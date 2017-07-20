@@ -18,13 +18,14 @@ class ScheduleViewController: UIViewController, UICollectionViewDelegate, UIColl
     let weekArray = ["","Mon", "Tue", "Wed", "Thu", "Fri", "Sat"]
     let numOfDays = 7
     let cellMargin : CGFloat = 2.0
+    let layout: UICollectionViewFlowLayout = UICollectionViewFlowLayout()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         collectionView.delegate = self
         collectionView.dataSource = self
         collectionView.register(UINib(nibName: "ScheduleCell", bundle: nil), forCellWithReuseIdentifier: "Cell")
-        // Do any additional setup after loading the view.
+        layout.sectionInset = UIEdgeInsetsMake(10, 0, 0, 0)
     }
 
     override func didReceiveMemoryWarning() {
@@ -49,29 +50,25 @@ class ScheduleViewController: UIViewController, UICollectionViewDelegate, UIColl
     
     //コレクションビューのセクション数　今回は2つに分ける
     func numberOfSections(in collectionView: UICollectionView) -> Int {
-        return 2
+        return 7
     }
     
     //データの個数（DataSourceを設定した場合に必要な項目）
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        if(section == 0){   //section:0は曜日を表示
             return numOfDays
-        }else{
-            return 42
-        }
     }
     
     //データを返すメソッド（DataSourceを設定した場合に必要な項目）
     //動作確認の為セルの背景を変える。曜日については表示する
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        
         //コレクションビューから識別子「CalendarCell」のセルを取得する
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "Cell", for: indexPath) as! ScheduleCell
-        if(indexPath.section == 0){             //曜日表示
-            cell.backgroundColor = UIColor.green
+        if(indexPath.section == 0) {             //曜日表示
+            cell.backgroundColor = UIColor.red
             cell.textLabel.text = weekArray[indexPath.row]
-        }else{
-            
+        }else if(indexPath.row % 7 == 0 && indexPath.section != 0) {
+            cell.backgroundColor = UIColor.red
+            cell.textLabel.text = String(indexPath.section)
         }
         return cell
     }
@@ -90,8 +87,12 @@ class ScheduleViewController: UIViewController, UICollectionViewDelegate, UIColl
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         let numberOfMargin:CGFloat = 8.0
         let widths:CGFloat = (collectionView.frame.size.width - cellMargin * numberOfMargin)/CGFloat(numOfDays)
-        let heights:CGFloat = widths * 0.8
-        
+        var heights:CGFloat = CGFloat()
+        if(indexPath.section == 0) {
+            heights = widths * 0.8
+        } else {
+            heights = widths * 1.5
+        }
         return CGSize(width:widths,height:heights)
     }
     
