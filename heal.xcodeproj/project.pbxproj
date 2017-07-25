@@ -19,6 +19,8 @@
 		8175CDDC1F162D20003C5881 /* ScheduleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8175CDDB1F162D20003C5881 /* ScheduleViewController.swift */; };
 		8175CDDF1F163821003C5881 /* ScheduleCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8175CDDD1F163821003C5881 /* ScheduleCell.swift */; };
 		8175CDE01F163821003C5881 /* ScheduleCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8175CDDE1F163821003C5881 /* ScheduleCell.xib */; };
+		8175CDE31F2780DC003C5881 /* RecordCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8175CDE11F2780DB003C5881 /* RecordCell.swift */; };
+		8175CDE41F2780DC003C5881 /* RecordCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8175CDE21F2780DC003C5881 /* RecordCell.xib */; };
 		817D5A2C1EFA81FA00CBD0CD /* AddDiaryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 817D5A2B1EFA81FA00CBD0CD /* AddDiaryViewController.swift */; };
 		817D5A2E1EFA829700CBD0CD /* RecordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 817D5A2D1EFA829700CBD0CD /* RecordViewController.swift */; };
 		817D5A331EFA82DB00CBD0CD /* DiaryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 817D5A311EFA82DB00CBD0CD /* DiaryCell.swift */; };
@@ -67,6 +69,8 @@
 		8175CDDB1F162D20003C5881 /* ScheduleViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScheduleViewController.swift; sourceTree = "<group>"; };
 		8175CDDD1F163821003C5881 /* ScheduleCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScheduleCell.swift; sourceTree = "<group>"; };
 		8175CDDE1F163821003C5881 /* ScheduleCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ScheduleCell.xib; sourceTree = "<group>"; };
+		8175CDE11F2780DB003C5881 /* RecordCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecordCell.swift; sourceTree = "<group>"; };
+		8175CDE21F2780DC003C5881 /* RecordCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RecordCell.xib; sourceTree = "<group>"; };
 		817D5A2B1EFA81FA00CBD0CD /* AddDiaryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddDiaryViewController.swift; sourceTree = "<group>"; };
 		817D5A2D1EFA829700CBD0CD /* RecordViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecordViewController.swift; sourceTree = "<group>"; };
 		817D5A311EFA82DB00CBD0CD /* DiaryCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DiaryCell.swift; sourceTree = "<group>"; };
@@ -136,6 +140,7 @@
 				817D5A2B1EFA81FA00CBD0CD /* AddDiaryViewController.swift */,
 				81CE9A601F11159C0039B7EC /* TimeTableViewCell.swift */,
 				817D5A2D1EFA829700CBD0CD /* RecordViewController.swift */,
+				8175CDE11F2780DB003C5881 /* RecordCell.swift */,
 				8175CDD91F162B23003C5881 /* SettingViewController.swift */,
 				8175CDDB1F162D20003C5881 /* ScheduleViewController.swift */,
 				8175CDDD1F163821003C5881 /* ScheduleCell.swift */,
@@ -143,6 +148,7 @@
 				81D939BC1EF152D300A30138 /* CalendarCell.xib */,
 				817D5A321EFA82DB00CBD0CD /* DiaryCell.xib */,
 				81CE9A611F11159C0039B7EC /* TimeTableViewCell.xib */,
+				8175CDE21F2780DC003C5881 /* RecordCell.xib */,
 				8175CDDE1F163821003C5881 /* ScheduleCell.xib */,
 				810C18FA1EECD8AA0023BB61 /* Assets.xcassets */,
 				810C18FC1EECD8AA0023BB61 /* LaunchScreen.storyboard */,
@@ -286,6 +292,7 @@
 				817D5A341EFA82DB00CBD0CD /* DiaryCell.xib in Resources */,
 				810C18F61EECD8AA0023BB61 /* Main.storyboard in Resources */,
 				81CE9A631F11159C0039B7EC /* TimeTableViewCell.xib in Resources */,
+				8175CDE41F2780DC003C5881 /* RecordCell.xib in Resources */,
 				81D939BE1EF152D300A30138 /* CalendarCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -321,6 +328,7 @@
 				817D5A2E1EFA829700CBD0CD /* RecordViewController.swift in Sources */,
 				810C18F31EECD8A90023BB61 /* ViewController.swift in Sources */,
 				81CE9A621F11159C0039B7EC /* TimeTableViewCell.swift in Sources */,
+				8175CDE31F2780DC003C5881 /* RecordCell.swift in Sources */,
 				810C18F11EECD8A90023BB61 /* AppDelegate.swift in Sources */,
 				81D939BD1EF152D300A30138 /* CalendarCell.swift in Sources */,
 				817D5A361EFA876000CBD0CD /* DiaryTableViewController.swift in Sources */,

@@ -46,7 +46,7 @@ class ScheduleViewController: UIViewController, UICollectionViewDelegate, UIColl
         dismiss(animated: true, completion: nil)
     }
     
-    //コレクションビューのセクション数　今回は2つに分ける
+    //コレクションビューのセクション数
     func numberOfSections(in collectionView: UICollectionView) -> Int {
         return 7
     }
@@ -74,6 +74,31 @@ class ScheduleViewController: UIViewController, UICollectionViewDelegate, UIColl
     //セルをクリックしたら呼ばれる
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         print("Num：\(indexPath.row) Section:\(indexPath.section)")
+        if number % 2 != 0 {
+            let alert = UIAlertController(title: "時間割追加", message: "文字を入力してください", preferredStyle: .alert)
+            // OKボタンの設定
+            let okAction = UIAlertAction(title: "OK", style: .default, handler: {
+                (action:UIAlertAction!) -> Void in
+                // OKを押した時入力されていたテキストを表示
+                if let textFields = alert.textFields {
+                    // アラートに含まれるすべてのテキストフィールドを調べる
+                    for textField in textFields {
+                        print(textField.text!)
+                    }
+                }
+            })
+            alert.addAction(okAction)
+            // キャンセルボタンの設定
+            let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+            alert.addAction(cancelAction)
+            // テキストフィールドを追加
+            alert.addTextField(configurationHandler: {(textField: UITextField!) -> Void in
+                textField.placeholder = "テキスト"
+            })
+            alert.view.setNeedsLayout() // シミュレータの種類によっては、これがないと警告が発生
+            // アラートを画面に表示
+            self.present(alert, animated: true, completion: nil)
+        }
     }
     
     /*
