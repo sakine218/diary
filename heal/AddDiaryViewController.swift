@@ -8,7 +8,7 @@
 
 import UIKit
 
-class AddDiaryViewController: UIViewController, UIScrollViewDelegate, UIToolbarDelegate,UITableViewDelegate,UITableViewDataSource {
+class AddDiaryViewController: UIViewController, UIScrollViewDelegate {
     
     @IBOutlet var scrollView: UIScrollView!
     var dateTextField: UITextField = UITextField()
@@ -21,19 +21,24 @@ class AddDiaryViewController: UIViewController, UIScrollViewDelegate, UIToolbarD
     let label3: UILabel = UILabel()
     let slider: UISlider = UISlider()
     let bgView: UIView = UIView()
-    var tableView: UITableView = UITableView()
     var redValue: CGFloat = 180
     var greenValue: CGFloat = 255
     var blueValue: CGFloat = 255
+    let textView: UITextView = UITextView()
+    let userDefaults = UserDefaults.standard
+    var scheduleArray: [[String: Any]] = []
+    var dayNum: Int = 0
+    var dayArray: [[String: Any]] = []
+    var cellTapNumArray: [Int] = [0, 0, 0, 0, 0, 0]
+    let cellTapColorArray: [UIColor] = [UIColor.white, UIColor.red, UIColor.blue, UIColor.yellow]
+    var buttonArray: [UIButton] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
         scrollView.delegate = self
-        tableView.delegate = self
-        tableView.dataSource = self
         scrollView.indicatorStyle = .white
         scrollView.scrollIndicatorInsets = UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 10)
-        scrollView.contentSize = CGSize(width: 343, height: 960)
+        scrollView.contentSize = CGSize(width: self.view.frame.width, height: 1000)
         addView()
         addDateTextField()
         addLabels()
@@ -41,9 +46,27 @@ class AddDiaryViewController: UIViewController, UIScrollViewDelegate, UIToolbarD
         addTextView()
         addChangeButton()
         addSwitch()
-        addTableView()
         addOkButton()
+        addExplainLabels()
         // Do any additional setup after loading the view.
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        first()
+        let calendar = Calendar.current
+        let date = Date()
+        dayNum = calendar.component(.weekday, from: date) - 1
+        if (userDefaults.array(forKey: "Schedule") != nil) {
+            scheduleArray = userDefaults.array(forKey: "Schedule") as! [[String : Any]]
+        }
+        dayArray.removeAll()
+        for schedule in scheduleArray {
+            if schedule["weekRow"] as! Int == dayNum {
+                self.dayArray.append(schedule)
+            }
+        }
+        addButtons()
+        setButtonTitles()
     }
     
     override func didReceiveMemoryWarning() {
@@ -51,8 +74,21 @@ class AddDiaryViewController: UIViewController, UIScrollViewDelegate, UIToolbarD
         // Dispose of any resources that can be recreated.
     }
     
+    func first() {
+        redValue = 180
+        greenValue = 255
+        blueValue = 255
+        slider.value = 0
+        bgView.backgroundColor = UIColor(red: redValue / 255, green: greenValue / 255, blue: blueValue / 255, alpha:1.0)
+        textView.text = ""
+        datePicker.date = Date()
+        changeLabelDate(date: Date())
+        setButtonTitles()
+    }
+    
     func addView() {
-        bgView.frame = CGRect(x:16,y:0,width:343,height:950)
+        bgView.frame = CGRect(x:0,y:0,width:self.view.frame.width - 32,height:990)
+        bgView.center.x = self.view.center.x
         bgView.cornerRadius = 20
         bgView.backgroundColor = UIColor(red: redValue / 255, green: greenValue / 255, blue: blueValue / 255, alpha:1.0)
         scrollView.addSubview(bgView)
@@ -63,9 +99,10 @@ class AddDiaryViewController: UIViewController, UIScrollViewDelegate, UIToolbarD
         dateTextField.backgroundColor = UIColor.white
         dateTextField.cornerRadius = 7
         dateTextField.minimumFontSize = 20
-        dateTextField.frame = CGRect(x: 84,y: 20,width: 200, height: 50)
-        dateTextField.placeholder = dateToString(date: Date())
-        dateTextField.text = dateToString(date: Date())
+        dateTextField.frame = CGRect(x: 0,y: 20,width: self.view.frame.width - 168, height: 50)
+        dateTextField.center.x = self.view.center.x
+        dateTextField.placeholder = Utility.dateToString(date: Date())
+        dateTextField.text = "　 " + Utility.dateToString(date: Date())
         self.scrollView.addSubview(dateTextField)
         addDatePicker()
         addToolBar()
@@ -77,6 +114,7 @@ class AddDiaryViewController: UIViewController, UIScrollViewDelegate, UIToolbarD
         datePicker.addTarget(self, action: #selector(changedDateEvent(sender:)), for: UIControlEvents.valueChanged)
         datePicker.datePickerMode = UIDatePickerMode.date
         dateTextField.inputView = datePicker
+        datePicker.maximumDate = Date()
     }
     
     func addToolBar() {
@@ -92,8 +130,20 @@ class AddDiaryViewController: UIViewController, UIScrollViewDelegate, UIToolbarD
     }
     
     func tappedToolBarBtn(sender: UIBarButtonItem) {
+        let calendar = Calendar.current
+        let date = datePicker.date
+        dayNum = calendar.component(.weekday, from: date) - 1
+        if (userDefaults.array(forKey: "Schedule") != nil) {
+            scheduleArray = userDefaults.array(forKey: "Schedule") as! [[String : Any]]
+        }
+        dayArray.removeAll()
+        for schedule in scheduleArray {
+            if schedule["weekRow"] as! Int == dayNum {
+                self.dayArray.append(schedule)
+            }
+        }
+        setButtonTitles()
         dateTextField.resignFirstResponder()
-        print(dateTextField.text!)
     }
     
     // 「今日」を押すと今日の日付をセットする
@@ -101,36 +151,22 @@ class AddDiaryViewController: UIViewController, UIScrollViewDelegate, UIToolbarD
         datePicker.date = Date()
         changeLabelDate(date: Date())
     }
-    
-    //
     func changedDateEvent(sender:UIDatePicker){
         self.changeLabelDate(date: datePicker.date)
     }
     
     func changeLabelDate(date:Date) {
-        dateTextField.text = self.dateToString(date: date)
+        dateTextField.text = " 　" + Utility.dateToString(date: date)
     }
     
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         // スクロール中の処理
-        print("didScroll")
+        //print("didScroll")
     }
     
     func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
         // ドラッグ開始時の処理
         print("beginDragging")
-    }
-    
-    func dateToString(date:Date) ->String {
-        let calender: Calendar = Calendar(identifier: .gregorian)
-        let comps = calender.dateComponents([.year, .month, .day, .weekday], from: date)
-        let date_formatter: DateFormatter = DateFormatter()
-        var weekdays: [String]  = [ "日", "月", "火", "水", "木", "金", "土"]
-        
-        date_formatter.locale     = Locale(identifier: "ja")
-        date_formatter.dateFormat = "　 yyyy年MM月dd日 "
-        
-        return date_formatter.string(from: date) + "(\(weekdays[comps.weekday! - 1]))"
     }
     
     func addLabels() {
@@ -147,7 +183,8 @@ class AddDiaryViewController: UIViewController, UIScrollViewDelegate, UIToolbarD
     }
     
     func addSlider() {
-        slider.frame = CGRect(x: 44, y: 100, width: 285, height: 80)
+        slider.frame = CGRect(x: 0, y: 100, width: self.view.frame.width - 88, height: 80)
+        slider.center.x = self.view.center.x
         slider.addTarget(self, action: #selector(changeSlider(_:)) , for: .valueChanged)
         self.scrollView.addSubview(slider)
     }
@@ -163,7 +200,6 @@ class AddDiaryViewController: UIViewController, UIScrollViewDelegate, UIToolbarD
     }
     
     func addTextView() {
-        let textView: UITextView = UITextView()
         textView.frame = CGRect(x: 44, y: 210, width: 285, height: 200)
         textView.cornerRadius = 10
         self.scrollView.addSubview(textView)
@@ -181,40 +217,75 @@ class AddDiaryViewController: UIViewController, UIScrollViewDelegate, UIToolbarD
     
     func addSwitch() {
         let scheduleSwitch: UISwitch = UISwitch()
+        scheduleSwitch.isOn = true
         scheduleSwitch.frame = CGRect(x: 284, y: 430, width: 50, height: 50)
         self.scrollView.addSubview(scheduleSwitch)
     }
     
-    func addTableView() {
-        self.tableView.register(UINib(nibName: "TimeTableViewCell", bundle: nil), forCellReuseIdentifier: "Cell")
-        self.tableView.separatorStyle = .none
-        tableView.frame = CGRect(x: 74, y: 480, width: 225, height: 360)
-        self.scrollView.addSubview(tableView)
+    func addButtons() {
+        for i in 0...5{
+            let button = UIButton()
+            button.frame = CGRect(x: 0, y: 480 + 60 * i, width: Int(self.view.frame.width - 148), height: 60)
+            button.center.x = self.view.center.x
+            button.backgroundColor = UIColor.white
+            button.tag = i
+            buttonArray.append(button)
+            button.addTarget(self, action: #selector(scheduleButtonEvent(sender:)), for: .touchUpInside)
+            self.scrollView.addSubview(button)
+        }
     }
     
-    func numberOfSections(in tableView: UITableView) -> Int {
-        return 1
+    func scheduleButtonEvent(sender: UIButton) {
+        cellTapNumArray[sender.tag]  += 1
+        sender.backgroundColor = cellTapColorArray[cellTapNumArray[sender.tag] % 4]
     }
     
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 6
-    }
-    
-    
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as! TimeTableViewCell
+    func setButtonTitles() {
+        for (index, button) in buttonArray.enumerated() {
+            for day in dayArray {
+                if day["timeSection"] as! Int == index + 1 {
+                    button.setTitleColor(UIColor.black, for: .normal)
+                    button.setTitle(day["subject"] as? String, for: .normal)
+                    button.backgroundColor = cellTapColorArray[0]
+                    cellTapNumArray = [0, 0, 0, 0, 0, 0]
+                }
+            }
+        }
         
-        
-        return cell
+        for button in buttonArray {
+            if button.titleLabel?.text == nil {
+                button.isUserInteractionEnabled = false
+            } else {
+                button.isUserInteractionEnabled = true
+            }
+        }
     }
     
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 60
+    func addExplainLabels() {
+        let labelTextArray: [String] = ["遅刻", "早退", "欠課"]
+        var labelArray: [UILabel] = []
+        let stackView: UIStackView = UIStackView()
+        stackView.frame = CGRect(x: 0, y: 855, width: self.view.frame.width - 148, height: 30)
+        stackView.center.x = self.view.center.x
+        stackView.axis = .horizontal
+        stackView.distribution = .fillEqually
+        stackView.spacing = 5
+        for i in 0...2 {
+            let label: UILabel = UILabel()
+            label.text = labelTextArray[i]
+            label.textAlignment = NSTextAlignment.center
+            label.backgroundColor = cellTapColorArray[i + 1]
+            label.layer.cornerRadius = 5
+            label.clipsToBounds = true
+            labelArray.append(label)
+            stackView.addArrangedSubview(label)
+        }
+        scrollView.addSubview(stackView)
     }
     
     func addOkButton() {
         let okButton: UIButton = UIButton()
-        okButton.frame = CGRect(x: 140, y: 870, width: 100, height: 50)
+        okButton.frame = CGRect(x: 140, y: 910, width: 100, height: 50)
         okButton.setTitle("OK", for: .normal)
         okButton.setTitleColor(UIColor.black, for: .normal)
         okButton.backgroundColor = UIColor.white
@@ -224,34 +295,41 @@ class AddDiaryViewController: UIViewController, UIScrollViewDelegate, UIToolbarD
     }
     
     func buttonEvent(sender: UIButton) {
-        let alertController: UIAlertController = UIAlertController()
+        let content = Content(date: Utility.dateToString(date: datePicker.date), note: textView.text, redValue: Float(redValue), greenValue: Float(greenValue), blueValue: Float(blueValue))
+        content.save()
+        
+        //覚え書き
+        //　全部取得
+        //let allContents = Content.findAll()
+        //　日付検索
+        //let dateContents = Content.find(withId: "8/2")
+        
         let alert = UIAlertController(
             title: "完了",
             message: "投稿が完了しました！",
             preferredStyle: .alert)
         // アラートにボタンをつける
-        alert.addAction(UIAlertAction(title: "OK", style: .default))
+        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { _ in
+            self.first()
+            self.setButtonTitles()
+
+        }))
         // アラート表示
         self.present(alert, animated: true, completion: nil)
     }
     
-    
-    
-    
-    
-    
     @IBAction func tapScreen(sender: UITapGestureRecognizer) {
         self.view.endEditing(true)
     }
-
+    
     /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
+     // MARK: - Navigation
+     
+     // In a storyboard-based application, you will often want to do a little preparation before navigation
+     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+     // Get the new view controller using segue.destinationViewController.
+     // Pass the selected object to the new view controller.
+     }
+     */
+    
 }

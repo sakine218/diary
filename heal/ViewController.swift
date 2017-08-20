@@ -25,7 +25,6 @@ class ViewController: UIViewController ,UICollectionViewDelegate,UICollectionVie
         let height = self.view.frame.height
         let layout = UICollectionViewFlowLayout()
         layout.sectionInset = UIEdgeInsetsMake(0,0,0,0)
-        
         //コレクションビューを設置していくよ
         myCollectView = UICollectionView(frame: self.view.frame, collectionViewLayout: layout)
         myCollectView.frame = CGRect(x:0,y:barHeight + 50,width:width,height:height - barHeight - 100)
@@ -54,6 +53,8 @@ class ViewController: UIViewController ,UICollectionViewDelegate,UICollectionVie
         }
         self.view.addSubview(monthLabel)
         
+        let allContents = Content.findAll()
+        print(allContents)
         
     }
     
@@ -72,6 +73,7 @@ class ViewController: UIViewController ,UICollectionViewDelegate,UICollectionVie
     func collectionView(_ collectionView:UICollectionView,layout collectionViewLayout:UICollectionViewLayout,minimumInteritemSpacingForSectionAt section:Int) -> CGFloat{
         return cellMargin
     }
+    
     //セクションの数
     func numberOfSections(in collectionView: UICollectionView) -> Int {
         return 1
@@ -121,6 +123,19 @@ class ViewController: UIViewController ,UICollectionViewDelegate,UICollectionVie
         }else{
             cell.textLabel.border(positions:[.Top],borderWidth:0,borderColor:UIColor.white)
         }
+        
+        let dayText: String = Utility.dateToString(date: dateManager.dateForCellAtIndexPathWeeks(row: indexPath.item + 1))
+        print(dayText)
+        
+        if let content = Content.find(withId: dayText).first {
+            let redValue: CGFloat = CGFloat(content.redValue)
+            let greenValue: CGFloat = CGFloat(content.greenValue)
+            let blueValue: CGFloat = CGFloat(content.blueValue)
+            cell.backgroundColor = UIColor(red: redValue / 255, green: greenValue / 255, blue: blueValue / 255, alpha:1.0)
+        } else {
+            cell.backgroundColor = UIColor.white
+        }
+        
         return cell
     }
     

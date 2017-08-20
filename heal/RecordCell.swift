@@ -14,11 +14,16 @@ class RecordCell: UICollectionViewCell {
 
     override func awakeFromNib() {
         super.awakeFromNib()
-        textLabel = UILabel(frame: CGRect(x:0, y:0, width:self.frame.width,  height: self.frame.height))
+        textLabel = UILabel()
         textLabel.textAlignment = NSTextAlignment.center
         // Cellに追加
         self.addSubview(textLabel)
         // Initialization code
+        textLabel.translatesAutoresizingMaskIntoConstraints = false
+        textLabel.leadingAnchor.constraint(equalTo: self.leadingAnchor).isActive = true
+        textLabel.trailingAnchor.constraint(equalTo: self.trailingAnchor).isActive = true
+        textLabel.topAnchor.constraint(equalTo: self.topAnchor).isActive = true
+        textLabel.bottomAnchor.constraint(equalTo: self.bottomAnchor).isActive = true
     }
 
 }

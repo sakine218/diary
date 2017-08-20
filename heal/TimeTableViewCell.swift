@@ -9,6 +9,9 @@
 import UIKit
 
 class TimeTableViewCell: UITableViewCell {
+    
+    @IBOutlet var label: UILabel!
+    @IBOutlet var button: UIButton!
 
     override func awakeFromNib() {
         super.awakeFromNib()

@@ -17,13 +17,21 @@ class ScheduleViewController: UIViewController, UICollectionViewDelegate, UIColl
     var number: Int = 0
     let weekArray = ["","Mon", "Tue", "Wed", "Thu", "Fri", "Sat"]
     let numOfDays = 7
-    let cellMargin : CGFloat = 2.0
+    let cellMargin : CGFloat = 0.0
+    let userDefaults = UserDefaults.standard
+    var scheduleArray: [[String: Any]] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
         collectionView.delegate = self
         collectionView.dataSource = self
         collectionView.register(UINib(nibName: "ScheduleCell", bundle: nil), forCellWithReuseIdentifier: "Cell")
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        if (userDefaults.array(forKey: "Schedule") != nil) {
+            scheduleArray = userDefaults.array(forKey: "Schedule") as! [[String : Any]]
+        }
     }
 
     override func didReceiveMemoryWarning() {
@@ -61,18 +69,33 @@ class ScheduleViewController: UIViewController, UICollectionViewDelegate, UIColl
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         //コレクションビューから識別子「CalendarCell」のセルを取得する
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "Cell", for: indexPath) as! ScheduleCell
-        if(indexPath.section == 0) {             //曜日表示
-            cell.backgroundColor = UIColor.red
+        if(indexPath.section == 0) { //曜日表示
+            if indexPath.row % 2 == 0 {
+                cell.backgroundColor = UIColor.gray
+            } else {
+                cell.backgroundColor = UIColor.lightGray
+            }
             cell.textLabel.text = weekArray[indexPath.row]
         }else if(indexPath.row % 7 == 0 && indexPath.section != 0) {
-            cell.backgroundColor = UIColor.red
+            if indexPath.section % 2 == 0 {
+                cell.backgroundColor = UIColor.gray
+            } else {
+                cell.backgroundColor = UIColor.lightGray
+            }
             cell.textLabel.text = String(indexPath.section)
+        } else {
+            for schedule in scheduleArray {
+                if schedule["weekRow"] as! Int == indexPath.row && schedule["timeSection"] as! Int == indexPath.section {
+                    cell.textLabel.text = schedule["subject"] as? String
+                }
+            }
         }
         return cell
     }
     
     //セルをクリックしたら呼ばれる
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let cell = collectionView.cellForItem(at: indexPath)  as! ScheduleCell
         print("Num：\(indexPath.row) Section:\(indexPath.section)")
         if number % 2 != 0 {
             let alert = UIAlertController(title: "時間割追加", message: "文字を入力してください", preferredStyle: .alert)
@@ -84,6 +107,10 @@ class ScheduleViewController: UIViewController, UICollectionViewDelegate, UIColl
                     // アラートに含まれるすべてのテキストフィールドを調べる
                     for textField in textFields {
                         print(textField.text!)
+                        cell.textLabel.text = textField.text!
+                        self.scheduleArray.append(["weekRow": indexPath.row, "timeSection": indexPath.section, "subject": textField.text!])
+                        self.userDefaults.set(self.scheduleArray, forKey: "Schedule")
+                        print(self.scheduleArray)
                     }
                 }
             })
@@ -121,7 +148,7 @@ class ScheduleViewController: UIViewController, UICollectionViewDelegate, UIColl
     
     //セルのアイテムのマージンを設定
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
-        return UIEdgeInsetsMake(5.0 , 0.0 , 0.0 , 0.0 )  //マージン(top , left , bottom , right)
+        return UIEdgeInsetsMake(0.0 , 0.0 , 0.0 , 0.0 )  //マージン(top , left , bottom , right)
     }
     
     //セルの水平方向のマージンを設定

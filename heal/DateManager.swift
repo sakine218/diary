@@ -103,7 +103,7 @@ class DateManager {
         dateComponents.day = row + 1 - self.number
         //計算して、基準の日から何日マイナス、加算するか dateComponents.day = -2 とか
         let date = calendar.date(byAdding: dateComponents, to: self.lastDateForDisplay())
-        print("row...\(row), date... \(date ?? Date())")
+        //print("row...\(row), date... \(date ?? Date())")
         return date!
     }
     

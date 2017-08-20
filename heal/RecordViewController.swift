@@ -8,7 +8,7 @@
 
 import UIKit
 
-class RecordViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource {
+class RecordViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     
     @IBOutlet var sumButton: UIButton!
     @IBOutlet var collectionView: UICollectionView!
@@ -16,7 +16,7 @@ class RecordViewController: UIViewController, UICollectionViewDelegate, UICollec
     let titleArray: [String] = ["教科","欠課","遅刻","早退"]
     let numOfDays = 4
     let cellMargin : CGFloat = 0.0
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         collectionView.delegate = self
@@ -40,10 +40,10 @@ class RecordViewController: UIViewController, UICollectionViewDelegate, UICollec
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         //コレクションビューから識別子「CalendarCell」のセルを取得する
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "RecordCell", for: indexPath) as! RecordCell
-        if(indexPath.section == 0) {             //曜日表示
+        if(indexPath.section == 0) {
             cell.backgroundColor = UIColor.red
             cell.textLabel.text = titleArray[indexPath.row]
-        } else if (indexPath.section % 2 != 0){
+        } else if (indexPath.section % 2 != 0) {
             cell.backgroundColor = UIColor.gray
         } else {
             cell.backgroundColor = UIColor.lightGray
