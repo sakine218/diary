@@ -10,7 +10,7 @@ import UIKit
 
 class CalendarCell: UICollectionViewCell {
     @IBOutlet var textLabel:UILabel!
-    
+    @IBOutlet var cellBgView: UIView!
     
     required init(coder aDecoder:NSCoder){
         super.init(coder: aDecoder)!
@@ -18,6 +18,10 @@ class CalendarCell: UICollectionViewCell {
     
     override init(frame:CGRect){
         super.init(frame:frame)
+        cellBgView.layer.shadowColor = AppColors.lightGray as! CGColor /* 影の色 */
+        cellBgView.layer.shadowOffset = CGSize(width: 10.0, height: 10.0) /* 影の大きさ */
+        cellBgView.layer.shadowOpacity = 0.5 /* 透明度 */
+        cellBgView.layer.shadowRadius = 10.0 /* 影の距離 */
         //UILabelを生成
     }
 }

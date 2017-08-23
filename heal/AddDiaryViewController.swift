@@ -39,6 +39,8 @@ class AddDiaryViewController: UIViewController, UIScrollViewDelegate {
         scrollView.indicatorStyle = .white
         scrollView.scrollIndicatorInsets = UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 10)
         scrollView.contentSize = CGSize(width: self.view.frame.width, height: 1000)
+        scrollView.showsVerticalScrollIndicator = false
+        addShadowView()
         addView()
         addDateTextField()
         addLabels()
@@ -48,6 +50,7 @@ class AddDiaryViewController: UIViewController, UIScrollViewDelegate {
         addSwitch()
         addOkButton()
         addExplainLabels()
+        navigationItem.title = "新規作成"
         // Do any additional setup after loading the view.
     }
     
@@ -84,6 +87,16 @@ class AddDiaryViewController: UIViewController, UIScrollViewDelegate {
         datePicker.date = Date()
         changeLabelDate(date: Date())
         setButtonTitles()
+    }
+    
+    func addShadowView() {
+        let shadowView: UIView = UIView()
+        shadowView.frame = CGRect(x:2,y:2,width:self.view.frame.width - 32,height:990)
+        shadowView.center.x = self.view.center.x + 2
+        shadowView.cornerRadius = 20
+        shadowView.backgroundColor = AppColors.lightGray
+        shadowView.layer.opacity = 0.4
+        scrollView.addSubview(shadowView)
     }
     
     func addView() {

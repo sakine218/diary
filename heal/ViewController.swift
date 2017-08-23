@@ -8,9 +8,10 @@
 
 import UIKit
 
-class ViewController: UIViewController ,UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlowLayout{
+class ViewController: UIViewController ,UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlowLayout {
     
-    private var myCollectView:UICollectionView!
+    @IBOutlet var myCollectView: UICollectionView!
+    
     //セルの余白
     let cellMargin:CGFloat = 0.0
     //１週間に何日あるか(行数)
@@ -20,42 +21,29 @@ class ViewController: UIViewController ,UICollectionViewDelegate,UICollectionVie
     private var monthLabel:UILabel!
     
     override func viewWillAppear(_ animated: Bool) {
-        let barHeight = UIApplication.shared.statusBarFrame.size.height
-        let width = self.view.frame.width
-        let height = self.view.frame.height
-        let layout = UICollectionViewFlowLayout()
-        layout.sectionInset = UIEdgeInsetsMake(0,0,0,0)
-        //コレクションビューを設置していくよ
-        myCollectView = UICollectionView(frame: self.view.frame, collectionViewLayout: layout)
-        myCollectView.frame = CGRect(x:0,y:barHeight + 50,width:width,height:height - barHeight - 100)
+        
         myCollectView.register(UINib(nibName: "CalendarCell", bundle: nil), forCellWithReuseIdentifier: "collectCell")
         myCollectView.delegate = self
         myCollectView.dataSource = self
         myCollectView.backgroundColor = .white
-        
-        self.view.addSubview(myCollectView)
         
         startDate = Date()
         
         let month:Int = Int(dateManager.monthTag(row: 6))!
         let digit = numberOfDigit(month: month)
         
-        monthLabel = UILabel()
-        monthLabel.frame = CGRect(x:0,y:0,width:width,height:60)
-        monthLabel.center = CGPoint(x:width / 2,y:50)
-        monthLabel.textAlignment = .center
-        monthLabel.backgroundColor = UIColor.red
-        
         if(digit == 5){
-            monthLabel.text = String(month / 10) + "年" + String(month % 10) + "月"
+            navigationItem.title = String(month / 10) + "年" + String(month % 10) + "月"
         }else if(digit == 6){
-            monthLabel.text = String(month / 100) + "年" + String(month % 100) + "月"
+            navigationItem.title = String(month / 100) + "年" + String(month % 100) + "月"
         }
-        self.view.addSubview(monthLabel)
         
-        let allContents = Content.findAll()
-        print(allContents)
+        let longPressRecognizer = UILongPressGestureRecognizer(target: self, action: #selector(onLongPressAction(sender:)))
+        longPressRecognizer.allowableMovement = 10
+        longPressRecognizer.minimumPressDuration = 1.0
+        myCollectView.addGestureRecognizer(longPressRecognizer)
         
+        myCollectView.reloadData()
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -92,6 +80,22 @@ class ViewController: UIViewController ,UICollectionViewDelegate,UICollectionVie
         print(dateManager.dateForCellAtIndexPathWeeks(row: indexPath.item + 1))
     }
     
+    //長押しした時
+    func onLongPressAction(sender: UILongPressGestureRecognizer) {
+        let point: CGPoint = sender.location(in: myCollectView)
+        let indexPath = myCollectView.indexPathForItem(at: point)
+        if indexPath != nil {
+            switch sender.state {
+            case .began: self.segue()
+            default: break
+            }
+        }
+    }
+    
+    func segue() {
+        self.performSegue(withIdentifier: "toVC", sender: nil)
+    }
+    
     //セルの総数
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return dateManager.numberOfItems()
@@ -103,37 +107,47 @@ class ViewController: UIViewController ,UICollectionViewDelegate,UICollectionVie
         
         //土曜日は赤　日曜日は青　にテキストカラーを変更する
         if(indexPath.item % 7 == 0){
-            cell.textLabel.textColor = UIColor.red
+            cell.textLabel.textColor = AppColors.red
         }else if(indexPath.item % 7 == 6){
-            cell.textLabel.textColor = UIColor.blue
+            cell.textLabel.textColor = AppColors.blue
         }else{
-            cell.textLabel.textColor = UIColor.gray
+            cell.textLabel.textColor = AppColors.gray
         }
         cell.tag = Int(dateManager.monthTag(row: indexPath.item))!
         //セルの日付を取得し
         cell.textLabel.numberOfLines = 3
         let day = Int(dateManager.conversionDateFormat(row: indexPath.item))!
+        let month = Int(dateManager.monthTag(row: indexPath.item))!
         cell.textLabel.text = "  " + "\(day)" + " \n \n"
         
         //セルの日付を取得
+        /*
         if(day == 1){
-            cell.textLabel.border(positions:[.Top,.Left],borderWidth:1,borderColor:UIColor.black)
+            cell.textLabel.border(positions:[.Top,.Left],borderWidth:1,borderColor:AppColors.lightGray)
         }else if(day <= 7){
-            cell.textLabel.border(positions:[.Top],borderWidth:1,borderColor:UIColor.black)
+            cell.textLabel.border(positions:[.Top],borderWidth:1,borderColor:AppColors.lightGray)
         }else{
             cell.textLabel.border(positions:[.Top],borderWidth:0,borderColor:UIColor.white)
         }
+        */
+        if (day == 1) {
+            cell.textLabel.text = "  " + "\(month % 10)" + "/" + "\(day)" + " \n \n"
+        }
         
-        let dayText: String = Utility.dateToString(date: dateManager.dateForCellAtIndexPathWeeks(row: indexPath.item + 1))
-        print(dayText)
+        if(day <= 7) {
+            
+        }
+        
+        let dayText: String = Utility.dateToString(date: dateManager.dateForCellAtIndexPathWeeks(row: indexPath.item))
+        //print(dayText)
         
         if let content = Content.find(withId: dayText).first {
             let redValue: CGFloat = CGFloat(content.redValue)
             let greenValue: CGFloat = CGFloat(content.greenValue)
             let blueValue: CGFloat = CGFloat(content.blueValue)
-            cell.backgroundColor = UIColor(red: redValue / 255, green: greenValue / 255, blue: blueValue / 255, alpha:1.0)
+            cell.cellBgView.backgroundColor = UIColor(red: redValue / 255, green: greenValue / 255, blue: blueValue / 255, alpha:1.0)
         } else {
-            cell.backgroundColor = UIColor.white
+            cell.cellBgView.backgroundColor = UIColor.white
         }
         
         return cell
@@ -161,9 +175,9 @@ class ViewController: UIViewController ,UICollectionViewDelegate,UICollectionVie
             //桁数によって分岐
             let digit = numberOfDigit(month: month)
             if(digit == 5){
-                monthLabel.text = String(month / 10) + "年" + String(month % 10) + "月"
+                navigationItem.title = String(month / 10) + "年" + String(month % 10) + "月"
             }else if(digit == 6){
-                monthLabel.text = String(month / 100) + "年" + String(month % 100) + "月"
+                navigationItem.title = String(month / 100) + "年" + String(month % 100) + "月"
             }
         }
     }

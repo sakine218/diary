@@ -1,28 +1,28 @@
 //
-//  SettingViewController.swift
+//  NavigationViewController.swift
 //  heal
 //
-//  Created by 西林咲音 on 2017/07/12.
+//  Created by 西林咲音 on 2017/08/21.
 //  Copyright © 2017年 西林咲音. All rights reserved.
 //
 
 import UIKit
 
-class SettingViewController: UIViewController {
-    
-    @IBOutlet weak var scheduleButton: UIButton!
-    @IBOutlet weak var howButton: UIButton!
+class NavigationViewController: UINavigationController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        navigationItem.title = "設定"
+        let navBgImage = UIImage(named: "Image")
+        self.navigationBar.setBackgroundImage(navBgImage, for: .default)
         // Do any additional setup after loading the view.
     }
-
-    @IBAction func howButton(_ sender: Any) {
+    
+    func sizeThatFits(size: CGSize) -> CGSize {
+        let oldSize:CGSize = sizeThatFits(size: size)
+        let newSize:CGSize = CGSize(width: oldSize.width, height: 84)
+        return newSize
     }
-    
-    
+
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.

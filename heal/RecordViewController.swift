@@ -22,6 +22,7 @@ class RecordViewController: UIViewController, UICollectionViewDelegate, UICollec
         collectionView.delegate = self
         collectionView.dataSource = self
         collectionView.register(UINib(nibName: "RecordCell", bundle: nil), forCellWithReuseIdentifier: "RecordCell")
+        navigationItem.title = "記録"
         // Do any additional setup after loading the view.
     }
     
@@ -36,17 +37,15 @@ class RecordViewController: UIViewController, UICollectionViewDelegate, UICollec
     }
     
     //データを返すメソッド（DataSourceを設定した場合に必要な項目）
-    //動作確認の為セルの背景を変える。曜日については表示する
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         //コレクションビューから識別子「CalendarCell」のセルを取得する
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "RecordCell", for: indexPath) as! RecordCell
         if(indexPath.section == 0) {
-            cell.backgroundColor = UIColor.red
             cell.textLabel.text = titleArray[indexPath.row]
-        } else if (indexPath.section % 2 != 0) {
-            cell.backgroundColor = UIColor.gray
+        } else if(indexPath.row == 0) {
+            cell.textLabel.text = "教科"
         } else {
-            cell.backgroundColor = UIColor.lightGray
+            cell.textLabel.text = "0"
         }
         return cell
     }

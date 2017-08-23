@@ -27,6 +27,12 @@ class Content: Object {
         return contents.map { $0 }
     }
     
+    static func findAllWithSort() -> [Content] {
+        let realm = RealmFactory.sharedInstance.realm()
+        let contents = realm.objects(Content.self).sorted(byKeyPath: "date", ascending: false)
+        return contents.map { $0 }
+    }
+    
     static func find(withId date: String) -> [Content] {
         let realm = RealmFactory.sharedInstance.realm()
         let contents = realm.objects(Content.self).filter("date == %@",date)

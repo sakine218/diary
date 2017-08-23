@@ -12,14 +12,34 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="collectCell" id="gTV-IL-0wX" customClass="CalendarCell" customModule="heal" customModuleProvider="target">
-            <rect key="frame" x="0.0" y="0.0" width="119" height="119"/>
+            <rect key="frame" x="0.0" y="0.0" width="54" height="64"/>
             <autoresizingMask key="autoresizingMask"/>
             <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                <rect key="frame" x="0.0" y="0.0" width="119" height="119"/>
+                <rect key="frame" x="0.0" y="0.0" width="54" height="64"/>
                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 <subviews>
+                    <view clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="7s8-ph-8qY">
+                        <rect key="frame" x="3" y="3" width="50" height="60"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <color key="backgroundColor" red="0.57647058823529407" green="0.57647058823529407" blue="0.57647058823529407" alpha="0.59999999999999998" colorSpace="calibratedRGB"/>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                <real key="value" value="10"/>
+                            </userDefinedRuntimeAttribute>
+                        </userDefinedRuntimeAttributes>
+                    </view>
+                    <view clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="wnq-NM-IA7">
+                        <rect key="frame" x="2" y="2" width="50" height="60"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                <real key="value" value="10"/>
+                            </userDefinedRuntimeAttribute>
+                        </userDefinedRuntimeAttributes>
+                    </view>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" lineBreakMode="tailTruncation" numberOfLines="6" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="119" translatesAutoresizingMaskIntoConstraints="NO" id="aAJ-Ta-ctn">
-                        <rect key="frame" x="0.0" y="0.0" width="119" height="119"/>
+                        <rect key="frame" x="0.0" y="0.0" width="53.5" height="64"/>
                         <fontDescription key="fontDescription" name=".AppleSystemUIFont" family=".AppleSystemUIFont" pointSize="15"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
@@ -33,11 +53,12 @@
                 <constraint firstAttribute="bottom" secondItem="aAJ-Ta-ctn" secondAttribute="bottom" id="NzW-D5-q4K"/>
                 <constraint firstAttribute="trailing" secondItem="aAJ-Ta-ctn" secondAttribute="trailing" id="af9-1T-aZe"/>
             </constraints>
-            <size key="customSize" width="119" height="119"/>
+            <size key="customSize" width="147" height="171"/>
             <connections>
+                <outlet property="cellBgView" destination="wnq-NM-IA7" id="YNu-Ua-Kvt"/>
                 <outlet property="textLabel" destination="aAJ-Ta-ctn" id="JHA-cD-Xii"/>
             </connections>
-            <point key="canvasLocation" x="68.5" y="88.5"/>
+            <point key="canvasLocation" x="82" y="114"/>
         </collectionViewCell>
     </objects>
 </document>

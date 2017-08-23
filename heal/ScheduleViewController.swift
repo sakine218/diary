@@ -11,7 +11,6 @@ import UIKit
 class ScheduleViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     
     @IBOutlet weak var changeButton: UIButton!
-    @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet var collectionView: UICollectionView!
     
     var number: Int = 0
@@ -20,12 +19,20 @@ class ScheduleViewController: UIViewController, UICollectionViewDelegate, UIColl
     let cellMargin : CGFloat = 0.0
     let userDefaults = UserDefaults.standard
     var scheduleArray: [[String: Any]] = []
+    let barButtonItemBg = UIImage(named: "barButtonItemBg.png")
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        navigationItem.title =  "時間割"
+        navigationItem.leftBarButtonItem = UIBarButtonItem(title: "戻る", style: .plain, target: self, action: #selector(selectBackButton))
+        navigationItem.leftBarButtonItem?.tintColor = AppColors.gray
+        navigationItem.leftBarButtonItem?.setBackgroundImage(barButtonItemBg, for: .normal, barMetrics: .default)
+        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "…", style: .plain, target: self, action: #selector(selectBarItem))
+        navigationItem.rightBarButtonItem?.tintColor = AppColors.gray
+        navigationItem.rightBarButtonItem?.setBackgroundImage(barButtonItemBg, for: .normal, barMetrics: .default)
         collectionView.delegate = self
         collectionView.dataSource = self
-        collectionView.register(UINib(nibName: "ScheduleCell", bundle: nil), forCellWithReuseIdentifier: "Cell")
+        collectionView.register(UINib(nibName: "ScheduleViewCell", bundle: nil), forCellWithReuseIdentifier: "Cell")
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -39,15 +46,20 @@ class ScheduleViewController: UIViewController, UICollectionViewDelegate, UIColl
         // Dispose of any resources that can be recreated.
     }
     
-    @IBAction func changeButton(_ sender: Any) {
+    func selectBackButton() {
+        self.navigationController?.popViewController(animated: true)
+    }
+    
+    func selectBarItem() {
         number = number + 1
         if number % 2 == 0 {
-            changeButton.setTitle("変更", for: UIControlState.normal)
-            titleLabel.text = "時間割"
+            navigationItem.rightBarButtonItem?.title = "…"
+            navigationItem.title = "時間割"
         } else {
-            changeButton.setTitle("完了", for: UIControlState.normal)
-            titleLabel.text = "時間割(変更中)"
+            navigationItem.rightBarButtonItem?.title = "完了"
+            navigationItem.title = "時間割(変更中)"
         }
+
     }
     
     @IBAction func backButton(_ sender: Any) {
@@ -68,20 +80,10 @@ class ScheduleViewController: UIViewController, UICollectionViewDelegate, UIColl
     //動作確認の為セルの背景を変える。曜日については表示する
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         //コレクションビューから識別子「CalendarCell」のセルを取得する
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "Cell", for: indexPath) as! ScheduleCell
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "Cell", for: indexPath) as! ScheduleViewCell
         if(indexPath.section == 0) { //曜日表示
-            if indexPath.row % 2 == 0 {
-                cell.backgroundColor = UIColor.gray
-            } else {
-                cell.backgroundColor = UIColor.lightGray
-            }
             cell.textLabel.text = weekArray[indexPath.row]
         }else if(indexPath.row % 7 == 0 && indexPath.section != 0) {
-            if indexPath.section % 2 == 0 {
-                cell.backgroundColor = UIColor.gray
-            } else {
-                cell.backgroundColor = UIColor.lightGray
-            }
             cell.textLabel.text = String(indexPath.section)
         } else {
             for schedule in scheduleArray {
@@ -90,12 +92,13 @@ class ScheduleViewController: UIViewController, UICollectionViewDelegate, UIColl
                 }
             }
         }
+        print(cell.frame)
         return cell
     }
     
     //セルをクリックしたら呼ばれる
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        let cell = collectionView.cellForItem(at: indexPath)  as! ScheduleCell
+        let cell = collectionView.cellForItem(at: indexPath)  as! ScheduleViewCell
         print("Num：\(indexPath.row) Section:\(indexPath.section)")
         if number % 2 != 0 {
             let alert = UIAlertController(title: "時間割追加", message: "文字を入力してください", preferredStyle: .alert)

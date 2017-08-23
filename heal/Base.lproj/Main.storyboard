@@ -9,7 +9,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--New-->
+        <!--Add Diary View Controller-->
         <scene sceneID="YSb-Mp-F3C">
             <objects>
                 <viewController id="DhW-6d-m5T" customClass="AddDiaryViewController" customModule="heal" customModuleProvider="target" sceneMemberID="viewController">
@@ -22,7 +22,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="yYb-ey-Oc1">
-                                <rect key="frame" x="0.0" y="25" width="375" height="593"/>
+                                <rect key="frame" x="0.0" y="20" width="375" height="647"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <gestureRecognizers/>
                                 <connections>
@@ -32,7 +32,7 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="New" id="SJa-XW-6sZ"/>
+                    <navigationItem key="navigationItem" id="HFA-ml-E2c"/>
                     <connections>
                         <outlet property="scrollView" destination="yYb-ey-Oc1" id="TDE-mg-gqN"/>
                     </connections>
@@ -44,9 +44,9 @@
                     </connections>
                 </tapGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="2461.5999999999999" y="-920.68965517241384"/>
+            <point key="canvasLocation" x="3173.5999999999999" y="-922.48875562218893"/>
         </scene>
-        <!--Record-->
+        <!--Record View Controller-->
         <scene sceneID="f5f-hs-kYu">
             <objects>
                 <viewController id="PcO-Wx-dW5" customClass="RecordViewController" customModule="heal" customModuleProvider="target" sceneMemberID="viewController">
@@ -64,7 +64,7 @@
                                 <state key="normal" title="まとめる"/>
                             </button>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="PW7-XD-zBc">
-                                <rect key="frame" x="17" y="66" width="340" height="552"/>
+                                <rect key="frame" x="17" y="97" width="340" height="521"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="rJ7-Uz-lni">
@@ -87,7 +87,7 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Record" id="Qp1-lz-zjJ"/>
+                    <navigationItem key="navigationItem" id="rpJ-QM-awS"/>
                     <connections>
                         <outlet property="collectionView" destination="PW7-XD-zBc" id="JdB-Qd-vDC"/>
                         <outlet property="sumButton" destination="tXa-te-9lP" id="05f-gx-Bxo"/>
@@ -95,9 +95,9 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2CQ-PX-ioK" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1077.5999999999999" y="-264.01799100449779"/>
+            <point key="canvasLocation" x="1773.5999999999999" y="-264.01799100449779"/>
         </scene>
-        <!--Item-->
+        <!--Setting View Controller-->
         <scene sceneID="yP4-Ow-ww5">
             <objects>
                 <viewController id="J9b-XF-791" customClass="SettingViewController" customModule="heal" customModuleProvider="target" sceneMemberID="viewController">
@@ -109,20 +109,56 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="08Q-hR-ONR">
-                                <rect key="frame" x="61" y="136" width="252" height="164"/>
+                            <view clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="qjo-eB-JtZ">
+                                <rect key="frame" x="65" y="138" width="250" height="60"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="0.57647058819999997" green="0.57647058819999997" blue="0.57647058819999997" alpha="0.5" colorSpace="calibratedRGB"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                        <real key="value" value="10"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </view>
+                            <view clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="fe3-1v-f22">
+                                <rect key="frame" x="65" y="206" width="250" height="60"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="0.57647058819999997" green="0.57647058819999997" blue="0.57647058819999997" alpha="0.5" colorSpace="calibratedRGB"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                        <real key="value" value="10"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </view>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="08Q-hR-ONR">
+                                <rect key="frame" x="63" y="136" width="250" height="60"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="25"/>
-                                <state key="normal" title="時間割"/>
+                                <state key="normal" title="時間割">
+                                    <color key="titleColor" red="0.16078431369999999" green="0.16078431369999999" blue="0.16078431369999999" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                        <real key="value" value="10"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
                                 <connections>
                                     <segue destination="vYV-q5-MBg" kind="show" id="Nbk-XD-1W2"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sLU-Hf-W1Y">
-                                <rect key="frame" x="61" y="367" width="252" height="164"/>
+                                <rect key="frame" x="63" y="204" width="250" height="60"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="25"/>
-                                <state key="normal" title="使い方"/>
+                                <state key="normal" title="使い方">
+                                    <color key="titleColor" red="0.16078431369999999" green="0.16078431369999999" blue="0.16078431369999999" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                        <real key="value" value="10"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
                                 <connections>
                                     <action selector="howButton:" destination="J9b-XF-791" eventType="touchUpInside" id="wJP-RL-Pee"/>
                                 </connections>
@@ -130,7 +166,7 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Item" id="Wno-go-rwn"/>
+                    <navigationItem key="navigationItem" id="74e-xj-kUh"/>
                     <connections>
                         <outlet property="howButton" destination="sLU-Hf-W1Y" id="0H4-ly-aGP"/>
                         <outlet property="scheduleButton" destination="08Q-hR-ONR" id="c2Y-yd-OuR"/>
@@ -138,7 +174,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3rf-t7-Ex4" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1773.5999999999999" y="-264.01799100449779"/>
+            <point key="canvasLocation" x="2461.5999999999999" y="-264.01799100449779"/>
         </scene>
         <!--Schedule View Controller-->
         <scene sceneID="MxT-Ca-9od">
@@ -152,32 +188,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ViF-WL-bbw">
-                                <rect key="frame" x="287" y="28" width="72" height="47"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="変更"/>
-                                <connections>
-                                    <action selector="changeButton:" destination="vYV-q5-MBg" eventType="touchUpInside" id="tGz-Oa-EYJ"/>
-                                </connections>
-                            </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="時間割" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="77u-rD-KIc">
-                                <rect key="frame" x="110" y="28" width="154" height="47"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jsL-l5-Vlc">
-                                <rect key="frame" x="16" y="28" width="72" height="47"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="30"/>
-                                <state key="normal" title="×"/>
-                                <connections>
-                                    <action selector="backButton:" destination="vYV-q5-MBg" eventType="touchUpInside" id="bB6-1n-CIy"/>
-                                </connections>
-                            </button>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="ExF-ck-7sV">
-                                <rect key="frame" x="16" y="95" width="343" height="515"/>
+                                <rect key="frame" x="16" y="34" width="343" height="598"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="RjP-iO-OHu">
@@ -187,7 +199,7 @@
                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 </collectionViewFlowLayout>
                                 <cells>
-                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="Cell" id="aUM-3e-u7F" customClass="ScheduleCell" customModule="heal" customModuleProvider="target">
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="Cell" id="aUM-3e-u7F" customClass="ScheduleViewCell" customModule="heal" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
@@ -201,16 +213,14 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <connections>
-                        <outlet property="changeButton" destination="ViF-WL-bbw" id="5Gb-3O-T5y"/>
                         <outlet property="collectionView" destination="ExF-ck-7sV" id="Ir6-cy-oKw"/>
-                        <outlet property="titleLabel" destination="77u-rD-KIc" id="Vpz-wj-Rd6"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="q0G-iT-Yyo" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2461.5999999999999" y="-264.01799100449779"/>
+            <point key="canvasLocation" x="3173.5999999999999" y="-264.01799100449779"/>
         </scene>
-        <!--Calendar-->
+        <!--View Controller-->
         <scene sceneID="rGD-w8-sZ3">
             <objects>
                 <viewController id="dBS-23-7j9" customClass="ViewController" customModule="heal" customModuleProvider="target" sceneMemberID="viewController">
@@ -221,15 +231,33 @@
                     <view key="view" contentMode="scaleToFill" id="aiY-vz-Bkn">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="SVo-cY-Oxu">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="hxL-8b-bf9">
+                                    <size key="itemSize" width="50" height="50"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                                <cells/>
+                            </collectionView>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Calendar" id="adF-G8-Bc7"/>
+                    <navigationItem key="navigationItem" id="1xQ-Rl-Qyl"/>
+                    <connections>
+                        <outlet property="myCollectView" destination="SVo-cY-Oxu" id="dFt-Fr-LfY"/>
+                        <segue destination="mTV-uz-5OU" kind="show" identifier="toVC" animates="NO" id="OgJ-i8-wS1"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3Ob-Lc-7LD" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1079" y="-918"/>
+            <point key="canvasLocation" x="1773.5999999999999" y="-922.48875562218893"/>
         </scene>
-        <!--Diary-->
+        <!--Diary Table View Controller-->
         <scene sceneID="S8C-Y7-Kbm">
             <objects>
                 <viewController id="oPW-sc-wxi" customClass="DiaryTableViewController" customModule="heal" customModuleProvider="target" sceneMemberID="viewController">
@@ -242,7 +270,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="8e7-9D-tlx">
-                                <rect key="frame" x="0.0" y="28" width="375" height="590"/>
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
@@ -259,35 +287,133 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Diary" id="l04-Ie-TaT"/>
+                    <navigationItem key="navigationItem" id="7hj-At-NCF"/>
                     <connections>
                         <outlet property="tableView" destination="8e7-9D-tlx" id="c1S-6Y-Y0C"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="I4Z-zJ-9fF" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1773.5999999999999" y="-921.58920539730138"/>
+            <point key="canvasLocation" x="2461.5999999999999" y="-922.48875562218893"/>
         </scene>
-        <!--Tab Bar Controller-->
+        <!--Parent Tab Bar Controller-->
         <scene sceneID="Wl6-xl-IcY">
             <objects>
-                <tabBarController id="BPM-QO-J4Y" sceneMemberID="viewController">
+                <tabBarController id="BPM-QO-J4Y" customClass="ParentTabBarController" customModule="heal" customModuleProvider="target" sceneMemberID="viewController">
                     <tabBar key="tabBar" contentMode="scaleToFill" id="ROQ-pi-eId">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="49"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     </tabBar>
                     <connections>
-                        <segue destination="dBS-23-7j9" kind="relationship" relationship="viewControllers" id="dVS-56-RAr"/>
-                        <segue destination="oPW-sc-wxi" kind="relationship" relationship="viewControllers" id="bM4-I4-U1x"/>
-                        <segue destination="DhW-6d-m5T" kind="relationship" relationship="viewControllers" id="wps-1x-tKb"/>
-                        <segue destination="PcO-Wx-dW5" kind="relationship" relationship="viewControllers" id="dY5-Qp-hum"/>
-                        <segue destination="J9b-XF-791" kind="relationship" relationship="viewControllers" id="u8p-iz-jb2"/>
+                        <segue destination="9dT-Nj-Bne" kind="relationship" relationship="viewControllers" id="dVS-56-RAr"/>
+                        <segue destination="mTV-uz-5OU" kind="relationship" relationship="viewControllers" id="bM4-I4-U1x"/>
+                        <segue destination="yMc-el-Q5K" kind="relationship" relationship="viewControllers" id="wps-1x-tKb"/>
+                        <segue destination="c4U-iG-vL4" kind="relationship" relationship="viewControllers" id="dY5-Qp-hum"/>
+                        <segue destination="gXk-un-OvE" kind="relationship" relationship="viewControllers" id="u8p-iz-jb2"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2io-1s-XwM" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="124" y="-591"/>
+            <point key="canvasLocation" x="193" y="-607"/>
+        </scene>
+        <!--Calendar-->
+        <scene sceneID="Cij-ti-BiX">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="9dT-Nj-Bne" customClass="NavigationViewController" customModule="heal" customModuleProvider="target" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Calendar" id="adF-G8-Bc7"/>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="7Y6-nZ-TXq">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="dBS-23-7j9" kind="relationship" relationship="rootViewController" id="cc7-Ww-5dP"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="cYC-i6-E0j" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1078" y="-922"/>
+        </scene>
+        <!--Record-->
+        <scene sceneID="6ud-Ua-Zm0">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="c4U-iG-vL4" customClass="NavigationViewController" customModule="heal" customModuleProvider="target" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Record" id="Qp1-lz-zjJ"/>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="evT-WX-na0">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="PcO-Wx-dW5" kind="relationship" relationship="rootViewController" id="cCO-dp-0Ba"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="DiM-dU-vVn" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1077.5999999999999" y="-264.01799100449779"/>
+        </scene>
+        <!--Item-->
+        <scene sceneID="IFq-he-UAd">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="gXk-un-OvE" customClass="NavigationViewController" customModule="heal" customModuleProvider="target" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Item" id="Wno-go-rwn"/>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="gf2-SJ-sQU">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="J9b-XF-791" kind="relationship" relationship="rootViewController" id="kgu-Tv-6OQ"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="GME-ex-WJ8" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1078" y="416"/>
+        </scene>
+        <!--New-->
+        <scene sceneID="7G5-P2-BH4">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="yMc-el-Q5K" customClass="NavigationViewController" customModule="heal" customModuleProvider="target" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="New" id="SJa-XW-6sZ"/>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="vUc-Mf-p7j">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="DhW-6d-m5T" kind="relationship" relationship="rootViewController" id="vvg-1E-1hE"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="a41-h3-BwD" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1078" y="-1602"/>
+        </scene>
+        <!--Diary-->
+        <scene sceneID="tmw-qf-gVz">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="mTV-uz-5OU" customClass="NavigationViewController" customModule="heal" customModuleProvider="target" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Diary" id="l04-Ie-TaT"/>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="FAa-eG-4JO">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="oPW-sc-wxi" kind="relationship" relationship="rootViewController" id="jTX-TC-Ixw"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="BMJ-kc-UCK" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1774" y="-1603"/>
         </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="OgJ-i8-wS1"/>
+    </inferredMetricsTieBreakers>
 </document>

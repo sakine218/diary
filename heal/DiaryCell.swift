@@ -11,13 +11,13 @@ import UIKit
 class DiaryCell: UITableViewCell {
     
     @IBOutlet var BGView: UIView!
+    @IBOutlet var dateLabel: UILabel!
 
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
         self.selectionStyle = .none
         BGView.cornerRadius = 15
-        BGView.backgroundColor = UIColor.red
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
