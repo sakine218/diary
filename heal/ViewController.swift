@@ -38,11 +38,11 @@ class ViewController: UIViewController ,UICollectionViewDelegate,UICollectionVie
             navigationItem.title = String(month / 100) + "年" + String(month % 100) + "月"
         }
         
-        let longPressRecognizer = UILongPressGestureRecognizer(target: self, action: #selector(onLongPressAction(sender:)))
+        /*let longPressRecognizer = UILongPressGestureRecognizer(target: self, action: #selector(onLongPressAction(sender:)))
         longPressRecognizer.allowableMovement = 10
         longPressRecognizer.minimumPressDuration = 1.0
         myCollectView.addGestureRecognizer(longPressRecognizer)
-        
+        */
         myCollectView.reloadData()
     }
     
@@ -81,6 +81,7 @@ class ViewController: UIViewController ,UICollectionViewDelegate,UICollectionVie
     }
     
     //長押しした時
+    /*
     func onLongPressAction(sender: UILongPressGestureRecognizer) {
         let point: CGPoint = sender.location(in: myCollectView)
         let indexPath = myCollectView.indexPathForItem(at: point)
@@ -91,6 +92,7 @@ class ViewController: UIViewController ,UICollectionViewDelegate,UICollectionVie
             }
         }
     }
+     */
     
     func segue() {
         self.performSegue(withIdentifier: "toVC", sender: nil)
@@ -120,16 +122,6 @@ class ViewController: UIViewController ,UICollectionViewDelegate,UICollectionVie
         let month = Int(dateManager.monthTag(row: indexPath.item))!
         cell.textLabel.text = "  " + "\(day)" + " \n \n"
         
-        //セルの日付を取得
-        /*
-        if(day == 1){
-            cell.textLabel.border(positions:[.Top,.Left],borderWidth:1,borderColor:AppColors.lightGray)
-        }else if(day <= 7){
-            cell.textLabel.border(positions:[.Top],borderWidth:1,borderColor:AppColors.lightGray)
-        }else{
-            cell.textLabel.border(positions:[.Top],borderWidth:0,borderColor:UIColor.white)
-        }
-        */
         if (day == 1) {
             cell.textLabel.text = "  " + "\(month % 10)" + "/" + "\(day)" + " \n \n"
         }

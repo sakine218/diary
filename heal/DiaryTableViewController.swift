@@ -11,21 +11,27 @@ import UIKit
 class DiaryTableViewController: UIViewController,UITableViewDelegate,UITableViewDataSource {
 
     @IBOutlet var tableView: UITableView!
-    let content = Content.findAllWithSort()
+    var content = Content.findAllWithSort()
+    var selectedContent: Content?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationItem.title =  "日記"
         tableView.delegate = self
         tableView.dataSource = self
-        self.tableView.register(UINib(nibName: "DiaryCell", bundle: nil), forCellReuseIdentifier: "Cell")
-        self.tableView.separatorStyle = .none
-        print(content, content.count)
         //Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        content = Content.findAllWithSort()
+        self.tableView.register(UINib(nibName: "DiaryCell", bundle: nil), forCellReuseIdentifier: "Cell")
+        self.tableView.separatorStyle = .none
+        tableView.reloadData()
+        print(content, content.count)
     }
 
     override func didReceiveMemoryWarning() {
@@ -53,15 +59,20 @@ class DiaryTableViewController: UIViewController,UITableViewDelegate,UITableView
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 80
+        return 60
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        self.selectedContent = content[indexPath.row]
+        self.performSegue(withIdentifier: "toVC", sender: nil)
     }
 
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+        let VC = segue.destination as! DetailViewController
+        VC.content = selectedContent
     }
 
 }

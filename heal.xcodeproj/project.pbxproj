@@ -30,6 +30,8 @@
 		81A2D5AF1F4D19460033E502 /* ScheduleViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81A2D5AD1F4D19460033E502 /* ScheduleViewCell.swift */; };
 		81A2D5B01F4D19460033E502 /* ScheduleViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 81A2D5AE1F4D19460033E502 /* ScheduleViewCell.xib */; };
 		81A2D5BA1F4D60470033E502 /* barButtonItemBg.png in Resources */ = {isa = PBXBuildFile; fileRef = 81A2D5B91F4D60470033E502 /* barButtonItemBg.png */; };
+		81A2D5BC1F4D81140033E502 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81A2D5BB1F4D81140033E502 /* DetailViewController.swift */; };
+		81A2D5BE1F4E61930033E502 /* Attendance.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81A2D5BD1F4E61920033E502 /* Attendance.swift */; };
 		81CE9A621F11159C0039B7EC /* TimeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81CE9A601F11159C0039B7EC /* TimeTableViewCell.swift */; };
 		81CE9A631F11159C0039B7EC /* TimeTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 81CE9A611F11159C0039B7EC /* TimeTableViewCell.xib */; };
 		81D939BA1EF1498F00A30138 /* DateManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81D939B91EF1498F00A30138 /* DateManager.swift */; };
@@ -88,6 +90,8 @@
 		81A2D5AD1F4D19460033E502 /* ScheduleViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScheduleViewCell.swift; sourceTree = "<group>"; };
 		81A2D5AE1F4D19460033E502 /* ScheduleViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ScheduleViewCell.xib; sourceTree = "<group>"; };
 		81A2D5B91F4D60470033E502 /* barButtonItemBg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = barButtonItemBg.png; sourceTree = "<group>"; };
+		81A2D5BB1F4D81140033E502 /* DetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
+		81A2D5BD1F4E61920033E502 /* Attendance.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Attendance.swift; sourceTree = "<group>"; };
 		81CE9A601F11159C0039B7EC /* TimeTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimeTableViewCell.swift; sourceTree = "<group>"; };
 		81CE9A611F11159C0039B7EC /* TimeTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TimeTableViewCell.xib; sourceTree = "<group>"; };
 		81D939B91EF1498F00A30138 /* DateManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DateManager.swift; sourceTree = "<group>"; };
@@ -170,7 +174,9 @@
 				81D939BB1EF152D300A30138 /* CalendarCell.swift */,
 				81FC032A1F47AF8900BADCBB /* RealmFactory.swift */,
 				81FC032C1F47B09100BADCBB /* Content.swift */,
+				81A2D5BD1F4E61920033E502 /* Attendance.swift */,
 				817D5A351EFA876000CBD0CD /* DiaryTableViewController.swift */,
+				81A2D5BB1F4D81140033E502 /* DetailViewController.swift */,
 				81A2D5A91F4A85C00033E502 /* NavigationViewController.swift */,
 				817D5A311EFA82DB00CBD0CD /* DiaryCell.swift */,
 				817D5A2B1EFA81FA00CBD0CD /* AddDiaryViewController.swift */,
@@ -519,12 +525,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				81A2D5BE1F4E61930033E502 /* Attendance.swift in Sources */,
 				810C18F91EECD8AA0023BB61 /* heal.xcdatamodeld in Sources */,
 				8175CDDA1F162B23003C5881 /* SettingViewController.swift in Sources */,
 				81D939BA1EF1498F00A30138 /* DateManager.swift in Sources */,
 				81FC03341F49952C00BADCBB /* ParentTabBarController.swift in Sources */,
 				81FC032D1F47B09100BADCBB /* Content.swift in Sources */,
 				81A2D5AF1F4D19460033E502 /* ScheduleViewCell.swift in Sources */,
+				81A2D5BC1F4D81140033E502 /* DetailViewController.swift in Sources */,
 				8175CDDC1F162D20003C5881 /* ScheduleViewController.swift in Sources */,
 				817D5A2C1EFA81FA00CBD0CD /* AddDiaryViewController.swift in Sources */,
 				81A2D5AA1F4A85C00033E502 /* NavigationViewController.swift in Sources */,

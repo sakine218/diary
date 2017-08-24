@@ -6,7 +6,6 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12088"/>
-        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -20,7 +19,7 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dvG-Vb-bti">
-                        <rect key="frame" x="20" y="9" width="281" height="85"/>
+                        <rect key="frame" x="20" y="4" width="281" height="95"/>
                         <color key="backgroundColor" red="0.57647058819999997" green="0.57647058819999997" blue="0.57647058819999997" alpha="0.6018415178571429" colorSpace="calibratedRGB"/>
                         <userDefinedRuntimeAttributes>
                             <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
@@ -29,10 +28,10 @@
                         </userDefinedRuntimeAttributes>
                     </view>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kUe-7A-yHe">
-                        <rect key="frame" x="19" y="8" width="281" height="85"/>
+                        <rect key="frame" x="19" y="3" width="281" height="95"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WdX-sZ-yS9">
-                                <rect key="frame" x="11" y="8" width="259" height="28"/>
+                                <rect key="frame" x="26" y="14" width="228" height="28"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
@@ -43,14 +42,14 @@
                     </view>
                 </subviews>
                 <constraints>
-                    <constraint firstAttribute="trailing" secondItem="dvG-Vb-bti" secondAttribute="trailing" constant="19" id="6fE-tL-dvJ"/>
-                    <constraint firstItem="kUe-7A-yHe" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" constant="11" id="ECB-oF-Yrs"/>
-                    <constraint firstItem="kUe-7A-yHe" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" id="FSS-gl-U5B"/>
-                    <constraint firstAttribute="trailingMargin" secondItem="kUe-7A-yHe" secondAttribute="trailing" constant="12" id="LeA-wQ-YWM"/>
-                    <constraint firstItem="dvG-Vb-bti" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="9" id="Uj4-F2-3Qi"/>
-                    <constraint firstItem="dvG-Vb-bti" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="20" id="XiX-65-SRI"/>
-                    <constraint firstItem="kUe-7A-yHe" firstAttribute="bottom" secondItem="H2p-sc-9uM" secondAttribute="bottomMargin" id="nDs-ds-jmd"/>
-                    <constraint firstAttribute="bottom" secondItem="dvG-Vb-bti" secondAttribute="bottom" constant="7" id="ze2-20-Ts0"/>
+                    <constraint firstItem="kUe-7A-yHe" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="3" id="7gJ-1w-0iZ"/>
+                    <constraint firstItem="dvG-Vb-bti" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="4" id="8jE-j9-40Y"/>
+                    <constraint firstAttribute="bottom" secondItem="kUe-7A-yHe" secondAttribute="bottom" constant="3" id="E2c-Ju-1Jy"/>
+                    <constraint firstAttribute="trailing" secondItem="kUe-7A-yHe" secondAttribute="trailing" constant="20" id="Fus-aq-dCo"/>
+                    <constraint firstAttribute="trailing" secondItem="dvG-Vb-bti" secondAttribute="trailing" constant="19" id="L6M-n1-UHc"/>
+                    <constraint firstAttribute="bottom" secondItem="dvG-Vb-bti" secondAttribute="bottom" constant="2" id="a3a-be-yLu"/>
+                    <constraint firstItem="dvG-Vb-bti" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="20" id="pki-Wa-To3"/>
+                    <constraint firstItem="kUe-7A-yHe" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="19" id="q4R-h0-wwq"/>
                 </constraints>
             </tableViewCellContentView>
             <connections>

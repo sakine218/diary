@@ -30,8 +30,9 @@ class AddDiaryViewController: UIViewController, UIScrollViewDelegate {
     var dayNum: Int = 0
     var dayArray: [[String: Any]] = []
     var cellTapNumArray: [Int] = [0, 0, 0, 0, 0, 0]
-    let cellTapColorArray: [UIColor] = [UIColor.white, UIColor.red, UIColor.blue, UIColor.yellow]
+    let cellTapColorArray: [UIColor] = [UIColor.white, AppColors.pink, AppColors.sky, AppColors.yellow]
     var buttonArray: [UIButton] = []
+    //var attendanceArray: [[String: Int]] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -50,6 +51,7 @@ class AddDiaryViewController: UIViewController, UIScrollViewDelegate {
         addSwitch()
         addOkButton()
         addExplainLabels()
+        addButtons()
         navigationItem.title = "新規作成"
         // Do any additional setup after loading the view.
     }
@@ -68,7 +70,6 @@ class AddDiaryViewController: UIViewController, UIScrollViewDelegate {
                 self.dayArray.append(schedule)
             }
         }
-        addButtons()
         setButtonTitles()
     }
     
@@ -95,7 +96,7 @@ class AddDiaryViewController: UIViewController, UIScrollViewDelegate {
         shadowView.center.x = self.view.center.x + 2
         shadowView.cornerRadius = 20
         shadowView.backgroundColor = AppColors.lightGray
-        shadowView.layer.opacity = 0.4
+        shadowView.layer.opacity = 0.6
         scrollView.addSubview(shadowView)
     }
     
@@ -250,7 +251,8 @@ class AddDiaryViewController: UIViewController, UIScrollViewDelegate {
     
     func scheduleButtonEvent(sender: UIButton) {
         cellTapNumArray[sender.tag]  += 1
-        sender.backgroundColor = cellTapColorArray[cellTapNumArray[sender.tag] % 4]
+        sender.borderWidth = 3
+        sender.borderColor = cellTapColorArray[cellTapNumArray[sender.tag] % 4]
     }
     
     func setButtonTitles() {
@@ -259,7 +261,8 @@ class AddDiaryViewController: UIViewController, UIScrollViewDelegate {
                 if day["timeSection"] as! Int == index + 1 {
                     button.setTitleColor(UIColor.black, for: .normal)
                     button.setTitle(day["subject"] as? String, for: .normal)
-                    button.backgroundColor = cellTapColorArray[0]
+                    button.borderWidth = 3
+                    button.borderColor = cellTapColorArray[0]
                     cellTapNumArray = [0, 0, 0, 0, 0, 0]
                 }
             }
@@ -308,7 +311,8 @@ class AddDiaryViewController: UIViewController, UIScrollViewDelegate {
     }
     
     func buttonEvent(sender: UIButton) {
-        let content = Content(date: Utility.dateToString(date: datePicker.date), note: textView.text, redValue: Float(redValue), greenValue: Float(greenValue), blueValue: Float(blueValue))
+        
+        let content = Content(date: Utility.dateToString(date: datePicker.date), note: textView.text, redValue: Float(redValue), greenValue: Float(greenValue), blueValue: Float(blueValue), attendanceArray: dayArray, tapArray: cellTapNumArray)
         content.save()
         
         //覚え書き
@@ -323,9 +327,9 @@ class AddDiaryViewController: UIViewController, UIScrollViewDelegate {
             preferredStyle: .alert)
         // アラートにボタンをつける
         alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { _ in
+            print(content)
             self.first()
             self.setButtonTitles()
-
         }))
         // アラート表示
         self.present(alert, animated: true, completion: nil)

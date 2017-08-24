@@ -13,9 +13,14 @@ class RecordViewController: UIViewController, UICollectionViewDelegate, UICollec
     @IBOutlet var sumButton: UIButton!
     @IBOutlet var collectionView: UICollectionView!
     
-    let titleArray: [String] = ["教科","欠課","遅刻","早退"]
+    var attendance: [Attendance] = []
+    let titleArray: [String] = ["教科","遅刻","早退","欠課"]
     let numOfDays = 4
     let cellMargin : CGFloat = 0.0
+    let userDefaults = UserDefaults()
+    var scheduleArray: [[String: Any]] = []
+    var subjectArray: [String] = []
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -23,12 +28,30 @@ class RecordViewController: UIViewController, UICollectionViewDelegate, UICollec
         collectionView.dataSource = self
         collectionView.register(UINib(nibName: "RecordCell", bundle: nil), forCellWithReuseIdentifier: "RecordCell")
         navigationItem.title = "記録"
+        //scheduleArray.map()
+        //subjectArray.append(scheduleArray["subject"] as! String)
+        print(subjectArray)
+        print(subjectArray.unique)
         // Do any additional setup after loading the view.
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        attendance = Attendance.findAll()
+        subjectArray.removeAll()
+        if ((userDefaults.object(forKey: "Schedule")) != nil) {
+            print("データ有り")
+            scheduleArray = userDefaults.array(forKey: "Schedule") as! [[String : Any]]
+        }
+        for schedule in scheduleArray {
+            subjectArray.append(schedule["subject"] as! String)
+        }
+        collectionView.reloadData()
+        print(attendance)
     }
     
     //コレクションビューのセクション数
     func numberOfSections(in collectionView: UICollectionView) -> Int {
-        return 10
+        return subjectArray.unique.count + 1
     }
     
     //データの個数（DataSourceを設定した場合に必要な項目）
@@ -42,8 +65,23 @@ class RecordViewController: UIViewController, UICollectionViewDelegate, UICollec
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "RecordCell", for: indexPath) as! RecordCell
         if(indexPath.section == 0) {
             cell.textLabel.text = titleArray[indexPath.row]
-        } else if(indexPath.row == 0) {
+        } else if(indexPath.row == 0 && indexPath.section == 0) {
             cell.textLabel.text = "教科"
+        } else if(indexPath.row == 0 && indexPath.section != 0) {
+            cell.textLabel.text = subjectArray.unique[indexPath.section - 1]
+        } else if(indexPath.section != 0) {
+            
+            let subject: [Attendance] = attendance.filter({ $0.subjectText == subjectArray.unique[indexPath.section - 1]})
+            if indexPath.row == 1 {
+                let chikoku: [Attendance] = subject.filter({ $0.tapNum % 4 == 1})
+                cell.textLabel.text = "\(chikoku.count)"
+            } else if indexPath.row == 2 {
+                let soutai: [Attendance] = subject.filter({ $0.tapNum % 4 == 2})
+                cell.textLabel.text = "\(soutai.count)"
+            } else if indexPath.row == 3 {
+                let kekka: [Attendance] = subject.filter({ $0.tapNum % 4 == 3})
+                cell.textLabel.text = "\(kekka.count)"
+            }
         } else {
             cell.textLabel.text = "0"
         }
@@ -91,4 +129,11 @@ class RecordViewController: UIViewController, UICollectionViewDelegate, UICollec
     }
     */
 
+}
+
+// reduceを用いて取り除いた場合
+extension Array where Element: Equatable {
+    var unique: [Element] {
+        return reduce([]) { $0.0.contains($0.1) ? $0.0 : $0.0 + [$0.1] }
+    }
 }

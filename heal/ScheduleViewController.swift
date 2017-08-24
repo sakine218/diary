@@ -19,6 +19,7 @@ class ScheduleViewController: UIViewController, UICollectionViewDelegate, UIColl
     let cellMargin : CGFloat = 0.0
     let userDefaults = UserDefaults.standard
     var scheduleArray: [[String: Any]] = []
+    var subjectArray: [String] = []
     let barButtonItemBg = UIImage(named: "barButtonItemBg.png")
     
     override func viewDidLoad() {
@@ -62,10 +63,6 @@ class ScheduleViewController: UIViewController, UICollectionViewDelegate, UIColl
 
     }
     
-    @IBAction func backButton(_ sender: Any) {
-        dismiss(animated: true, completion: nil)
-    }
-    
     //コレクションビューのセクション数
     func numberOfSections(in collectionView: UICollectionView) -> Int {
         return 7
@@ -98,6 +95,7 @@ class ScheduleViewController: UIViewController, UICollectionViewDelegate, UIColl
     
     //セルをクリックしたら呼ばれる
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        
         let cell = collectionView.cellForItem(at: indexPath)  as! ScheduleViewCell
         print("Num：\(indexPath.row) Section:\(indexPath.section)")
         if number % 2 != 0 {
@@ -105,10 +103,20 @@ class ScheduleViewController: UIViewController, UICollectionViewDelegate, UIColl
             // OKボタンの設定
             let okAction = UIAlertAction(title: "OK", style: .default, handler: {
                 (action:UIAlertAction!) -> Void in
+                var newSchedules: [[String: Any]] = []
+                for schedule in self.scheduleArray {
+                    if schedule["weekRow"] as! Int == indexPath.row && schedule["timeSection"] as! Int == indexPath.section {
+                        
+                    } else {
+                        newSchedules.append(schedule)
+                    }
+                }
+                self.scheduleArray = newSchedules
                 // OKを押した時入力されていたテキストを表示
                 if let textFields = alert.textFields {
                     // アラートに含まれるすべてのテキストフィールドを調べる
                     for textField in textFields {
+                        self.userDefaults.removeObject(forKey: "Schedule")
                         print(textField.text!)
                         cell.textLabel.text = textField.text!
                         self.scheduleArray.append(["weekRow": indexPath.row, "timeSection": indexPath.section, "subject": textField.text!])
