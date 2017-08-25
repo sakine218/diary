@@ -106,7 +106,6 @@ class ScheduleViewController: UIViewController, UICollectionViewDelegate, UIColl
                 var newSchedules: [[String: Any]] = []
                 for schedule in self.scheduleArray {
                     if schedule["weekRow"] as! Int == indexPath.row && schedule["timeSection"] as! Int == indexPath.section {
-                        
                     } else {
                         newSchedules.append(schedule)
                     }

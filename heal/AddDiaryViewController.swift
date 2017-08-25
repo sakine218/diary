@@ -216,6 +216,7 @@ class AddDiaryViewController: UIViewController, UIScrollViewDelegate {
     func addTextView() {
         textView.frame = CGRect(x: 44, y: 210, width: 285, height: 200)
         textView.cornerRadius = 10
+        textView.font = UIFont.systemFont(ofSize: 15)
         self.scrollView.addSubview(textView)
     }
     
@@ -233,12 +234,14 @@ class AddDiaryViewController: UIViewController, UIScrollViewDelegate {
         let scheduleSwitch: UISwitch = UISwitch()
         scheduleSwitch.isOn = true
         scheduleSwitch.frame = CGRect(x: 284, y: 430, width: 50, height: 50)
+        scheduleSwitch.onTintColor = AppColors.gray
         self.scrollView.addSubview(scheduleSwitch)
     }
     
     func addButtons() {
         for i in 0...5{
             let button = UIButton()
+            button.setTitleColor(AppColors.gray, for: .normal)
             button.frame = CGRect(x: 0, y: 480 + 60 * i, width: Int(self.view.frame.width - 148), height: 60)
             button.center.x = self.view.center.x
             button.backgroundColor = UIColor.white
@@ -251,28 +254,33 @@ class AddDiaryViewController: UIViewController, UIScrollViewDelegate {
     
     func scheduleButtonEvent(sender: UIButton) {
         cellTapNumArray[sender.tag]  += 1
-        sender.borderWidth = 3
-        sender.borderColor = cellTapColorArray[cellTapNumArray[sender.tag] % 4]
+        sender.backgroundColor = cellTapColorArray[cellTapNumArray[sender.tag] % 4]
+        if cellTapNumArray[sender.tag] % 4 == 0 {
+            sender.setTitleColor(AppColors.gray, for: .normal)
+        } else {
+            sender.setTitleColor(UIColor.white, for: .normal)
+        }
     }
     
     func setButtonTitles() {
         for (index, button) in buttonArray.enumerated() {
+            button.titleLabel!.text = ""
             for day in dayArray {
                 if day["timeSection"] as! Int == index + 1 {
-                    button.setTitleColor(UIColor.black, for: .normal)
+                    button.setTitleColor(AppColors.gray, for: .normal)
                     button.setTitle(day["subject"] as? String, for: .normal)
-                    button.borderWidth = 3
-                    button.borderColor = cellTapColorArray[0]
+                    button.backgroundColor = cellTapColorArray[0]
                     cellTapNumArray = [0, 0, 0, 0, 0, 0]
                 }
             }
         }
         
         for button in buttonArray {
-            if button.titleLabel?.text == nil {
-                button.isUserInteractionEnabled = false
+            print(button.titleLabel!.text)
+            if button.titleLabel!.text == "" {
+                button.isEnabled = false
             } else {
-                button.isUserInteractionEnabled = true
+                button.isEnabled = true
             }
         }
     }

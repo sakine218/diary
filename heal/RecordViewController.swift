@@ -30,8 +30,8 @@ class RecordViewController: UIViewController, UICollectionViewDelegate, UICollec
         navigationItem.title = "記録"
         //scheduleArray.map()
         //subjectArray.append(scheduleArray["subject"] as! String)
-        print(subjectArray)
-        print(subjectArray.unique)
+        //print(subjectArray)
+        //print(subjectArray.unique)
         // Do any additional setup after loading the view.
     }
     
@@ -72,6 +72,7 @@ class RecordViewController: UIViewController, UICollectionViewDelegate, UICollec
         } else if(indexPath.section != 0) {
             
             let subject: [Attendance] = attendance.filter({ $0.subjectText == subjectArray.unique[indexPath.section - 1]})
+            print(subject)
             if indexPath.row == 1 {
                 let chikoku: [Attendance] = subject.filter({ $0.tapNum % 4 == 1})
                 cell.textLabel.text = "\(chikoku.count)"
