@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12120" systemVersion="16D32" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BPM-QO-J4Y">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12120" systemVersion="16D32" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="dar-eC-aHs">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -406,6 +406,33 @@
             </objects>
             <point key="canvasLocation" x="2461.5999999999999" y="-922.48875562218893"/>
         </scene>
+        <!--Splush View Controller-->
+        <scene sceneID="vi6-XM-Kmc">
+            <objects>
+                <viewController id="dar-eC-aHs" customClass="SplushViewController" customModule="heal" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="ls6-jz-SfD"/>
+                        <viewControllerLayoutGuide type="bottom" id="iIa-fC-FJj"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="Hrc-56-bKq">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="splushBg.jpg" translatesAutoresizingMaskIntoConstraints="NO" id="zAY-PK-ppI">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <connections>
+                        <segue destination="BPM-QO-J4Y" kind="presentation" identifier="nextVC" modalTransitionStyle="crossDissolve" id="HtJ-MN-rIL"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="j7L-xa-UV6" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-551" y="-608"/>
+        </scene>
         <!--Parent Tab Bar Controller-->
         <scene sceneID="Wl6-xl-IcY">
             <objects>
@@ -523,6 +550,9 @@
             <point key="canvasLocation" x="1774" y="-1603"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="splushBg.jpg" width="750" height="1334"/>
+    </resources>
     <inferredMetricsTieBreakers>
         <segue reference="OgJ-i8-wS1"/>
     </inferredMetricsTieBreakers>

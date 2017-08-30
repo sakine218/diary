@@ -26,6 +26,8 @@ class DetailViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         guard let content = content else { return }
         print(content)
+        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "…", style: .plain, target: self, action: #selector(showAlert(_:)))
+        navigationItem.rightBarButtonItem?.tintColor = AppColors.gray
         redValue = CGFloat(content.redValue)
         greenValue = CGFloat(content.greenValue)
         blueValue = CGFloat(content.blueValue)
@@ -47,6 +49,65 @@ class DetailViewController: UIViewController {
                 scheduleLabelArray[index].textColor = AppColors.gray
             }
         }
+    }
+    
+    @IBAction func showAlert(_ sender: Any) {
+        let actionSheet = UIAlertController(title: nil, message: nil, preferredStyle: UIAlertControllerStyle.actionSheet)
+        
+        let edit = UIAlertAction(title: "編集", style: UIAlertActionStyle.default, handler: {
+            (action: UIAlertAction!) in
+            print("editをタップした時の処理")
+        })
+        
+        let delete = UIAlertAction(title: "削除", style: UIAlertActionStyle.destructive, handler: {
+            (action: UIAlertAction!) in
+            print("deleteをタップした時の処理")
+            self.dispAlert()
+        })
+        
+        let cancel = UIAlertAction(title: "キャンセル", style: UIAlertActionStyle.cancel, handler: {
+            (action: UIAlertAction!) in
+            print("キャンセルをタップした時の処理")
+        })
+        
+        actionSheet.addAction(edit)
+        actionSheet.addAction(delete)
+        actionSheet.addAction(cancel)
+        
+        self.present(actionSheet, animated: true, completion: nil)
+    }
+    
+    func dispAlert() {
+        
+        // UIAlertControllerクラスのインスタンスを生成
+        // タイトル, メッセージ, Alertのスタイルを指定する
+        // 第3引数のpreferredStyleでアラートの表示スタイルを指定する
+        let alert: UIAlertController = UIAlertController(title: "削除", message: "本当に削除しますか？", preferredStyle:  UIAlertControllerStyle.alert)
+        
+        // Actionの設定
+        // Action初期化時にタイトル, スタイル, 押された時に実行されるハンドラを指定する
+        // 第3引数のUIAlertActionStyleでボタンのスタイルを指定する
+        // OKボタン
+        let defaultAction: UIAlertAction = UIAlertAction(title: "削除", style: UIAlertActionStyle.destructive, handler:{
+            //  ボタンが押された時の処理を書く（クロージャ実装）
+            (action: UIAlertAction!) -> Void in
+            print("削除")
+            Content.delete(withId: (self.content?.date)!)
+            self.navigationController?.popViewController(animated: true)
+        })
+        //キャンセルボタン
+        let cancelAction: UIAlertAction = UIAlertAction(title: "キャンセル", style: UIAlertActionStyle.cancel, handler:{
+            // ボタンが押された時の処理を書く（クロージャ実装）
+            (action: UIAlertAction!) -> Void in
+            print("Cancel")
+        })
+        
+        // UIAlertControllerにActionを追加
+        alert.addAction(cancelAction)
+        alert.addAction(defaultAction)
+        
+        // Alertを表示
+        present(alert, animated: true, completion: nil)
     }
 
     override func didReceiveMemoryWarning() {

@@ -70,7 +70,6 @@ class RecordViewController: UIViewController, UICollectionViewDelegate, UICollec
         } else if(indexPath.row == 0 && indexPath.section != 0) {
             cell.textLabel.text = subjectArray.unique[indexPath.section - 1]
         } else if(indexPath.section != 0) {
-            
             let subject: [Attendance] = attendance.filter({ $0.subjectText == subjectArray.unique[indexPath.section - 1]})
             print(subject)
             if indexPath.row == 1 {

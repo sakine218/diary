@@ -25,12 +25,8 @@ class ScheduleViewController: UIViewController, UICollectionViewDelegate, UIColl
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationItem.title =  "時間割"
-        navigationItem.leftBarButtonItem = UIBarButtonItem(title: "戻る", style: .plain, target: self, action: #selector(selectBackButton))
-        navigationItem.leftBarButtonItem?.tintColor = AppColors.gray
-        navigationItem.leftBarButtonItem?.setBackgroundImage(barButtonItemBg, for: .normal, barMetrics: .default)
         navigationItem.rightBarButtonItem = UIBarButtonItem(title: "…", style: .plain, target: self, action: #selector(selectBarItem))
         navigationItem.rightBarButtonItem?.tintColor = AppColors.gray
-        navigationItem.rightBarButtonItem?.setBackgroundImage(barButtonItemBg, for: .normal, barMetrics: .default)
         collectionView.delegate = self
         collectionView.dataSource = self
         collectionView.register(UINib(nibName: "ScheduleViewCell", bundle: nil), forCellWithReuseIdentifier: "Cell")

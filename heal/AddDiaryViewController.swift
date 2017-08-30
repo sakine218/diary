@@ -184,7 +184,7 @@ class AddDiaryViewController: UIViewController, UIScrollViewDelegate {
     }
     
     func addLabels() {
-        let textArray: [String] = ["症状","Note","Schedule"]
+        let textArray: [String] = ["症状(軽 ↔︎ 重)","日記","時間割"]
         label1.text = textArray[0]
         label1.frame = CGRect(x: 44, y: 80, width: 285, height: 50)
         label2.text = textArray[1]
@@ -264,7 +264,6 @@ class AddDiaryViewController: UIViewController, UIScrollViewDelegate {
     
     func setButtonTitles() {
         for (index, button) in buttonArray.enumerated() {
-            button.titleLabel!.text = ""
             for day in dayArray {
                 if day["timeSection"] as! Int == index + 1 {
                     button.setTitleColor(AppColors.gray, for: .normal)
