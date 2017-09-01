@@ -77,25 +77,17 @@ class ViewController: UIViewController ,UICollectionViewDelegate,UICollectionVie
     
     //選択した時
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let cell:CalendarCell = collectionView.dequeueReusableCell(withReuseIdentifier:"collectCell",for:indexPath as IndexPath) as! CalendarCell
         print(dateManager.dateForCellAtIndexPathWeeks(row: indexPath.item + 1))
+        self.segue()
     }
-    
-    //長押しした時
-    /*
-    func onLongPressAction(sender: UILongPressGestureRecognizer) {
-        let point: CGPoint = sender.location(in: myCollectView)
-        let indexPath = myCollectView.indexPathForItem(at: point)
-        if indexPath != nil {
-            switch sender.state {
-            case .began: self.segue()
-            default: break
-            }
-        }
-    }
-     */
     
     func segue() {
-        self.performSegue(withIdentifier: "toVC", sender: nil)
+        self.performSegue(withIdentifier: "toDetail", sender: nil)
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
     }
     
     //セルの総数
@@ -121,18 +113,13 @@ class ViewController: UIViewController ,UICollectionViewDelegate,UICollectionVie
         let day = Int(dateManager.conversionDateFormat(row: indexPath.item))!
         let month = Int(dateManager.monthTag(row: indexPath.item))!
         cell.textLabel.text = "  " + "\(day)" + " \n \n"
-        
         if (day == 1) {
             cell.textLabel.text = "  " + "\(month % 10)" + "/" + "\(day)" + " \n \n"
         }
-        
         if(day <= 7) {
-            
         }
-        
         let dayText: String = Utility.dateToString(date: dateManager.dateForCellAtIndexPathWeeks(row: indexPath.item))
         //print(dayText)
-        
         if let content = Content.find(withId: dayText).first {
             let redValue: CGFloat = CGFloat(content.redValue)
             let greenValue: CGFloat = CGFloat(content.greenValue)

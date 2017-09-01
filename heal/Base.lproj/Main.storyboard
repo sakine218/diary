@@ -242,6 +242,7 @@
                     <connections>
                         <outlet property="myCollectView" destination="SVo-cY-Oxu" id="dFt-Fr-LfY"/>
                         <segue destination="mTV-uz-5OU" kind="show" identifier="toVC" animates="NO" id="OgJ-i8-wS1"/>
+                        <segue destination="OcK-Si-zjo" kind="show" identifier="toDetail" id="kb9-FJ-2SR"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3Ob-Lc-7LD" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -554,6 +555,7 @@
         <image name="splushBg.jpg" width="750" height="1334"/>
     </resources>
     <inferredMetricsTieBreakers>
+        <segue reference="kb9-FJ-2SR"/>
         <segue reference="OgJ-i8-wS1"/>
     </inferredMetricsTieBreakers>
     <color key="tintColor" red="0.16078431369999999" green="0.16078431369999999" blue="0.16078431369999999" alpha="1" colorSpace="calibratedRGB"/>

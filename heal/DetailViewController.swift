@@ -51,7 +51,7 @@ class DetailViewController: UIViewController {
         }
     }
     
-    @IBAction func showAlert(_ sender: Any) {
+    func showAlert(_ sender: Any) {
         let actionSheet = UIAlertController(title: nil, message: nil, preferredStyle: UIAlertControllerStyle.actionSheet)
         
         let edit = UIAlertAction(title: "編集", style: UIAlertActionStyle.default, handler: {
