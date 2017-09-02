@@ -68,6 +68,14 @@ class Content: Object {
         }
     }
     
+    func delete() {
+        let realm = RealmFactory.sharedInstance.realm()
+        try! realm.write {
+            realm.delete(self.attendanceArray)
+            realm.delete(self)
+        }
+    }
+    
     func save()  {
         let realm = RealmFactory.sharedInstance.realm()
         do {

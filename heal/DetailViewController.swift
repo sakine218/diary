@@ -10,6 +10,7 @@ import UIKit
 
 class DetailViewController: UIViewController {
     
+    var dateText: String = String()
     var content: Content?
     var redValue: CGFloat = CGFloat()
     var greenValue: CGFloat = CGFloat()
@@ -24,8 +25,12 @@ class DetailViewController: UIViewController {
     }
     
     override func viewWillAppear(_ animated: Bool) {
+        print("選んだのは\(dateText)")
+        if dateText != nil {
+            content = Content.find(withId: dateText) as? Content
+            print(content)
+        }
         guard let content = content else { return }
-        print(content)
         navigationItem.rightBarButtonItem = UIBarButtonItem(title: "…", style: .plain, target: self, action: #selector(showAlert(_:)))
         navigationItem.rightBarButtonItem?.tintColor = AppColors.gray
         redValue = CGFloat(content.redValue)
@@ -92,7 +97,7 @@ class DetailViewController: UIViewController {
             //  ボタンが押された時の処理を書く（クロージャ実装）
             (action: UIAlertAction!) -> Void in
             print("削除")
-            Content.delete(withId: (self.content?.date)!)
+            self.content?.delete()
             self.navigationController?.popViewController(animated: true)
         })
         //キャンセルボタン

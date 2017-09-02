@@ -18,6 +18,7 @@ class ViewController: UIViewController ,UICollectionViewDelegate,UICollectionVie
     let daysPerWeek:Int = 7
     let dateManager = DateManager()
     var startDate:Date!
+    var dateText: String = String()
     private var monthLabel:UILabel!
     
     override func viewWillAppear(_ animated: Bool) {
@@ -78,7 +79,8 @@ class ViewController: UIViewController ,UICollectionViewDelegate,UICollectionVie
     //選択した時
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let cell:CalendarCell = collectionView.dequeueReusableCell(withReuseIdentifier:"collectCell",for:indexPath as IndexPath) as! CalendarCell
-        print(dateManager.dateForCellAtIndexPathWeeks(row: indexPath.item + 1))
+        dateText = Utility.dateToString(date: dateManager.dateForCellAtIndexPathWeeks(row: indexPath.item))
+        print(dateText)
         self.segue()
     }
     
@@ -87,7 +89,8 @@ class ViewController: UIViewController ,UICollectionViewDelegate,UICollectionVie
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        
+        let VC = segue.destination as! DetailViewController
+        VC.dateText = dateText
     }
     
     //セルの総数
