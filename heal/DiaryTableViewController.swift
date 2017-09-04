@@ -30,6 +30,7 @@ class DiaryTableViewController: UIViewController,UITableViewDelegate,UITableView
         content = Content.findAllWithSort()
         self.tableView.register(UINib(nibName: "DiaryCell", bundle: nil), forCellReuseIdentifier: "Cell")
         self.tableView.separatorStyle = .none
+        self.tableView.showsVerticalScrollIndicator = false
         tableView.reloadData()
         print(content, content.count)
     }

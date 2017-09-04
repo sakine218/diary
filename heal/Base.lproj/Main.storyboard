@@ -361,6 +361,7 @@
                         <outletCollection property="scheduleLabelArray" destination="77M-mW-RmN" collectionClass="NSMutableArray" id="j1h-v2-yZ3"/>
                         <outletCollection property="scheduleLabelArray" destination="2Zi-Ot-hYq" collectionClass="NSMutableArray" id="I3q-3E-nIi"/>
                         <outletCollection property="scheduleLabelArray" destination="apM-PG-sKB" collectionClass="NSMutableArray" id="hVu-q8-4QX"/>
+                        <segue destination="DhW-6d-m5T" kind="show" identifier="toAdd" id="EtP-im-iCy"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Jon-OP-hlu" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -493,11 +494,11 @@
             </objects>
             <point key="canvasLocation" x="1077.5999999999999" y="-264.01799100449779"/>
         </scene>
-        <!--Item-->
+        <!--Setting-->
         <scene sceneID="IFq-he-UAd">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="gXk-un-OvE" customClass="NavigationViewController" customModule="heal" customModuleProvider="target" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Item" id="Wno-go-rwn"/>
+                    <tabBarItem key="tabBarItem" title="Setting" id="Wno-go-rwn"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="gf2-SJ-sQU">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
@@ -555,8 +556,9 @@
         <image name="splushBg.jpg" width="750" height="1334"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="kb9-FJ-2SR"/>
         <segue reference="OgJ-i8-wS1"/>
+        <segue reference="11w-mY-GRx"/>
+        <segue reference="EtP-im-iCy"/>
     </inferredMetricsTieBreakers>
     <color key="tintColor" red="0.16078431369999999" green="0.16078431369999999" blue="0.16078431369999999" alpha="1" colorSpace="calibratedRGB"/>
 </document>

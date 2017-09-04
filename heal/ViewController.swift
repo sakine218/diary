@@ -22,7 +22,7 @@ class ViewController: UIViewController ,UICollectionViewDelegate,UICollectionVie
     private var monthLabel:UILabel!
     
     override func viewWillAppear(_ animated: Bool) {
-        
+        myCollectView.showsVerticalScrollIndicator = false
         myCollectView.register(UINib(nibName: "CalendarCell", bundle: nil), forCellWithReuseIdentifier: "collectCell")
         myCollectView.delegate = self
         myCollectView.dataSource = self

@@ -32,7 +32,7 @@ class AddDiaryViewController: UIViewController, UIScrollViewDelegate {
     var cellTapNumArray: [Int] = [0, 0, 0, 0, 0, 0]
     let cellTapColorArray: [UIColor] = [UIColor.white, AppColors.pink, AppColors.sky, AppColors.yellow]
     var buttonArray: [UIButton] = []
-    //var attendanceArray: [[String: Int]] = []
+    var dayText: String = ""
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -57,6 +57,7 @@ class AddDiaryViewController: UIViewController, UIScrollViewDelegate {
     }
     
     override func viewWillAppear(_ animated: Bool) {
+        sortData()
         first()
         let calendar = Calendar.current
         let date = Date()
@@ -79,15 +80,26 @@ class AddDiaryViewController: UIViewController, UIScrollViewDelegate {
     }
     
     func first() {
-        redValue = 180
-        greenValue = 255
-        blueValue = 255
-        slider.value = 0
-        bgView.backgroundColor = UIColor(red: redValue / 255, green: greenValue / 255, blue: blueValue / 255, alpha:1.0)
+        bgView.backgroundColor = UIColor(red: 180 / 255, green: 255 / 255, blue: 255 / 255, alpha:1.0)
         textView.text = ""
         datePicker.date = Date()
         changeLabelDate(date: Date())
         setButtonTitles()
+    }
+    
+    func sortData() {
+        if let content = Content.find(withId: dayText).first {
+            let redValue: CGFloat = CGFloat(content.redValue)
+            let greenValue: CGFloat = CGFloat(content.greenValue)
+            let blueValue: CGFloat = CGFloat(content.blueValue)
+            datePicker.date = Utility.stringToDate(from: dayText)
+            changeLabelDate(date: Utility.stringToDate(from: dayText))
+            textView.text = content.note
+            bgView.backgroundColor = UIColor(red: redValue / 255, green: greenValue / 255, blue: blueValue / 255, alpha:1.0)
+        } else {
+            bgView.backgroundColor = UIColor(red: 180 / 255, green: 255 / 255, blue: 255 / 255, alpha:1.0)
+            textView.text = ""
+        }
     }
     
     func addShadowView() {
@@ -146,6 +158,7 @@ class AddDiaryViewController: UIViewController, UIScrollViewDelegate {
     func tappedToolBarBtn(sender: UIBarButtonItem) {
         let calendar = Calendar.current
         let date = datePicker.date
+        dayText = Utility.dateToString(date: date)
         dayNum = calendar.component(.weekday, from: date) - 1
         if (userDefaults.array(forKey: "Schedule") != nil) {
             scheduleArray = userDefaults.array(forKey: "Schedule") as! [[String : Any]]
@@ -156,6 +169,7 @@ class AddDiaryViewController: UIViewController, UIScrollViewDelegate {
                 self.dayArray.append(schedule)
             }
         }
+        sortData()
         setButtonTitles()
         dateTextField.resignFirstResponder()
     }
@@ -263,6 +277,9 @@ class AddDiaryViewController: UIViewController, UIScrollViewDelegate {
     }
     
     func setButtonTitles() {
+        for button in buttonArray {
+            button.setTitle("", for: .normal)
+        }
         for (index, button) in buttonArray.enumerated() {
             for day in dayArray {
                 if day["timeSection"] as! Int == index + 1 {
@@ -273,7 +290,6 @@ class AddDiaryViewController: UIViewController, UIScrollViewDelegate {
                 }
             }
         }
-        
         for button in buttonArray {
             print(button.titleLabel!.text)
             if button.titleLabel!.text == "" {

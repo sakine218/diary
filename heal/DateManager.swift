@@ -19,7 +19,6 @@ class DateManager {
     private var calendar = Calendar.current
     
     private var dayDateFormatter: DateFormatter {
-        
         let formatter: DateFormatter = DateFormatter()
         formatter.locale = Locale(identifier: "ja_JP")
         formatter.dateFormat = "d"
@@ -27,18 +26,15 @@ class DateManager {
     }
     
     private var ymDateFormatter: DateFormatter {
-        
         let formatter: DateFormatter = DateFormatter()
         formatter.dateFormat = "YM"
         return formatter
     }
     
     init() {
-        
         calendar.locale = Locale(identifier: "ja_JP")
         date = Date()
     }
-    
     
     // 現在の月から指定したpagingの分だけセルの数を返す
     // 引数のpagingが1増えるごとに2月分のセルの数を増やす

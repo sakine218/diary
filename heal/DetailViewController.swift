@@ -10,7 +10,7 @@ import UIKit
 
 class DetailViewController: UIViewController {
     
-    var dateText: String = String()
+    var dateText: String = ""
     var content: Content?
     var redValue: CGFloat = CGFloat()
     var greenValue: CGFloat = CGFloat()
@@ -18,19 +18,14 @@ class DetailViewController: UIViewController {
     @IBOutlet var dateLabel: UILabel? = UILabel()
     @IBOutlet var noteLabel: UILabel? = UILabel()
     @IBOutlet var scheduleLabelArray: [UILabel] = []
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        print("選んだのは\(dateText)")
-        if dateText != nil {
-            content = Content.find(withId: dateText) as? Content
-            print(content)
-        }
-        guard let content = content else { return }
+        let content = setupContent()
         navigationItem.rightBarButtonItem = UIBarButtonItem(title: "…", style: .plain, target: self, action: #selector(showAlert(_:)))
         navigationItem.rightBarButtonItem?.tintColor = AppColors.gray
         redValue = CGFloat(content.redValue)
@@ -56,14 +51,23 @@ class DetailViewController: UIViewController {
         }
     }
     
+    func setupContent() -> Content {
+        if let content = self.content{
+            return content
+        } else {
+            let content: Content = Content.find(withId: dateText) [0]
+            return content
+        }
+    }
+    
     func showAlert(_ sender: Any) {
         let actionSheet = UIAlertController(title: nil, message: nil, preferredStyle: UIAlertControllerStyle.actionSheet)
         
         let edit = UIAlertAction(title: "編集", style: UIAlertActionStyle.default, handler: {
             (action: UIAlertAction!) in
             print("editをタップした時の処理")
+            self.performSegue(withIdentifier: "toAdd", sender: nil)
         })
-        
         let delete = UIAlertAction(title: "削除", style: UIAlertActionStyle.destructive, handler: {
             (action: UIAlertAction!) in
             print("deleteをタップした時の処理")
@@ -83,26 +87,15 @@ class DetailViewController: UIViewController {
     }
     
     func dispAlert() {
-        
-        // UIAlertControllerクラスのインスタンスを生成
-        // タイトル, メッセージ, Alertのスタイルを指定する
-        // 第3引数のpreferredStyleでアラートの表示スタイルを指定する
         let alert: UIAlertController = UIAlertController(title: "削除", message: "本当に削除しますか？", preferredStyle:  UIAlertControllerStyle.alert)
-        
-        // Actionの設定
-        // Action初期化時にタイトル, スタイル, 押された時に実行されるハンドラを指定する
-        // 第3引数のUIAlertActionStyleでボタンのスタイルを指定する
-        // OKボタン
         let defaultAction: UIAlertAction = UIAlertAction(title: "削除", style: UIAlertActionStyle.destructive, handler:{
-            //  ボタンが押された時の処理を書く（クロージャ実装）
             (action: UIAlertAction!) -> Void in
             print("削除")
-            self.content?.delete()
+            let content = self.setupContent()
+            content.delete()
             self.navigationController?.popViewController(animated: true)
         })
-        //キャンセルボタン
         let cancelAction: UIAlertAction = UIAlertAction(title: "キャンセル", style: UIAlertActionStyle.cancel, handler:{
-            // ボタンが押された時の処理を書く（クロージャ実装）
             (action: UIAlertAction!) -> Void in
             print("Cancel")
         })
@@ -114,21 +107,25 @@ class DetailViewController: UIViewController {
         // Alertを表示
         present(alert, animated: true, completion: nil)
     }
-
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        let VC = segue.destination as! AddDiaryViewController
+        VC.dayText = (dateLabel?.text)!
+    }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
     
-
     /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
+     // MARK: - Navigation
+     
+     // In a storyboard-based application, you will often want to do a little preparation before navigation
+     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+     // Get the new view controller using segue.destinationViewController.
+     // Pass the selected object to the new view controller.
+     }
+     */
+    
 }

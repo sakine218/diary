@@ -26,6 +26,7 @@ class RecordViewController: UIViewController, UICollectionViewDelegate, UICollec
         super.viewDidLoad()
         collectionView.delegate = self
         collectionView.dataSource = self
+        collectionView.showsVerticalScrollIndicator = false
         collectionView.register(UINib(nibName: "RecordCell", bundle: nil), forCellWithReuseIdentifier: "RecordCell")
         navigationItem.title = "記録"
         //scheduleArray.map()
