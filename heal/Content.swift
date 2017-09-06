@@ -7,19 +7,21 @@ class Content: Object {
     dynamic var redValue: Float = Float()
     dynamic var greenValue: Float = Float()
     dynamic var blueValue: Float = Float()
+    dynamic var value: Float = Float()
     var attendanceArray = List<Attendance>()
 
     override class func primaryKey() -> String {
         return "date"
     }
     
-    convenience init(date: String, note: String, redValue: Float, greenValue: Float, blueValue: Float, attendanceArray: [[String: Any]], tapArray: [Int]) {
+    convenience init(date: String, note: String, redValue: Float, greenValue: Float, blueValue: Float, value: Float, attendanceArray: [[String: Any]], tapArray: [Int]) {
         self.init()
         self.date = date
         self.note = note
         self.redValue = redValue
         self.greenValue = greenValue
         self.blueValue = blueValue
+        self.value = value
         for (index, item) in attendanceArray.enumerated() {
             let attendance: Attendance = Attendance()
             attendance.subjectText = item["subject"] as! String

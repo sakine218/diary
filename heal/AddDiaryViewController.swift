@@ -57,11 +57,10 @@ class AddDiaryViewController: UIViewController, UIScrollViewDelegate {
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        sortData()
-        first()
         let calendar = Calendar.current
         let date = Date()
         dayNum = calendar.component(.weekday, from: date) - 1
+        print("今日は\(dayNum)")
         if (userDefaults.array(forKey: "Schedule") != nil) {
             scheduleArray = userDefaults.array(forKey: "Schedule") as! [[String : Any]]
         }
@@ -71,7 +70,11 @@ class AddDiaryViewController: UIViewController, UIScrollViewDelegate {
                 self.dayArray.append(schedule)
             }
         }
-        setButtonTitles()
+        for button in buttonArray {
+            button.setTitle("", for: .normal)
+        }
+        first()
+        sortData()
     }
     
     override func didReceiveMemoryWarning() {
@@ -84,7 +87,10 @@ class AddDiaryViewController: UIViewController, UIScrollViewDelegate {
         textView.text = ""
         datePicker.date = Date()
         changeLabelDate(date: Date())
-        setButtonTitles()
+        slider.value = 0
+        for button in buttonArray {
+            button.setTitle("", for: .normal)
+        }
     }
     
     func sortData() {
@@ -92,13 +98,19 @@ class AddDiaryViewController: UIViewController, UIScrollViewDelegate {
             let redValue: CGFloat = CGFloat(content.redValue)
             let greenValue: CGFloat = CGFloat(content.greenValue)
             let blueValue: CGFloat = CGFloat(content.blueValue)
+            slider.value = content.value
+            print(content)
             datePicker.date = Utility.stringToDate(from: dayText)
             changeLabelDate(date: Utility.stringToDate(from: dayText))
             textView.text = content.note
             bgView.backgroundColor = UIColor(red: redValue / 255, green: greenValue / 255, blue: blueValue / 255, alpha:1.0)
+            print(content.attendanceArray)
+            for (index, attendance) in content.attendanceArray.enumerated() {
+                buttonArray[index].setTitle(attendance.subjectText, for: .normal)
+            }
         } else {
-            bgView.backgroundColor = UIColor(red: 180 / 255, green: 255 / 255, blue: 255 / 255, alpha:1.0)
-            textView.text = ""
+            first()
+            setButtonTitles()
         }
     }
     
@@ -171,6 +183,7 @@ class AddDiaryViewController: UIViewController, UIScrollViewDelegate {
         }
         sortData()
         setButtonTitles()
+        changeLabelDate(date: date)
         dateTextField.resignFirstResponder()
     }
     
@@ -264,6 +277,9 @@ class AddDiaryViewController: UIViewController, UIScrollViewDelegate {
             button.addTarget(self, action: #selector(scheduleButtonEvent(sender:)), for: .touchUpInside)
             self.scrollView.addSubview(button)
         }
+        for button in buttonArray {
+            button.setTitle("", for: .normal)
+        }
     }
     
     func scheduleButtonEvent(sender: UIButton) {
@@ -288,14 +304,6 @@ class AddDiaryViewController: UIViewController, UIScrollViewDelegate {
                     button.backgroundColor = cellTapColorArray[0]
                     cellTapNumArray = [0, 0, 0, 0, 0, 0]
                 }
-            }
-        }
-        for button in buttonArray {
-            print(button.titleLabel!.text)
-            if button.titleLabel!.text == "" {
-                button.isEnabled = false
-            } else {
-                button.isEnabled = true
             }
         }
     }
@@ -334,8 +342,7 @@ class AddDiaryViewController: UIViewController, UIScrollViewDelegate {
     }
     
     func buttonEvent(sender: UIButton) {
-        
-        let content = Content(date: Utility.dateToString(date: datePicker.date), note: textView.text, redValue: Float(redValue), greenValue: Float(greenValue), blueValue: Float(blueValue), attendanceArray: dayArray, tapArray: cellTapNumArray)
+        let content = Content(date: Utility.dateToString(date: datePicker.date), note: textView.text, redValue: Float(redValue), greenValue: Float(greenValue), blueValue: Float(blueValue), value: Float(slider.value), attendanceArray: dayArray, tapArray: cellTapNumArray)
         content.save()
         
         //覚え書き

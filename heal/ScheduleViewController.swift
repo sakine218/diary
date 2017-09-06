@@ -56,7 +56,6 @@ class ScheduleViewController: UIViewController, UICollectionViewDelegate, UIColl
             navigationItem.rightBarButtonItem?.title = "完了"
             navigationItem.title = "時間割(変更中)"
         }
-
     }
     
     //コレクションビューのセクション数
