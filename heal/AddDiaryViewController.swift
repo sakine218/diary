@@ -53,7 +53,7 @@ class AddDiaryViewController: UIViewController, UIScrollViewDelegate {
         addOkButton()
         addExplainLabels()
         addButtons()
-        navigationItem.title = "新規作成"
+        navigationItem.title = "作成"
         // Do any additional setup after loading the view.
     }
     
@@ -99,6 +99,11 @@ class AddDiaryViewController: UIViewController, UIScrollViewDelegate {
             changeLabelDate(date: Utility.stringToDate(from: dayText))
             textView.text = content.note
             bgView.backgroundColor = UIColor(red: redValue / 255, green: greenValue / 255, blue: blueValue / 255, alpha:1.0)
+            cellTapNumArray.removeAll()
+            for (index, attendance) in content.attendanceArray.enumerated() {
+                cellTapNumArray.append(content.attendanceArray[index].tapNum)
+            }
+            print(cellTapNumArray)
         } else {
             slider.value = 0
             bgView.backgroundColor = UIColor(red: 180 / 255, green: 255 / 255, blue: 255 / 255, alpha:1.0)

@@ -129,9 +129,8 @@ class ViewController: UIViewController ,UICollectionViewDelegate,UICollectionVie
             let blueValue: CGFloat = CGFloat(content.blueValue)
             cell.cellBgView.backgroundColor = UIColor(red: redValue / 255, green: greenValue / 255, blue: blueValue / 255, alpha:1.0)
         } else {
-            cell.cellBgView.backgroundColor = UIColor.white
+            cell.cellBgView.backgroundColor = .white
         }
-        
         return cell
     }
     
@@ -168,8 +167,6 @@ class ViewController: UIViewController ,UICollectionViewDelegate,UICollectionVie
         
         if myCollectView.contentOffset.y <= 0,
             let visibleCell = myCollectView.visibleCells.first {
-            
-            
             self.dateManager.paging += 1
             self.myCollectView.reloadData()
             self.myCollectView.performBatchUpdates({}, completion: { [weak self] isFinished in
