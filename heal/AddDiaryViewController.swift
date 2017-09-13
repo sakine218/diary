@@ -14,7 +14,7 @@ class AddDiaryViewController: UIViewController, UIScrollViewDelegate {
     var dateTextField: UITextField = UITextField()
     var toolBar: UIToolbar = UIToolbar()
     var datePicker: UIDatePicker = UIDatePicker()
-    let toolBarBtn      = UIBarButtonItem(title: "完了", style: .plain, target: self, action: #selector(tappedToolBarBtn(sender:)))
+    let toolBarBtn = UIBarButtonItem(title: "完了", style: .plain, target: self, action: #selector(tappedToolBarBtn(sender:)))
     let toolBarBtnToday = UIBarButtonItem(title: "今日", style: .plain, target: self, action: #selector(tappedToolBarBtnToday(sender:)))
     let label1: UILabel = UILabel()
     let label2: UILabel = UILabel()
@@ -85,25 +85,35 @@ class AddDiaryViewController: UIViewController, UIScrollViewDelegate {
         slider.value = 0
         datePicker.date = Date()
         changeLabelDate(date: Date())
+        for i in 0...5 {
+            buttonArray[i].backgroundColor = cellTapColorArray[0]
+        }
+        cellTapNumArray = [0, 0, 0, 0, 0, 0]
         setButtonTitles()
     }
     
     func sortData() {
+        for i in 0...5 {
+            buttonArray[i].backgroundColor = cellTapColorArray[0]
+            cellTapNumArray[i] = 0
+        }
         if let content = Content.find(withId: dayText).first {
             dayNum = calendar.component(.weekday, from: Utility.stringToDate(from: dayText)) - 1
-            let redValue: CGFloat = CGFloat(content.redValue)
-            let greenValue: CGFloat = CGFloat(content.greenValue)
-            let blueValue: CGFloat = CGFloat(content.blueValue)
+            var redValue: CGFloat = CGFloat(content.redValue)
+            var greenValue: CGFloat = CGFloat(content.greenValue)
+            var blueValue: CGFloat = CGFloat(content.blueValue)
             slider.value = content.value
             datePicker.date = Utility.stringToDate(from: dayText)
             changeLabelDate(date: Utility.stringToDate(from: dayText))
             textView.text = content.note
             bgView.backgroundColor = UIColor(red: redValue / 255, green: greenValue / 255, blue: blueValue / 255, alpha:1.0)
-            cellTapNumArray.removeAll()
             for (index, attendance) in content.attendanceArray.enumerated() {
-                cellTapNumArray.append(content.attendanceArray[index].tapNum)
+                cellTapNumArray[index] = content.attendanceArray[index].tapNum
             }
             print(cellTapNumArray)
+            for i in 0...5 {
+                buttonArray[i].backgroundColor = cellTapColorArray[cellTapNumArray[i] % 4]
+            }
         } else {
             slider.value = 0
             bgView.backgroundColor = UIColor(red: 180 / 255, green: 255 / 255, blue: 255 / 255, alpha:1.0)
@@ -288,14 +298,13 @@ class AddDiaryViewController: UIViewController, UIScrollViewDelegate {
     func setButtonTitles() {
         for button in buttonArray {
             button.setTitle("", for: .normal)
+            button.titleLabel!.text = ""
         }
         for (index, button) in buttonArray.enumerated() {
             for day in dayArray {
                 if day["timeSection"] as! Int == index + 1 {
                     button.setTitleColor(AppColors.gray, for: .normal)
                     button.setTitle(day["subject"] as? String, for: .normal)
-                    button.backgroundColor = cellTapColorArray[0]
-                    cellTapNumArray = [0, 0, 0, 0, 0, 0]
                 }
             }
         }
