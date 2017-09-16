@@ -48,8 +48,8 @@ class AddDiaryViewController: UIViewController, UIScrollViewDelegate {
         addLabels()
         addSlider()
         addTextView()
-        addChangeButton()
-        addSwitch()
+        //addChangeButton()
+        //addSwitch()
         addOkButton()
         addExplainLabels()
         addButtons()
@@ -351,10 +351,26 @@ class AddDiaryViewController: UIViewController, UIScrollViewDelegate {
         self.scrollView.addSubview(okButton)
     }
     
+    
+    
     func buttonEvent(sender: UIButton) {
-        
-        let content = Content(date: Utility.dateToString(date: datePicker.date), note: textView.text, redValue: Float(redValue), greenValue: Float(greenValue), blueValue: Float(blueValue), value: Float(slider.value), attendanceArray: dayArray, tapArray: cellTapNumArray)
-        content.save()
+        if let selectContent = Content.find(withId: dayText).first {
+            selectContent.date =  Utility.dateToString(date: datePicker.date)
+            selectContent.note = textView.text
+            selectContent.redValue = Float(redValue)
+            selectContent.greenValue = Float(greenValue)
+            selectContent.blueValue = Float(blueValue)
+            selectContent.value = Float(slider.value)
+            
+            for (index, item) in selectContent.attendanceArray.enumerated() {
+                item.subjectText = dayArray[index]["subject"] as! String
+                item.tapNum = cellTapNumArray[index]
+            }
+            
+        } else {
+            let content = Content(date: Utility.dateToString(date: datePicker.date), note: textView.text, redValue: Float(redValue), greenValue: Float(greenValue), blueValue: Float(blueValue), value: Float(slider.value), attendanceArray: dayArray, tapArray: cellTapNumArray)
+            content.save()
+        }
         
         //覚え書き
         //　全部取得
@@ -368,7 +384,6 @@ class AddDiaryViewController: UIViewController, UIScrollViewDelegate {
             preferredStyle: .alert)
         // アラートにボタンをつける
         alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { _ in
-            print(content)
             self.first()
             self.setButtonTitles()
         }))

@@ -9,7 +9,7 @@ class Content: Object {
     dynamic var blueValue: Float = Float()
     dynamic var value: Float = Float()
     var attendanceArray = List<Attendance>()
-
+    
     override class func primaryKey() -> String {
         return "date"
     }
@@ -22,8 +22,10 @@ class Content: Object {
         self.greenValue = greenValue
         self.blueValue = blueValue
         self.value = value
+        
         for (index, item) in attendanceArray.enumerated() {
             let attendance: Attendance = Attendance()
+            attendance.id = Attendance.lastId() + index
             attendance.subjectText = item["subject"] as! String
             attendance.tapNum = tapArray[index]
             self.attendanceArray.append(attendance)

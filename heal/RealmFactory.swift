@@ -9,11 +9,11 @@ class RealmFactory {
     }
     
     internal func realm() -> Realm {
-        if let configuration = configuration {
-            return try! Realm(configuration: configuration)
-        } else {
+        //if let configuration = configuration {
+            //return try! Realm(configuration: configuration)
+        //} else {
             return try! Realm()
-        }
+        //}
     }
     
     internal func migration() {

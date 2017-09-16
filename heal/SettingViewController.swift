@@ -7,12 +7,13 @@
 //
 
 import UIKit
+import EAIntroView
 
 class SettingViewController: UIViewController {
     
     @IBOutlet weak var scheduleButton: UIButton!
     @IBOutlet weak var howButton: UIButton!
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationItem.title = "設定"
@@ -20,8 +21,36 @@ class SettingViewController: UIViewController {
     }
 
     @IBAction func howButton(_ sender: Any) {
+        showTutorial()
     }
     
+    func showTutorial() {
+        // basic
+        let page1: EAIntroPage = EAIntroPage()
+        let page2: EAIntroPage = EAIntroPage()
+        let page3: EAIntroPage = EAIntroPage()
+        let page4: EAIntroPage = EAIntroPage()
+        let page5: EAIntroPage = EAIntroPage()
+        
+        page1.bgImage = UIImage(named: "walk0.jpg")
+        page2.bgImage = UIImage(named: "walk1.jpg")
+        page3.bgImage = UIImage(named: "walk2.jpg")
+        page4.bgImage = UIImage(named: "walk3.jpg")
+        page5.bgImage = UIImage(named: "walk4.jpg")
+        
+        
+        let intro :EAIntroView = EAIntroView(frame: self.view.bounds, andPages: [page1,page2,page3,page4,page5])
+        
+        intro.skipButton.setTitleColor(UIColor.black, for: UIControlState.normal)
+        
+        //intro.setDelegate:self
+        
+        intro.show(in: self.view, animateDuration: 0.6)
+        
+        // チュートリアルを見たことを記録する
+        //UserDefaults.standard.set(1, forKey: "active")
+        
+    }
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()

@@ -17,6 +17,12 @@
 		810C18FE1EECD8AA0023BB61 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 810C18FC1EECD8AA0023BB61 /* LaunchScreen.storyboard */; };
 		810C19091EECD8AA0023BB61 /* healTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 810C19081EECD8AA0023BB61 /* healTests.swift */; };
 		810C19141EECD8AA0023BB61 /* healUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 810C19131EECD8AA0023BB61 /* healUITests.swift */; };
+		812A22871F6C1E37001132E3 /* walk4.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 812A22821F6C1E37001132E3 /* walk4.jpg */; };
+		812A22881F6C1E37001132E3 /* walk3.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 812A22831F6C1E37001132E3 /* walk3.jpg */; };
+		812A22891F6C1E37001132E3 /* walk2.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 812A22841F6C1E37001132E3 /* walk2.jpg */; };
+		812A228A1F6C1E37001132E3 /* walk1.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 812A22851F6C1E37001132E3 /* walk1.jpg */; };
+		812A228B1F6C1E37001132E3 /* walk0.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 812A22861F6C1E37001132E3 /* walk0.jpg */; };
+		812A229D1F6C23C2001132E3 /* Walkthrough.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 812A229C1F6C23C2001132E3 /* Walkthrough.storyboard */; };
 		8175CDDA1F162B23003C5881 /* SettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8175CDD91F162B23003C5881 /* SettingViewController.swift */; };
 		8175CDDC1F162D20003C5881 /* ScheduleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8175CDDB1F162D20003C5881 /* ScheduleViewController.swift */; };
 		8175CDE31F2780DC003C5881 /* RecordCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8175CDE11F2780DB003C5881 /* RecordCell.swift */; };
@@ -79,6 +85,12 @@
 		810C190A1EECD8AA0023BB61 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		810C19131EECD8AA0023BB61 /* healUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = healUITests.swift; sourceTree = "<group>"; };
 		810C19151EECD8AA0023BB61 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		812A22821F6C1E37001132E3 /* walk4.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = walk4.jpg; sourceTree = "<group>"; };
+		812A22831F6C1E37001132E3 /* walk3.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = walk3.jpg; sourceTree = "<group>"; };
+		812A22841F6C1E37001132E3 /* walk2.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = walk2.jpg; sourceTree = "<group>"; };
+		812A22851F6C1E37001132E3 /* walk1.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = walk1.jpg; sourceTree = "<group>"; };
+		812A22861F6C1E37001132E3 /* walk0.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = walk0.jpg; sourceTree = "<group>"; };
+		812A229C1F6C23C2001132E3 /* Walkthrough.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Walkthrough.storyboard; sourceTree = "<group>"; };
 		8175CDD91F162B23003C5881 /* SettingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingViewController.swift; sourceTree = "<group>"; };
 		8175CDDB1F162D20003C5881 /* ScheduleViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScheduleViewController.swift; sourceTree = "<group>"; };
 		8175CDE11F2780DB003C5881 /* RecordCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecordCell.swift; sourceTree = "<group>"; };
@@ -200,8 +212,14 @@
 				81CE9A611F11159C0039B7EC /* TimeTableViewCell.xib */,
 				8175CDE21F2780DC003C5881 /* RecordCell.xib */,
 				81A2D5AE1F4D19460033E502 /* ScheduleViewCell.xib */,
+				812A229C1F6C23C2001132E3 /* Walkthrough.storyboard */,
 				81A2D5B91F4D60470033E502 /* barButtonItemBg.png */,
 				81A2D5BF1F5101580033E502 /* splushBg.jpg */,
+				812A22861F6C1E37001132E3 /* walk0.jpg */,
+				812A22851F6C1E37001132E3 /* walk1.jpg */,
+				812A22841F6C1E37001132E3 /* walk2.jpg */,
+				812A22831F6C1E37001132E3 /* walk3.jpg */,
+				812A22821F6C1E37001132E3 /* walk4.jpg */,
 				810C18FA1EECD8AA0023BB61 /* Assets.xcassets */,
 				810C18FC1EECD8AA0023BB61 /* LaunchScreen.storyboard */,
 				810C18FF1EECD8AA0023BB61 /* Info.plist */,
@@ -360,13 +378,19 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				812A229D1F6C23C2001132E3 /* Walkthrough.storyboard in Resources */,
 				810C18FE1EECD8AA0023BB61 /* LaunchScreen.storyboard in Resources */,
 				810C18FB1EECD8AA0023BB61 /* Assets.xcassets in Resources */,
+				812A22881F6C1E37001132E3 /* walk3.jpg in Resources */,
 				817D5A341EFA82DB00CBD0CD /* DiaryCell.xib in Resources */,
+				812A22891F6C1E37001132E3 /* walk2.jpg in Resources */,
 				81A2D5C01F51015F0033E502 /* splushBg.jpg in Resources */,
+				812A228A1F6C1E37001132E3 /* walk1.jpg in Resources */,
 				810C18F61EECD8AA0023BB61 /* Main.storyboard in Resources */,
 				81CE9A631F11159C0039B7EC /* TimeTableViewCell.xib in Resources */,
+				812A22871F6C1E37001132E3 /* walk4.jpg in Resources */,
 				81A2D5B01F4D19460033E502 /* ScheduleViewCell.xib in Resources */,
+				812A228B1F6C1E37001132E3 /* walk0.jpg in Resources */,
 				8175CDE41F2780DC003C5881 /* RecordCell.xib in Resources */,
 				81A2D5BA1F4D60470033E502 /* barButtonItemBg.png in Resources */,
 				81D939BE1EF152D300A30138 /* CalendarCell.xib in Resources */,
