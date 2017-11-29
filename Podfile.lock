@@ -1,0 +1,23 @@
+PODS:
+  - EAIntroView (2.10.0):
+    - EARestrictedScrollView (~> 1.1.0)
+  - EARestrictedScrollView (1.1.0)
+  - Realm (2.10.1):
+    - Realm/Headers (= 2.10.1)
+  - Realm/Headers (2.10.1)
+  - RealmSwift (2.10.1):
+    - Realm (= 2.10.1)
+
+DEPENDENCIES:
+  - EAIntroView (~> 2.10.0)
+  - RealmSwift
+
+SPEC CHECKSUMS:
+  EAIntroView: 3494b7bbd1212e3a4f7e8d16194a1b00e7b9abb2
+  EARestrictedScrollView: b0c2a3f92fb2610bb44d71c5e4893777c89e45ef
+  Realm: fc7a317a5c2c9ba91f5f235ede4e2ea76e9eba0c
+  RealmSwift: 505ed6c15942a2e76f5cfa78a8667cfa997ee75b
+
+PODFILE CHECKSUM: b0233d7f86d274938303358cbe2c4e95c759f26c
+
+COCOAPODS: 1.1.1
