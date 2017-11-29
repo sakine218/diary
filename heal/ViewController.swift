@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import EAIntroView
 
 class ViewController: UIViewController ,UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlowLayout {
     
@@ -40,10 +41,10 @@ class ViewController: UIViewController ,UICollectionViewDelegate,UICollectionVie
         }
         
         /*let longPressRecognizer = UILongPressGestureRecognizer(target: self, action: #selector(onLongPressAction(sender:)))
-        longPressRecognizer.allowableMovement = 10
-        longPressRecognizer.minimumPressDuration = 1.0
-        myCollectView.addGestureRecognizer(longPressRecognizer)
-        */
+         longPressRecognizer.allowableMovement = 10
+         longPressRecognizer.minimumPressDuration = 1.0
+         myCollectView.addGestureRecognizer(longPressRecognizer)
+         */
         myCollectView.reloadData()
     }
     

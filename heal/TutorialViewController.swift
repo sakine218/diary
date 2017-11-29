@@ -1,27 +1,20 @@
 //
-//  SettingViewController.swift
+//  TutorialViewController.swift
 //  heal
 //
-//  Created by 西林咲音 on 2017/07/12.
+//  Created by 西林咲音 on 2017/11/29.
 //  Copyright © 2017年 西林咲音. All rights reserved.
 //
 
 import UIKit
 import EAIntroView
 
-class SettingViewController: UIViewController {
-    
-    @IBOutlet weak var scheduleButton: UIButton!
-    @IBOutlet weak var howButton: UIButton!
+class TutorialViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        navigationItem.title = "設定"
+            showTutorial()
         // Do any additional setup after loading the view.
-    }
-
-    @IBAction func howButton(_ sender: Any) {
-        showTutorial()
     }
     
     func showTutorial() {
@@ -45,11 +38,10 @@ class SettingViewController: UIViewController {
         
         //intro.setDelegate:self
         
-        intro.show(in: self.view.window, animateDuration: 0.6)
+        intro.show(in: self.view, animateDuration: 0.6)
         
         // チュートリアルを見たことを記録する
-        //UserDefaults.standard.set(1, forKey: "active")
-        
+        UserDefaults.standard.set(1, forKey: "active")
     }
     
     override func didReceiveMemoryWarning() {
@@ -57,15 +49,15 @@ class SettingViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
-
+    
     /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
+     // MARK: - Navigation
+     
+     // In a storyboard-based application, you will often want to do a little preparation before navigation
+     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+     // Get the new view controller using segue.destinationViewController.
+     // Pass the selected object to the new view controller.
+     }
+     */
+    
 }

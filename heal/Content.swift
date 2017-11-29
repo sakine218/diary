@@ -8,6 +8,7 @@ class Content: Object {
     dynamic var greenValue: Float = Float()
     dynamic var blueValue: Float = Float()
     dynamic var value: Float = Float()
+    dynamic var isSum: Bool = false
     var attendanceArray = List<Attendance>()
     
     override class func primaryKey() -> String {

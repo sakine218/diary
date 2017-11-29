@@ -39,7 +39,6 @@ class DiaryTableViewController: UIViewController,UITableViewDelegate,UITableView
         super.didReceiveMemoryWarning()
     }
     
-    
     func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }

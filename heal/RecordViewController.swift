@@ -24,6 +24,7 @@ class RecordViewController: UIViewController, UICollectionViewDelegate, UICollec
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "まとめる", style: .plain, target: self, action: #selector(sumRecord))
         collectionView.delegate = self
         collectionView.dataSource = self
         collectionView.showsVerticalScrollIndicator = false
@@ -114,7 +115,26 @@ class RecordViewController: UIViewController, UICollectionViewDelegate, UICollec
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
         return cellMargin
     }
-
+    
+    func sumRecord() {
+        let alert = UIAlertController(title: "まとめる", message: "タイトルを入力してください", preferredStyle: .alert)
+        // OKボタンの設定
+        let okAction = UIAlertAction(title: "OK", style: .default, handler: {
+            (action:UIAlertAction!) -> Void in
+        })
+        alert.addAction(okAction)
+        // キャンセルボタンの設定
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+        alert.addAction(cancelAction)
+        // テキストフィールドを追加
+        alert.addTextField(configurationHandler: {(textField: UITextField!) -> Void in
+            textField.placeholder = "テキスト"
+        })
+        alert.view.setNeedsLayout() // シミュレータの種類によっては、これがないと警告が発生
+        // アラートを画面に表示
+        self.present(alert, animated: true, completion: nil)
+    }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
