@@ -76,12 +76,13 @@ class ViewController: UIViewController ,UICollectionViewDelegate,UICollectionVie
         return CGSize(width:width,height:height)
     }
     
-    //選択した時
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let cell:CalendarCell = collectionView.dequeueReusableCell(withReuseIdentifier:"collectCell",for:indexPath as IndexPath) as! CalendarCell
         dateText = Utility.dateToString(date: dateManager.dateForCellAtIndexPathWeeks(row: indexPath.item))
         print(dateText)
-        self.segue()
+        if  Content.find(withId: dateText).count != 0 {
+            self.segue()
+        }
     }
     
     func segue() {
