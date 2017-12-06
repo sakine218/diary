@@ -9,7 +9,7 @@
 import UIKit
 
 class DiaryTableViewController: UIViewController,UITableViewDelegate,UITableViewDataSource {
-
+    
     @IBOutlet var tableView: UITableView!
     var content = Content.findAllWithSort()
     var selectedContent: Content?
@@ -21,7 +21,7 @@ class DiaryTableViewController: UIViewController,UITableViewDelegate,UITableView
         tableView.dataSource = self
         //Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
-
+        
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem()
     }
@@ -34,7 +34,7 @@ class DiaryTableViewController: UIViewController,UITableViewDelegate,UITableView
         tableView.reloadData()
         print(content, content.count)
     }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
@@ -66,13 +66,13 @@ class DiaryTableViewController: UIViewController,UITableViewDelegate,UITableView
         self.selectedContent = content[indexPath.row]
         self.performSegue(withIdentifier: "toVC", sender: nil)
     }
-
+    
     // MARK: - Navigation
-
+    
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         let VC = segue.destination as! DetailViewController
         VC.content = selectedContent
     }
-
+    
 }
