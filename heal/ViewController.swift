@@ -28,7 +28,6 @@ class ViewController: UIViewController ,UICollectionViewDelegate,UICollectionVie
         myCollectView.delegate = self
         myCollectView.dataSource = self
         myCollectView.backgroundColor = .white
-        
         startDate = Date()
         
         let month:Int = Int(dateManager.monthTag(row: 6))!
