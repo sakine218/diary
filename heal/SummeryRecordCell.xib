@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13527"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="gTV-IL-0wX" customClass="SummeryRecordCell" customModule="heal" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            </view>
+            <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
+        </collectionViewCell>
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="SummeryRecordCell" id="ioq-UQ-AeR" customClass="SummeryRecordCell" customModule="heal" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="226" height="37"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                <rect key="frame" x="0.0" y="0.0" width="226" height="37"/>
+                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                <subviews>
+                    <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="CQR-iB-byU">
+                        <rect key="frame" x="4" y="3" width="219" height="31"/>
+                        <subviews>
+                            <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="spu-yP-IbY">
+                                <rect key="frame" x="0.0" y="0.0" width="218" height="30"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hD2-ZO-qSJ">
+                                        <rect key="frame" x="8" y="5" width="42" height="21"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="hD2-ZO-qSJ" secondAttribute="trailing" constant="168" id="Pgt-gQ-Zwt"/>
+                                    <constraint firstItem="hD2-ZO-qSJ" firstAttribute="top" secondItem="spu-yP-IbY" secondAttribute="top" constant="5" id="Uho-QJ-yZ0"/>
+                                    <constraint firstItem="hD2-ZO-qSJ" firstAttribute="leading" secondItem="spu-yP-IbY" secondAttribute="leading" constant="8" id="d2I-BC-YO1"/>
+                                    <constraint firstAttribute="bottom" secondItem="hD2-ZO-qSJ" secondAttribute="bottom" constant="4" id="pLi-tO-V1D"/>
+                                </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                        <real key="value" value="7"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" red="0.57647058819999997" green="0.57647058819999997" blue="0.57647058819999997" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstItem="spu-yP-IbY" firstAttribute="top" secondItem="CQR-iB-byU" secondAttribute="top" id="EDv-j4-kuI"/>
+                            <constraint firstAttribute="bottom" secondItem="spu-yP-IbY" secondAttribute="bottom" constant="1" id="UFh-LI-UU3"/>
+                            <constraint firstItem="spu-yP-IbY" firstAttribute="leading" secondItem="CQR-iB-byU" secondAttribute="leading" id="XLd-qg-5rL"/>
+                            <constraint firstAttribute="trailing" secondItem="spu-yP-IbY" secondAttribute="trailing" constant="1" id="xuj-1P-unO"/>
+                        </constraints>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                <real key="value" value="7"/>
+                            </userDefinedRuntimeAttribute>
+                        </userDefinedRuntimeAttributes>
+                    </view>
+                </subviews>
+            </view>
+            <constraints>
+                <constraint firstItem="CQR-iB-byU" firstAttribute="leading" secondItem="ioq-UQ-AeR" secondAttribute="leading" constant="4" id="Bhv-T3-BW5"/>
+                <constraint firstAttribute="bottom" secondItem="CQR-iB-byU" secondAttribute="bottom" constant="3" id="H3h-ya-td8"/>
+                <constraint firstAttribute="trailing" secondItem="CQR-iB-byU" secondAttribute="trailing" constant="3" id="Qfq-r2-8dT"/>
+                <constraint firstItem="CQR-iB-byU" firstAttribute="top" secondItem="ioq-UQ-AeR" secondAttribute="top" constant="3" id="h35-eM-jR0"/>
+            </constraints>
+            <viewLayoutGuide key="safeArea" id="I6c-i2-cPo"/>
+            <size key="customSize" width="226" height="37"/>
+            <connections>
+                <outlet property="label" destination="hD2-ZO-qSJ" id="H7R-fO-av6"/>
+            </connections>
+            <point key="canvasLocation" x="76" y="-17"/>
+        </collectionViewCell>
+    </objects>
+</document>

@@ -18,6 +18,11 @@
 		810C19091EECD8AA0023BB61 /* healTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 810C19081EECD8AA0023BB61 /* healTests.swift */; };
 		810C19141EECD8AA0023BB61 /* healUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 810C19131EECD8AA0023BB61 /* healUITests.swift */; };
 		812A229D1F6C23C2001132E3 /* Walkthrough.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 812A229C1F6C23C2001132E3 /* Walkthrough.storyboard */; };
+		8148C92D1FE13FA300B808D8 /* comment.png in Resources */ = {isa = PBXBuildFile; fileRef = 8148C92C1FE13FA200B808D8 /* comment.png */; };
+		8148C92F1FE13FF600B808D8 /* SummeryDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8148C92E1FE13FF600B808D8 /* SummeryDetailViewController.swift */; };
+		8148C9311FE1402E00B808D8 /* Summery.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8148C9301FE1402E00B808D8 /* Summery.swift */; };
+		8148C9361FE1417800B808D8 /* SummeryRecordCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8148C9341FE1417800B808D8 /* SummeryRecordCell.swift */; };
+		8148C9371FE1417800B808D8 /* SummeryRecordCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8148C9351FE1417800B808D8 /* SummeryRecordCell.xib */; };
 		8175CDDA1F162B23003C5881 /* SettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8175CDD91F162B23003C5881 /* SettingViewController.swift */; };
 		8175CDDC1F162D20003C5881 /* ScheduleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8175CDDB1F162D20003C5881 /* ScheduleViewController.swift */; };
 		8175CDE31F2780DC003C5881 /* RecordCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8175CDE11F2780DB003C5881 /* RecordCell.swift */; };
@@ -87,6 +92,11 @@
 		810C19131EECD8AA0023BB61 /* healUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = healUITests.swift; sourceTree = "<group>"; };
 		810C19151EECD8AA0023BB61 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		812A229C1F6C23C2001132E3 /* Walkthrough.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Walkthrough.storyboard; sourceTree = "<group>"; };
+		8148C92C1FE13FA200B808D8 /* comment.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = comment.png; sourceTree = "<group>"; };
+		8148C92E1FE13FF600B808D8 /* SummeryDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SummeryDetailViewController.swift; sourceTree = "<group>"; };
+		8148C9301FE1402E00B808D8 /* Summery.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Summery.swift; sourceTree = "<group>"; };
+		8148C9341FE1417800B808D8 /* SummeryRecordCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SummeryRecordCell.swift; sourceTree = "<group>"; };
+		8148C9351FE1417800B808D8 /* SummeryRecordCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SummeryRecordCell.xib; sourceTree = "<group>"; };
 		8175CDD91F162B23003C5881 /* SettingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingViewController.swift; sourceTree = "<group>"; };
 		8175CDDB1F162D20003C5881 /* ScheduleViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScheduleViewController.swift; sourceTree = "<group>"; };
 		8175CDE11F2780DB003C5881 /* RecordCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecordCell.swift; sourceTree = "<group>"; };
@@ -194,6 +204,7 @@
 				81D939BB1EF152D300A30138 /* CalendarCell.swift */,
 				81FC032A1F47AF8900BADCBB /* RealmFactory.swift */,
 				81FC032C1F47B09100BADCBB /* Content.swift */,
+				8148C9301FE1402E00B808D8 /* Summery.swift */,
 				81A2D5BD1F4E61920033E502 /* Attendance.swift */,
 				817D5A351EFA876000CBD0CD /* DiaryTableViewController.swift */,
 				81A2D5BB1F4D81140033E502 /* DetailViewController.swift */,
@@ -206,9 +217,12 @@
 				81CE9A601F11159C0039B7EC /* TimeTableViewCell.swift */,
 				817D5A2D1EFA829700CBD0CD /* RecordViewController.swift */,
 				8175CDE11F2780DB003C5881 /* RecordCell.swift */,
+				8148C92E1FE13FF600B808D8 /* SummeryDetailViewController.swift */,
 				8175CDD91F162B23003C5881 /* SettingViewController.swift */,
 				8175CDDB1F162D20003C5881 /* ScheduleViewController.swift */,
 				81A2D5AD1F4D19460033E502 /* ScheduleViewCell.swift */,
+				8148C9341FE1417800B808D8 /* SummeryRecordCell.swift */,
+				8148C9351FE1417800B808D8 /* SummeryRecordCell.xib */,
 				810C18F41EECD8AA0023BB61 /* Main.storyboard */,
 				81D939BC1EF152D300A30138 /* CalendarCell.xib */,
 				817D5A321EFA82DB00CBD0CD /* DiaryCell.xib */,
@@ -216,6 +230,7 @@
 				8175CDE21F2780DC003C5881 /* RecordCell.xib */,
 				81A2D5AE1F4D19460033E502 /* ScheduleViewCell.xib */,
 				812A229C1F6C23C2001132E3 /* Walkthrough.storyboard */,
+				8148C92C1FE13FA200B808D8 /* comment.png */,
 				81A2D5B91F4D60470033E502 /* barButtonItemBg.png */,
 				81A2D5BF1F5101580033E502 /* splushBg.jpg */,
 				817C07911F6EB4910050B5CD /* walk_4.jpg */,
@@ -385,6 +400,7 @@
 				810C18FE1EECD8AA0023BB61 /* LaunchScreen.storyboard in Resources */,
 				817C07971F6EB4910050B5CD /* walk_3.jpg in Resources */,
 				810C18FB1EECD8AA0023BB61 /* Assets.xcassets in Resources */,
+				8148C92D1FE13FA300B808D8 /* comment.png in Resources */,
 				817D5A341EFA82DB00CBD0CD /* DiaryCell.xib in Resources */,
 				81A2D5C01F51015F0033E502 /* splushBg.jpg in Resources */,
 				810C18F61EECD8AA0023BB61 /* Main.storyboard in Resources */,
@@ -397,6 +413,7 @@
 				81A2D5BA1F4D60470033E502 /* barButtonItemBg.png in Resources */,
 				817C07991F6EB4910050B5CD /* walk_1.jpg in Resources */,
 				81D939BE1EF152D300A30138 /* CalendarCell.xib in Resources */,
+				8148C9371FE1417800B808D8 /* SummeryRecordCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -564,6 +581,7 @@
 				8175CDDA1F162B23003C5881 /* SettingViewController.swift in Sources */,
 				81D939BA1EF1498F00A30138 /* DateManager.swift in Sources */,
 				81FC03341F49952C00BADCBB /* ParentTabBarController.swift in Sources */,
+				8148C9361FE1417800B808D8 /* SummeryRecordCell.swift in Sources */,
 				81FC032D1F47B09100BADCBB /* Content.swift in Sources */,
 				81A2D5AF1F4D19460033E502 /* ScheduleViewCell.swift in Sources */,
 				81A2D5BC1F4D81140033E502 /* DetailViewController.swift in Sources */,
@@ -581,8 +599,10 @@
 				81FC032B1F47AF8900BADCBB /* RealmFactory.swift in Sources */,
 				810C18F11EECD8A90023BB61 /* AppDelegate.swift in Sources */,
 				81D939BD1EF152D300A30138 /* CalendarCell.swift in Sources */,
+				8148C9311FE1402E00B808D8 /* Summery.swift in Sources */,
 				817D5A361EFA876000CBD0CD /* DiaryTableViewController.swift in Sources */,
 				81FC03311F47CD2E00BADCBB /* Utility.swift in Sources */,
+				8148C92F1FE13FF600B808D8 /* SummeryDetailViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
