@@ -29,7 +29,7 @@ class AddDiaryViewController: UIViewController, UIScrollViewDelegate {
     var scheduleArray: [[String: Any]] = []
     var dayNum: Int = 0
     var dayArray: [[String: Any]] = []
-    var cellTapNumArray: [Int] = [0, 0, 0, 0, 0, 0]
+    var cellTapNumArray: [Int] = [0, 0, 0, 0, 0, 0, 0]
     let cellTapColorArray: [UIColor] = [UIColor.white, AppColors.pink, AppColors.sky, AppColors.yellow]
     var buttonArray: [UIButton] = []
     var dayText: String = ""
@@ -40,7 +40,7 @@ class AddDiaryViewController: UIViewController, UIScrollViewDelegate {
         scrollView.delegate = self
         scrollView.indicatorStyle = .white
         scrollView.scrollIndicatorInsets = UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 10)
-        scrollView.contentSize = CGSize(width: self.view.frame.width, height: 1000)
+        scrollView.contentSize = CGSize(width: self.view.frame.width, height: 1070)
         scrollView.showsVerticalScrollIndicator = false
         addShadowView()
         addView()
@@ -85,15 +85,15 @@ class AddDiaryViewController: UIViewController, UIScrollViewDelegate {
         slider.value = 0
         datePicker.date = Date()
         changeLabelDate(date: Date())
-        for i in 0...5 {
+        for i in 0...6 {
             buttonArray[i].backgroundColor = cellTapColorArray[0]
         }
-        cellTapNumArray = [0, 0, 0, 0, 0, 0]
+        cellTapNumArray = [0, 0, 0, 0, 0, 0, 0]
         setButtonTitles()
     }
     
     func sortData() {
-        for i in 0...5 {
+        for i in 0...6 {
             buttonArray[i].backgroundColor = cellTapColorArray[0]
             cellTapNumArray[i] = 0
         }
@@ -111,7 +111,7 @@ class AddDiaryViewController: UIViewController, UIScrollViewDelegate {
                 cellTapNumArray[index] = content.attendanceArray[index].tapNum
             }
             print(cellTapNumArray)
-            for i in 0...5 {
+            for i in 0...6 {
                 buttonArray[i].backgroundColor = cellTapColorArray[cellTapNumArray[i] % 4]
             }
         } else {
@@ -123,7 +123,7 @@ class AddDiaryViewController: UIViewController, UIScrollViewDelegate {
     
     func addShadowView() {
         let shadowView: UIView = UIView()
-        shadowView.frame = CGRect(x:2,y:2,width:self.view.frame.width - 32,height:990)
+        shadowView.frame = CGRect(x:2,y:12,width:self.view.frame.width - 32,height:1050)
         shadowView.center.x = self.view.center.x + 2
         shadowView.cornerRadius = 20
         shadowView.backgroundColor = AppColors.lightGray
@@ -132,7 +132,7 @@ class AddDiaryViewController: UIViewController, UIScrollViewDelegate {
     }
     
     func addView() {
-        bgView.frame = CGRect(x:0,y:0,width:self.view.frame.width - 32,height:990)
+        bgView.frame = CGRect(x:0,y:10,width:self.view.frame.width - 32,height:1050)
         bgView.center.x = self.view.center.x
         bgView.cornerRadius = 20
         bgView.backgroundColor = UIColor(red: redValue / 255, green: greenValue / 255, blue: blueValue / 255, alpha:1.0)
@@ -272,7 +272,7 @@ class AddDiaryViewController: UIViewController, UIScrollViewDelegate {
     }
     
     func addButtons() {
-        for i in 0...5{
+        for i in 0...6{
             let button = UIButton()
             button.setTitleColor(AppColors.gray, for: .normal)
             button.frame = CGRect(x: 0, y: 480 + 60 * i, width: Int(self.view.frame.width - 148), height: 60)
@@ -322,7 +322,7 @@ class AddDiaryViewController: UIViewController, UIScrollViewDelegate {
         let labelTextArray: [String] = ["遅刻", "早退", "欠課"]
         var labelArray: [UILabel] = []
         let stackView: UIStackView = UIStackView()
-        stackView.frame = CGRect(x: 0, y: 855, width: self.view.frame.width - 148, height: 30)
+        stackView.frame = CGRect(x: 0, y: 915, width: self.view.frame.width - 148, height: 30)
         stackView.center.x = self.view.center.x
         stackView.axis = .horizontal
         stackView.distribution = .fillEqually
@@ -342,7 +342,7 @@ class AddDiaryViewController: UIViewController, UIScrollViewDelegate {
     
     func addOkButton() {
         let okButton: UIButton = UIButton()
-        okButton.frame = CGRect(x: 140, y: 910, width: 100, height: 50)
+        okButton.frame = CGRect(x: 140, y: 970, width: 100, height: 50)
         okButton.setTitle("OK", for: .normal)
         okButton.setTitleColor(UIColor.black, for: .normal)
         okButton.backgroundColor = UIColor.white

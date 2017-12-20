@@ -60,7 +60,7 @@ class ScheduleViewController: UIViewController, UICollectionViewDelegate, UIColl
     
     //コレクションビューのセクション数
     func numberOfSections(in collectionView: UICollectionView) -> Int {
-        return 7
+        return 8
     }
     
     //データの個数（DataSourceを設定した場合に必要な項目）
@@ -75,7 +75,7 @@ class ScheduleViewController: UIViewController, UICollectionViewDelegate, UIColl
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "Cell", for: indexPath) as! ScheduleViewCell
         if(indexPath.section == 0) { //曜日表示
             cell.textLabel.text = weekArray[indexPath.row]
-        }else if(indexPath.row % 7 == 0 && indexPath.section != 0) {
+        }else if(indexPath.row % 8 == 0 && indexPath.section != 0) {
             cell.textLabel.text = String(indexPath.section)
         } else {
             for schedule in scheduleArray {
