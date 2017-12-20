@@ -22,9 +22,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="yYb-ey-Oc1">
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="yYb-ey-Oc1">
                                 <rect key="frame" x="0.0" y="20" width="375" height="647"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <gestureRecognizers/>
                                 <connections>
                                     <outletCollection property="gestureRecognizers" destination="8gI-ck-uzj" appends="YES" id="YuH-1l-xRK"/>
@@ -32,6 +31,12 @@
                             </scrollView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="bottom" secondItem="yYb-ey-Oc1" secondAttribute="bottom" id="8r0-kL-Z0S"/>
+                            <constraint firstItem="yYb-ey-Oc1" firstAttribute="top" secondItem="yW9-xn-Skg" secondAttribute="top" constant="20" id="8vi-tc-EXd"/>
+                            <constraint firstItem="yYb-ey-Oc1" firstAttribute="leading" secondItem="yW9-xn-Skg" secondAttribute="leading" id="XfU-l3-ltp"/>
+                            <constraint firstAttribute="trailing" secondItem="yYb-ey-Oc1" secondAttribute="trailing" id="ofh-Ux-Dpq"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="HFA-ml-E2c"/>
                     <connections>
@@ -480,7 +485,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="jSH-pD-kGV">
-                                <rect key="frame" x="63" y="304" width="250" height="60"/>
+                                <rect key="frame" x="63" y="404" width="250" height="60"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" red="0.57647058819999997" green="0.57647058819999997" blue="0.57647058819999997" alpha="0.5" colorSpace="calibratedRGB"/>
                                 <userDefinedRuntimeAttributes>
@@ -490,7 +495,7 @@
                                 </userDefinedRuntimeAttributes>
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ykt-of-Olo">
-                                <rect key="frame" x="61" y="302" width="250" height="60"/>
+                                <rect key="frame" x="61" y="402" width="250" height="60"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="25"/>
@@ -507,6 +512,10 @@
                                     <segue destination="BPM-QO-J4Y" kind="show" id="xB0-1R-o8l"/>
                                 </connections>
                             </button>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="comment.png" translatesAutoresizingMaskIntoConstraints="NO" id="sFi-YA-zoX">
+                                <rect key="frame" x="66" y="228" width="240" height="128"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
@@ -652,6 +661,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="comment.png" width="560" height="273"/>
         <image name="splushBg.jpg" width="750" height="1334"/>
     </resources>
     <inferredMetricsTieBreakers>
