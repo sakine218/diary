@@ -21,6 +21,7 @@ class ViewController: UIViewController ,UICollectionViewDelegate,UICollectionVie
     var startDate:Date!
     var dateText: String = String()
     private var monthLabel:UILabel!
+    let ud = UserDefaults.init()
     
     override func viewWillAppear(_ animated: Bool) {
         myCollectView.showsVerticalScrollIndicator = false
@@ -30,21 +31,28 @@ class ViewController: UIViewController ,UICollectionViewDelegate,UICollectionVie
         myCollectView.backgroundColor = .white
         startDate = Date()
         
-        let month:Int = Int(dateManager.monthTag(row: 6))!
-        let digit = numberOfDigit(month: month)
+        //checker = userDefault.bool(forKey: "firstLaunch")
+        
+        let ym:Int = Int(dateManager.ymTag(row: 6))!
+        let digit = numberOfDigit(ym: ym)
         
         if(digit == 5){
-            navigationItem.title = String(month / 10) + "年" + String(month % 10) + "月"
+            navigationItem.title = String(ym / 10) + "年" + String(ym % 10) + "月"
         }else if(digit == 6){
-            navigationItem.title = String(month / 100) + "年" + String(month % 100) + "月"
+            navigationItem.title = String(ym / 100) + "年" + String(ym % 100) + "月"
         }
-        
         /*let longPressRecognizer = UILongPressGestureRecognizer(target: self, action: #selector(onLongPressAction(sender:)))
          longPressRecognizer.allowableMovement = 10
          longPressRecognizer.minimumPressDuration = 1.0
          myCollectView.addGestureRecognizer(longPressRecognizer)
          */
         myCollectView.reloadData()
+        
+        print("起動は\(ud.bool(forKey: "firstLaunch"))")
+        if ud.bool(forKey: "firstLaunch") {
+            // 初回起動時の処理
+            showTutorial()
+        }
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -53,6 +61,29 @@ class ViewController: UIViewController ,UICollectionViewDelegate,UICollectionVie
     
     override func viewDidLoad() {
         super.viewDidLoad()
+    }
+    
+    func showTutorial() {
+        let page1: EAIntroPage = EAIntroPage()
+        let page2: EAIntroPage = EAIntroPage()
+        let page3: EAIntroPage = EAIntroPage()
+        let page4: EAIntroPage = EAIntroPage()
+        let page5: EAIntroPage = EAIntroPage()
+        
+        page1.bgImage = UIImage(named: "walk_0.jpg")
+        page2.bgImage = UIImage(named: "walk_1.jpg")
+        page3.bgImage = UIImage(named: "walk_2.jpg")
+        page4.bgImage = UIImage(named: "walk_3.jpg")
+        page5.bgImage = UIImage(named: "walk_4.jpg")
+        
+        let intro :EAIntroView = EAIntroView(frame: self.view.bounds, andPages: [page1,page2,page3,page4,page5])
+        
+        intro.skipButton.setTitleColor(AppColors.gray, for: UIControlState.normal)
+        
+        intro.show(in: self.view.window, animateDuration: 0.6)
+        
+        // 2回目以降の起動では「firstLaunch」のkeyをfalseに
+        ud.set(false, forKey: "firstLaunch")
     }
     
     func collectionView(_ collectionView:UICollectionView,layout collectionViewLayout:UICollectionViewLayout,minimumLineSpacingForSectionAt section:Int) -> CGFloat{
@@ -76,11 +107,12 @@ class ViewController: UIViewController ,UICollectionViewDelegate,UICollectionVie
         return CGSize(width:width,height:height)
     }
     
+    //選択した時
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        let cell:CalendarCell = collectionView.dequeueReusableCell(withReuseIdentifier:"collectCell",for:indexPath as IndexPath) as! CalendarCell
-        dateText = Utility.dateToString(date: dateManager.dateForCellAtIndexPathWeeks(row: indexPath.item))
-        print(dateText)
-        if  Content.find(withId: dateText).count != 0 {
+        let cell = collectionView.cellForItem(at: indexPath) as! CalendarCell
+        if cell.cellBgView.backgroundColor != .white {
+            dateText = Utility.dateToString(date: dateManager.dateForCellAtIndexPathWeeks(row: indexPath.item))
+            print(dateText)
             self.segue()
         }
     }
@@ -111,14 +143,14 @@ class ViewController: UIViewController ,UICollectionViewDelegate,UICollectionVie
         }else{
             cell.textLabel.textColor = AppColors.gray
         }
-        cell.tag = Int(dateManager.monthTag(row: indexPath.item))!
+        cell.tag = Int(dateManager.ymTag(row: indexPath.item))!
         //セルの日付を取得し
-        cell.textLabel.numberOfLines = 3
+        cell.textLabel.numberOfLines = 4
         let day = Int(dateManager.conversionDateFormat(row: indexPath.item))!
         let month = Int(dateManager.monthTag(row: indexPath.item))!
         cell.textLabel.text = "  " + "\(day)" + " \n \n"
         if (day == 1) {
-            cell.textLabel.text = "  " + "\(month % 10)" + "/" + "\(day)" + " \n \n"
+            cell.textLabel.text = "  " + "\(month)" + "/" + "\(day)" + " \n \n"
         }
         if(day <= 7) {
         }
@@ -152,20 +184,19 @@ class ViewController: UIViewController ,UICollectionViewDelegate,UICollectionVie
                 return $0 % 2 != 0
             }
             //oddかevenの多い方を返す
-            let month = even.count >= odd.count ? even[0] : odd[0]
+            let ym = even.count >= odd.count ? even[0] : odd[0]
             
             //桁数によって分岐
-            let digit = numberOfDigit(month: month)
+            let digit = numberOfDigit(ym: ym)
             if(digit == 5){
-                navigationItem.title = String(month / 10) + "年" + String(month % 10) + "月"
+                navigationItem.title = String(ym / 10) + "年" + String(ym % 10) + "月"
             }else if(digit == 6){
-                navigationItem.title = String(month / 100) + "年" + String(month % 100) + "月"
+                navigationItem.title = String(ym / 100) + "年" + String(ym % 100) + "月"
             }
         }
     }
     
     func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
-        
         if myCollectView.contentOffset.y <= 0,
             let visibleCell = myCollectView.visibleCells.first {
             self.dateManager.paging += 1
@@ -182,10 +213,8 @@ class ViewController: UIViewController ,UICollectionViewDelegate,UICollectionVie
         }
     }
     
-    
-    
-    func numberOfDigit(month:Int) -> Int{
-        var num = month
+    func numberOfDigit(ym:Int) -> Int{
+        var num = ym
         var cnt = 1
         while(num / 10 != 0){
             cnt = cnt + 1
@@ -253,7 +282,6 @@ extension UIView {
             rightLine.frame = CGRect(x:self.frame.width - borderWidth, y:0.0,width: borderWidth, height:self.frame.height)
             self.layer.addSublayer(rightLine)
         }
-        
     }
     
     @IBInspectable
@@ -290,3 +318,4 @@ extension UIView {
     }
     
 }
+

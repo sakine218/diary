@@ -14,7 +14,7 @@ class Attendance: Object {
     dynamic var subjectText: String = ""
     dynamic var tapNum: Int = 0
     
-    override static func primaryKey() -> String {
+    override static func primaryKey() -> String? {
         return "id"
     }
     

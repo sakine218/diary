@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import RealmSwift
 
 class AddDiaryViewController: UIViewController, UIScrollViewDelegate {
     
@@ -48,8 +49,6 @@ class AddDiaryViewController: UIViewController, UIScrollViewDelegate {
         addLabels()
         addSlider()
         addTextView()
-        //addChangeButton()
-        //addSwitch()
         addOkButton()
         addExplainLabels()
         addButtons()
@@ -59,7 +58,6 @@ class AddDiaryViewController: UIViewController, UIScrollViewDelegate {
     
     override func viewWillAppear(_ animated: Bool) {
         first()
-        sortData()
         if (userDefaults.array(forKey: "Schedule") != nil) {
             scheduleArray = userDefaults.array(forKey: "Schedule") as! [[String : Any]]
         }
@@ -78,18 +76,23 @@ class AddDiaryViewController: UIViewController, UIScrollViewDelegate {
     }
     
     func first() {
-        let date = Date()
-        dayNum = calendar.component(.weekday, from: date) - 1
+        var date = Date()
         bgView.backgroundColor = UIColor(red: 180 / 255, green: 255 / 255, blue: 255 / 255, alpha:1.0)
+        if dayText != "" {
+            date = Utility.stringToDate(from: dayText)
+        }
+        print(date)
+        dayNum = calendar.component(.weekday, from: date) - 1
         textView.text = ""
         slider.value = 0
-        datePicker.date = Date()
-        changeLabelDate(date: Date())
+        datePicker.date = date
+        changeLabelDate(date: date)
         for i in 0...6 {
             buttonArray[i].backgroundColor = cellTapColorArray[0]
         }
         cellTapNumArray = [0, 0, 0, 0, 0, 0, 0]
         setButtonTitles()
+        sortData()
     }
     
     func sortData() {
@@ -144,10 +147,11 @@ class AddDiaryViewController: UIViewController, UIScrollViewDelegate {
         dateTextField.backgroundColor = UIColor.white
         dateTextField.cornerRadius = 7
         dateTextField.minimumFontSize = 20
-        dateTextField.frame = CGRect(x: 0,y: 20,width: self.view.frame.width - 168, height: 50)
+        dateTextField.textAlignment = NSTextAlignment.center
+        dateTextField.frame = CGRect(x: 0,y: 20,width: Int(self.view.frame.width / 1.5), height: 50)
         dateTextField.center.x = self.view.center.x
         dateTextField.placeholder = Utility.dateToString(date: Date())
-        dateTextField.text = "　 " + Utility.dateToString(date: Date())
+        dateTextField.text = Utility.dateToString(date: Date())
         self.scrollView.addSubview(dateTextField)
         addDatePicker()
         addToolBar()
@@ -177,7 +181,6 @@ class AddDiaryViewController: UIViewController, UIScrollViewDelegate {
     func tappedToolBarBtn(sender: UIBarButtonItem) {
         let calendar = Calendar.current
         let date = datePicker.date
-        dayText = Utility.dateToString(date: date)
         dayNum = calendar.component(.weekday, from: date) - 1
         if (userDefaults.array(forKey: "Schedule") != nil) {
             scheduleArray = userDefaults.array(forKey: "Schedule") as! [[String : Any]]
@@ -203,7 +206,7 @@ class AddDiaryViewController: UIViewController, UIScrollViewDelegate {
     }
     
     func changeLabelDate(date:Date) {
-        dateTextField.text = " 　" + Utility.dateToString(date: date)
+        dateTextField.text = Utility.dateToString(date: date)
     }
     
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
@@ -247,7 +250,8 @@ class AddDiaryViewController: UIViewController, UIScrollViewDelegate {
     }
     
     func addTextView() {
-        textView.frame = CGRect(x: 44, y: 210, width: 285, height: 200)
+        textView.frame = CGRect(x: 0, y: 210, width: Int(self.view.frame.width / 1.5), height: 200)
+        textView.center.x = self.view.center.x
         textView.cornerRadius = 10
         textView.font = UIFont.systemFont(ofSize: 15)
         self.scrollView.addSubview(textView)
@@ -342,7 +346,8 @@ class AddDiaryViewController: UIViewController, UIScrollViewDelegate {
     
     func addOkButton() {
         let okButton: UIButton = UIButton()
-        okButton.frame = CGRect(x: 140, y: 970, width: 100, height: 50)
+        okButton.frame = CGRect(x: 0, y: 970, width: 100, height: 50)
+        okButton.center.x = self.view.center.x
         okButton.setTitle("OK", for: .normal)
         okButton.setTitleColor(UIColor.black, for: .normal)
         okButton.backgroundColor = UIColor.white
@@ -354,21 +359,49 @@ class AddDiaryViewController: UIViewController, UIScrollViewDelegate {
     
     
     func buttonEvent(sender: UIButton) {
+        
+        print(Realm.Configuration.defaultConfiguration.fileURL?.absoluteString ?? "")
+        
+        let date = datePicker.date
         if let selectContent = Content.find(withId: dayText).first {
+            
+            if selectContent.date == Utility.dateToString(date: date) {
+                
+                let realm = try! Realm()
+                try! realm.write {
+                    
+                    selectContent.note = textView.text
+                    selectContent.redValue = Float(redValue)
+                    selectContent.greenValue = Float(greenValue)
+                    selectContent.blueValue = Float(blueValue)
+                    selectContent.value = Float(slider.value)
+                    realm.add(selectContent, update: true)
+                }
+            } else {
+                
+                selectContent.delete()
+                
+                let content = Content(date: Utility.dateToString(date: datePicker.date), note: textView.text, redValue: Float(redValue), greenValue: Float(greenValue), blueValue: Float(blueValue), value: Float(slider.value), attendanceArray: dayArray, tapArray: cellTapNumArray)
+                content.note = textView.text
+                content.redValue = Float(redValue)
+                content.greenValue = Float(greenValue)
+                content.blueValue = Float(blueValue)
+                content.value = Float(slider.value)
+                content.save()
+            }
             selectContent.date =  Utility.dateToString(date: datePicker.date)
-            selectContent.note = textView.text
-            selectContent.redValue = Float(redValue)
-            selectContent.greenValue = Float(greenValue)
-            selectContent.blueValue = Float(blueValue)
-            selectContent.value = Float(slider.value)
+            
             
             for (index, item) in selectContent.attendanceArray.enumerated() {
                 item.subjectText = dayArray[index]["subject"] as! String
                 item.tapNum = cellTapNumArray[index]
             }
             
+            
         } else {
+            print(RealmFactory.sharedInstance.realm().objects(Content.self))
             let content = Content(date: Utility.dateToString(date: datePicker.date), note: textView.text, redValue: Float(redValue), greenValue: Float(greenValue), blueValue: Float(blueValue), value: Float(slider.value), attendanceArray: dayArray, tapArray: cellTapNumArray)
+            
             content.save()
         }
         

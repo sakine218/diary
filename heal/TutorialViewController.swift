@@ -11,8 +11,12 @@ import EAIntroView
 
 class TutorialViewController: UIViewController {
     
+    @IBOutlet var button: UIButton!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        button.titleLabel!.numberOfLines = 1
+        button.titleLabel!.adjustsFontSizeToFitWidth = true
         showTutorial()
         // Do any additional setup after loading the view.
     }

@@ -14,7 +14,7 @@ class Summery: Object {
     dynamic var title: String = ""
     var contents: List<Content> = List<Content>()
     
-    override static func primaryKey() -> String{
+    override static func primaryKey() -> String? {
         return "id"
     }
     

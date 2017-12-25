@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="12120" systemVersion="16D32" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12088"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13527"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -43,10 +43,18 @@
                 <constraint firstItem="b1f-ZK-Bkt" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="1" id="3iv-3E-QR2"/>
                 <constraint firstItem="b1f-ZK-Bkt" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" constant="1" id="BhC-3y-I4J"/>
                 <constraint firstAttribute="trailing" secondItem="R7F-QN-gv4" secondAttribute="trailing" constant="1" id="LmR-y2-2u4"/>
+                <constraint firstAttribute="bottom" secondItem="b1f-ZK-Bkt" secondAttribute="bottom" constant="2" id="PsT-g2-t5f"/>
+                <constraint firstItem="b1f-ZK-Bkt" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" constant="1" id="Qev-3x-zWd"/>
+                <constraint firstItem="R7F-QN-gv4" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" constant="2" id="SPx-Nt-Hfj"/>
                 <constraint firstAttribute="bottom" secondItem="b1f-ZK-Bkt" secondAttribute="bottom" constant="2" id="drP-mo-qh9"/>
+                <constraint firstAttribute="trailing" secondItem="R7F-QN-gv4" secondAttribute="trailing" constant="1" id="eiN-Rl-Nxk"/>
+                <constraint firstAttribute="trailing" secondItem="b1f-ZK-Bkt" secondAttribute="trailing" constant="2" id="gan-cD-Hgm"/>
+                <constraint firstAttribute="bottom" secondItem="R7F-QN-gv4" secondAttribute="bottom" constant="1" id="gtb-pf-l2v"/>
                 <constraint firstAttribute="trailing" secondItem="b1f-ZK-Bkt" secondAttribute="trailing" constant="2" id="iJj-hV-NYL"/>
+                <constraint firstItem="b1f-ZK-Bkt" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="1" id="kpj-tA-eGC"/>
                 <constraint firstAttribute="bottom" secondItem="R7F-QN-gv4" secondAttribute="bottom" constant="1" id="lwG-fE-JCi"/>
                 <constraint firstItem="R7F-QN-gv4" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" constant="2" id="rQB-g0-kpq"/>
+                <constraint firstItem="R7F-QN-gv4" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="2" id="sco-Zl-rKS"/>
             </constraints>
             <size key="customSize" width="98" height="95"/>
             <point key="canvasLocation" x="58" y="76.5"/>

@@ -25,6 +25,18 @@ class DateManager {
         return formatter
     }
     
+    private var yDateFormatter: DateFormatter {
+        let formatter: DateFormatter = DateFormatter()
+        formatter.dateFormat = "Y"
+        return formatter
+    }
+    
+    private var mDateFormatter: DateFormatter {
+        let formatter: DateFormatter = DateFormatter()
+        formatter.dateFormat = "M"
+        return formatter
+    }
+    
     private var ymDateFormatter: DateFormatter {
         let formatter: DateFormatter = DateFormatter()
         formatter.dateFormat = "YM"
@@ -36,10 +48,7 @@ class DateManager {
         date = Date()
     }
     
-    // 現在の月から指定したpagingの分だけセルの数を返す
-    // 引数のpagingが1増えるごとに2月分のセルの数を増やす
     func numberOfItems() -> Int {
-        
         let numberOfMonth = paging * 2
         
         var monthComponent = calendar.dateComponents([.year,.month], from: self.date)
@@ -57,11 +66,8 @@ class DateManager {
         
         number = days + firstGap + lastGap
         return number
-        
-        
     }
     
-    // 指定された月の最後の日
     private func lastDateOfMonth() -> Date {
         
         var components = calendar.dateComponents([.month, .day, .year], from: date)
@@ -74,7 +80,6 @@ class DateManager {
         return lastDateMonth!
     }
     
-    // CollectionViewに表示する最後の日付を生成
     private func lastDateForDisplay() -> Date {
         
         let lastDay = self.lastDateOfMonth()
@@ -88,38 +93,35 @@ class DateManager {
         
     }
     
-    
-    /*      表記する日にちの取得　週のカレンダー
-     引数　row          ->  UICollectionViewのIndexPath.row
-     startDate    ->  指定した月　カレンダーを始める月
-     return  date      ->  セルに入れる日付                  */
     func dateForCellAtIndexPathWeeks(row: Int) -> Date {
-        //始まりの日が週の何番目かを計算(日曜日が１) 指定した月の初日から数える
         var dateComponents = DateComponents()
         dateComponents.day = row + 1 - self.number
-        //計算して、基準の日から何日マイナス、加算するか dateComponents.day = -2 とか
         let date = calendar.date(byAdding: dateComponents, to: self.lastDateForDisplay())
-        //print("row...\(row), date... \(date ?? Date())")
         return date!
     }
     
-    
-    
-    /*      表記の変更 これをセルを作成する時に呼び出す
-     引数  row         -> UICollectionViewのIndexPath.row
-     startDate   -> 指定した月　カレンダーを始める月
-     return  String   -> セルに入れる日付をString型にしたもの
-     */
     func conversionDateFormat(row: Int) -> String {
         let cellDate = dateForCellAtIndexPathWeeks(row: row)
         return dayDateFormatter.string(from: cellDate)
     }
     
-    
-    //月を返す
-    func monthTag(row: Int) -> String {
+    //年月を返す
+    func ymTag(row: Int) -> String {
         let cellDate = dateForCellAtIndexPathWeeks(row: row)
         return ymDateFormatter.string(from: cellDate)
     }
     
+    //年を返す
+    func yearTag(row: Int) -> String {
+        let cellDate = dateForCellAtIndexPathWeeks(row: row)
+        return yDateFormatter.string(from: cellDate)
+    }
+    
+    //月を返す
+    func monthTag(row: Int) -> String {
+        let cellDate = dateForCellAtIndexPathWeeks(row: row)
+        return mDateFormatter.string(from: cellDate)
+    }
+    
 }
+

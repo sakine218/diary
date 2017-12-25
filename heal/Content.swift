@@ -11,7 +11,7 @@ class Content: Object {
     dynamic var isSum: Bool = false
     var attendanceArray = List<Attendance>()
     
-    override class func primaryKey() -> String {
+    override static func primaryKey() -> String? {
         return "date"
     }
     

@@ -25,7 +25,6 @@
 
 @end
 
-
 @implementation EAIntroView
 
 @synthesize pageControl = _pageControl;
@@ -64,9 +63,10 @@
     self.swipeToExit = YES;
     self.easeOutCrossDisolves = YES;
     self.hideOffscreenPages = YES;
-    self.bgViewContentMode = UIViewContentModeScaleAspectFill;
+    self.bgViewContentMode = UIViewContentModeScaleAspectFit;
+    self.bgImageView.contentMode = UIViewContentModeTop;
     self.motionEffectsRelativeValue = 40.f;
-    self.backgroundColor = [UIColor blackColor];
+    self.backgroundColor = [UIColor colorWithRed:41.0 green:41.0 blue:41.0 alpha:1.0];
     _scrollingEnabled = YES;
     _titleViewY = 20.f;
     _pageControlY = 70.f;

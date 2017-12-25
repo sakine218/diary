@@ -78,6 +78,7 @@ class ScheduleViewController: UIViewController, UICollectionViewDelegate, UIColl
         }else if(indexPath.row % 8 == 0 && indexPath.section != 0) {
             cell.textLabel.text = String(indexPath.section)
         } else {
+            cell.textLabel.text = ""
             for schedule in scheduleArray {
                 if schedule["weekRow"] as! Int == indexPath.row && schedule["timeSection"] as! Int == indexPath.section {
                     cell.textLabel.text = schedule["subject"] as? String
