@@ -47,7 +47,6 @@ class DiaryTableViewController: UIViewController,UITableViewDelegate,UITableView
         return content.count
     }
     
-    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as! DiaryCell
         cell.dateLabel.text = content[indexPath.row].date
