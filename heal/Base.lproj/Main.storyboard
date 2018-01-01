@@ -361,6 +361,7 @@
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
+                                        <size key="shadowOffset" width="0.0" height="0.0"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6Gl-2G-MdW">
                                         <rect key="frame" x="0.0" y="36.5" width="169" height="37"/>
@@ -753,9 +754,9 @@
         <image name="splushBg.jpg" width="750" height="1334"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="bM4-I4-U1x"/>
+        <segue reference="OgJ-i8-wS1"/>
         <segue reference="xB0-1R-o8l"/>
-        <segue reference="11w-mY-GRx"/>
+        <segue reference="kb9-FJ-2SR"/>
         <segue reference="EtP-im-iCy"/>
     </inferredMetricsTieBreakers>
     <color key="tintColor" red="0.16078431369999999" green="0.16078431369999999" blue="0.16078431369999999" alpha="1" colorSpace="calibratedRGB"/>

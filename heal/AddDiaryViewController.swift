@@ -60,6 +60,12 @@ class AddDiaryViewController: UIViewController, UIScrollViewDelegate {
     
     func finishToolBarButtonEvent(_ sender: UIBarButtonItem) {
         let date = datePicker.date
+        bgView.backgroundColor = UIColor(red: 180 / 255, green: 255 / 255, blue: 255 / 255, alpha:1.0)
+        for i in 0...6 {
+            subjectButtonArray[i].backgroundColor = cellTapColorArray[0]
+        }
+        textView.text = ""
+        slider.value = 0
         dayNum = calendar.component(.weekday, from: date) - 1
         if (userDefaults.array(forKey: "Schedule") != nil) {
             scheduleArray = userDefaults.array(forKey: "Schedule") as! [[String : Any]]
@@ -172,6 +178,7 @@ class AddDiaryViewController: UIViewController, UIScrollViewDelegate {
                     self.navigationController?.tabBarController?.selectedIndex = 0
                 }))
                 // アラート表示
+                self.dayText = Utility.dateToString(date: Date())
                 self.present(alert, animated: true, completion: nil)
             }
             else { // 日付を変えて編集モード
@@ -190,6 +197,7 @@ class AddDiaryViewController: UIViewController, UIScrollViewDelegate {
                     self.navigationController?.tabBarController?.selectedIndex = 0
                 }))
                 // アラート表示
+                self.dayText = Utility.dateToString(date: Date())
                 self.present(alert, animated: true, completion: nil)
             }
         }
@@ -371,5 +379,4 @@ class AddDiaryViewController: UIViewController, UIScrollViewDelegate {
             textView.text = ""
         }
     }
-    
 }
