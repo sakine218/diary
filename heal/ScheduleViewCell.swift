@@ -14,7 +14,7 @@ class ScheduleViewCell: UICollectionViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-
+        
         self.addSubview(textLabel)
         textLabel.textAlignment = NSTextAlignment.center
         textLabel.translatesAutoresizingMaskIntoConstraints = false

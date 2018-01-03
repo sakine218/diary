@@ -37,7 +37,7 @@ class ScheduleViewController: UIViewController, UICollectionViewDelegate, UIColl
             scheduleArray = userDefaults.array(forKey: "Schedule") as! [[String : Any]]
         }
     }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -65,7 +65,7 @@ class ScheduleViewController: UIViewController, UICollectionViewDelegate, UIColl
     
     //データの個数（DataSourceを設定した場合に必要な項目）
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-            return numOfDays
+        return numOfDays
     }
     
     //データを返すメソッド（DataSourceを設定した場合に必要な項目）
@@ -165,15 +165,15 @@ class ScheduleViewController: UIViewController, UICollectionViewDelegate, UIColl
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
         return cellMargin
     }
-
+    
     /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
+     // MARK: - Navigation
+     
+     // In a storyboard-based application, you will often want to do a little preparation before navigation
+     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+     // Get the new view controller using segue.destinationViewController.
+     // Pass the selected object to the new view controller.
+     }
+     */
+    
 }

@@ -11,7 +11,7 @@ import UIKit
 class RecordCell: UICollectionViewCell {
     
     var textLabel : UILabel = UILabel()
-
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         textLabel = UILabel()
@@ -25,5 +25,5 @@ class RecordCell: UICollectionViewCell {
         textLabel.topAnchor.constraint(equalTo: self.topAnchor).isActive = true
         textLabel.bottomAnchor.constraint(equalTo: self.bottomAnchor).isActive = true
     }
-
+    
 }

@@ -10,9 +10,9 @@ class RealmFactory {
     
     internal func realm() -> Realm {
         //if let configuration = configuration {
-            //return try! Realm(configuration: configuration)
+        //return try! Realm(configuration: configuration)
         //} else {
-            return try! Realm()
+        return try! Realm()
         //}
     }
     
