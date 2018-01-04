@@ -197,47 +197,34 @@
 			isa = PBXGroup;
 			children = (
 				810C18F01EECD8A90023BB61 /* AppDelegate.swift */,
+				81D939B91EF1498F00A30138 /* DateManager.swift */,
 				81A2D5C11F5104A60033E502 /* SplushViewController.swift */,
 				81C2AB8F1FCEAEE300B52D68 /* TutorialViewController.swift */,
-				810C18F21EECD8A90023BB61 /* ViewController.swift */,
-				81D939B91EF1498F00A30138 /* DateManager.swift */,
-				81D939BB1EF152D300A30138 /* CalendarCell.swift */,
+				81A2D5A91F4A85C00033E502 /* NavigationViewController.swift */,
 				81FC032A1F47AF8900BADCBB /* RealmFactory.swift */,
+				81FC03301F47CD2E00BADCBB /* Utility.swift */,
 				81FC032C1F47B09100BADCBB /* Content.swift */,
-				8148C9301FE1402E00B808D8 /* Summery.swift */,
 				81A2D5BD1F4E61920033E502 /* Attendance.swift */,
+				8148C9301FE1402E00B808D8 /* Summery.swift */,
+				81FC03351F4A52F600BADCBB /* AppColors.swift */,
+				81FC03331F49952B00BADCBB /* ParentTabBarController.swift */,
+				810C18F21EECD8A90023BB61 /* ViewController.swift */,
 				817D5A351EFA876000CBD0CD /* DiaryTableViewController.swift */,
 				81A2D5BB1F4D81140033E502 /* DetailViewController.swift */,
-				81A2D5A91F4A85C00033E502 /* NavigationViewController.swift */,
-				817D5A311EFA82DB00CBD0CD /* DiaryCell.swift */,
 				817D5A2B1EFA81FA00CBD0CD /* AddDiaryViewController.swift */,
-				81FC03301F47CD2E00BADCBB /* Utility.swift */,
-				81FC03331F49952B00BADCBB /* ParentTabBarController.swift */,
-				81FC03351F4A52F600BADCBB /* AppColors.swift */,
-				81CE9A601F11159C0039B7EC /* TimeTableViewCell.swift */,
 				817D5A2D1EFA829700CBD0CD /* RecordViewController.swift */,
-				8175CDE11F2780DB003C5881 /* RecordCell.swift */,
 				8148C92E1FE13FF600B808D8 /* SummeryDetailViewController.swift */,
 				8175CDD91F162B23003C5881 /* SettingViewController.swift */,
 				8175CDDB1F162D20003C5881 /* ScheduleViewController.swift */,
-				81A2D5AD1F4D19460033E502 /* ScheduleViewCell.swift */,
-				8148C9341FE1417800B808D8 /* SummeryRecordCell.swift */,
-				8148C9351FE1417800B808D8 /* SummeryRecordCell.xib */,
 				810C18F41EECD8AA0023BB61 /* Main.storyboard */,
-				81D939BC1EF152D300A30138 /* CalendarCell.xib */,
-				817D5A321EFA82DB00CBD0CD /* DiaryCell.xib */,
-				81CE9A611F11159C0039B7EC /* TimeTableViewCell.xib */,
-				8175CDE21F2780DC003C5881 /* RecordCell.xib */,
-				81A2D5AE1F4D19460033E502 /* ScheduleViewCell.xib */,
 				812A229C1F6C23C2001132E3 /* Walkthrough.storyboard */,
-				8148C92C1FE13FA200B808D8 /* comment.png */,
-				81A2D5B91F4D60470033E502 /* barButtonItemBg.png */,
-				81A2D5BF1F5101580033E502 /* splushBg.jpg */,
-				817C07911F6EB4910050B5CD /* walk_4.jpg */,
-				817C07921F6EB4910050B5CD /* walk_3.jpg */,
-				817C07931F6EB4910050B5CD /* walk_2.jpg */,
-				817C07941F6EB4910050B5CD /* walk_1.jpg */,
-				817C07951F6EB4910050B5CD /* walk_0.jpg */,
+				816C41E11FFE4CE2002E7983 /* CalendarCell */,
+				816C41E21FFE4D00002E7983 /* DiaryCell */,
+				816C41E41FFE4D37002E7983 /* RecordCell */,
+				816C41E31FFE4D26002E7983 /* TimeTableViewCell */,
+				816C41E51FFE4D4E002E7983 /* ScheduleViewCell */,
+				816C41E01FFE4C9F002E7983 /* SummeryRecordCell */,
+				816C41E61FFE4DEE002E7983 /* images */,
 				810C18FA1EECD8AA0023BB61 /* Assets.xcassets */,
 				810C18FC1EECD8AA0023BB61 /* LaunchScreen.storyboard */,
 				810C18FF1EECD8AA0023BB61 /* Info.plist */,
@@ -262,6 +249,75 @@
 				810C19151EECD8AA0023BB61 /* Info.plist */,
 			);
 			path = healUITests;
+			sourceTree = "<group>";
+		};
+		816C41E01FFE4C9F002E7983 /* SummeryRecordCell */ = {
+			isa = PBXGroup;
+			children = (
+				8148C9341FE1417800B808D8 /* SummeryRecordCell.swift */,
+				8148C9351FE1417800B808D8 /* SummeryRecordCell.xib */,
+			);
+			path = SummeryRecordCell;
+			sourceTree = "<group>";
+		};
+		816C41E11FFE4CE2002E7983 /* CalendarCell */ = {
+			isa = PBXGroup;
+			children = (
+				81D939BB1EF152D300A30138 /* CalendarCell.swift */,
+				81D939BC1EF152D300A30138 /* CalendarCell.xib */,
+			);
+			path = CalendarCell;
+			sourceTree = "<group>";
+		};
+		816C41E21FFE4D00002E7983 /* DiaryCell */ = {
+			isa = PBXGroup;
+			children = (
+				817D5A311EFA82DB00CBD0CD /* DiaryCell.swift */,
+				817D5A321EFA82DB00CBD0CD /* DiaryCell.xib */,
+			);
+			path = DiaryCell;
+			sourceTree = "<group>";
+		};
+		816C41E31FFE4D26002E7983 /* TimeTableViewCell */ = {
+			isa = PBXGroup;
+			children = (
+				81CE9A601F11159C0039B7EC /* TimeTableViewCell.swift */,
+				81CE9A611F11159C0039B7EC /* TimeTableViewCell.xib */,
+			);
+			path = TimeTableViewCell;
+			sourceTree = "<group>";
+		};
+		816C41E41FFE4D37002E7983 /* RecordCell */ = {
+			isa = PBXGroup;
+			children = (
+				8175CDE11F2780DB003C5881 /* RecordCell.swift */,
+				8175CDE21F2780DC003C5881 /* RecordCell.xib */,
+			);
+			path = RecordCell;
+			sourceTree = "<group>";
+		};
+		816C41E51FFE4D4E002E7983 /* ScheduleViewCell */ = {
+			isa = PBXGroup;
+			children = (
+				81A2D5AD1F4D19460033E502 /* ScheduleViewCell.swift */,
+				81A2D5AE1F4D19460033E502 /* ScheduleViewCell.xib */,
+			);
+			path = ScheduleViewCell;
+			sourceTree = "<group>";
+		};
+		816C41E61FFE4DEE002E7983 /* images */ = {
+			isa = PBXGroup;
+			children = (
+				8148C92C1FE13FA200B808D8 /* comment.png */,
+				81A2D5B91F4D60470033E502 /* barButtonItemBg.png */,
+				81A2D5BF1F5101580033E502 /* splushBg.jpg */,
+				817C07911F6EB4910050B5CD /* walk_4.jpg */,
+				817C07921F6EB4910050B5CD /* walk_3.jpg */,
+				817C07931F6EB4910050B5CD /* walk_2.jpg */,
+				817C07941F6EB4910050B5CD /* walk_1.jpg */,
+				817C07951F6EB4910050B5CD /* walk_0.jpg */,
+			);
+			path = images;
 			sourceTree = "<group>";
 		};
 		9C8590C598C3C97B16846CE1 /* Pods */ = {
