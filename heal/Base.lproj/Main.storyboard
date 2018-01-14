@@ -137,10 +137,22 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                             </view>
+                            <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="eJz-8V-NE0">
+                                <rect key="frame" x="65" y="274.5" width="250" height="60"/>
+                                <color key="backgroundColor" red="0.57647058819999997" green="0.57647058819999997" blue="0.57647058819999997" alpha="0.5" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="eJz-8V-NE0" secondAttribute="height" multiplier="25:6" id="10f-au-qlJ"/>
+                                </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                        <real key="value" value="10"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="08Q-hR-ONR">
                                 <rect key="frame" x="63" y="136" width="250" height="60"/>
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="25"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="22"/>
                                 <state key="normal" title="時間割">
                                     <color key="titleColor" red="0.16078431369999999" green="0.16078431369999999" blue="0.16078431369999999" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
@@ -156,7 +168,7 @@
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sLU-Hf-W1Y">
                                 <rect key="frame" x="63" y="203.5" width="250" height="60"/>
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="25"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="22"/>
                                 <state key="normal" title="使い方">
                                     <color key="titleColor" red="0.16078431369999999" green="0.16078431369999999" blue="0.16078431369999999" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
@@ -169,9 +181,21 @@
                                     <action selector="howButton:" destination="J9b-XF-791" eventType="touchUpInside" id="wJP-RL-Pee"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AKL-ZC-FRP">
+                                <rect key="frame" x="63" y="272" width="250" height="60"/>
+                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="22"/>
+                                <state key="normal" title="レビューを書く"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                        <real key="value" value="10"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="AKL-ZC-FRP" firstAttribute="centerX" secondItem="fBG-Mi-Wle" secondAttribute="centerX" id="0vw-dR-hMf"/>
                             <constraint firstAttribute="trailingMargin" secondItem="fe3-1v-f22" secondAttribute="trailing" constant="44" id="2SE-73-Gop"/>
                             <constraint firstItem="fe3-1v-f22" firstAttribute="width" secondItem="sLU-Hf-W1Y" secondAttribute="width" id="7Ed-gS-bGM"/>
                             <constraint firstItem="08Q-hR-ONR" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="fBG-Mi-Wle" secondAttribute="leading" constant="20" symbolic="YES" id="ABE-tc-NFb"/>
@@ -179,9 +203,11 @@
                             <constraint firstItem="sLU-Hf-W1Y" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="fBG-Mi-Wle" secondAttribute="leading" constant="20" symbolic="YES" id="MJ6-0A-3K4"/>
                             <constraint firstItem="qjo-eB-JtZ" firstAttribute="trailing" secondItem="08Q-hR-ONR" secondAttribute="trailing" constant="2" id="NA3-yN-Jnd"/>
                             <constraint firstItem="qjo-eB-JtZ" firstAttribute="height" secondItem="08Q-hR-ONR" secondAttribute="height" id="TA0-np-1A2"/>
+                            <constraint firstItem="eJz-8V-NE0" firstAttribute="top" secondItem="fe3-1v-f22" secondAttribute="bottom" constant="9" id="VTs-XS-rmB"/>
                             <constraint firstAttribute="trailingMargin" secondItem="qjo-eB-JtZ" secondAttribute="trailing" constant="44" id="Y19-50-l3b"/>
                             <constraint firstItem="08Q-hR-ONR" firstAttribute="top" relation="greaterThanOrEqual" secondItem="aMa-Jj-75X" secondAttribute="bottom" constant="72" id="aDJ-h9-2c1"/>
                             <constraint firstItem="fe3-1v-f22" firstAttribute="leading" secondItem="fBG-Mi-Wle" secondAttribute="leadingMargin" constant="49" id="aDO-mw-5uC"/>
+                            <constraint firstItem="eJz-8V-NE0" firstAttribute="centerX" secondItem="fBG-Mi-Wle" secondAttribute="centerX" constant="2.5" id="aXo-Ws-MTy"/>
                             <constraint firstItem="fe3-1v-f22" firstAttribute="bottom" secondItem="sLU-Hf-W1Y" secondAttribute="bottom" constant="2" id="ifa-Hs-zMv"/>
                             <constraint firstItem="qjo-eB-JtZ" firstAttribute="width" secondItem="08Q-hR-ONR" secondAttribute="width" id="lHp-kd-i9A"/>
                             <constraint firstItem="qjo-eB-JtZ" firstAttribute="centerY" secondItem="fBG-Mi-Wle" secondAttribute="centerY" priority="750" constant="-166" id="rjX-pe-nsn"/>
@@ -189,6 +215,7 @@
                             <constraint firstItem="fe3-1v-f22" firstAttribute="height" secondItem="sLU-Hf-W1Y" secondAttribute="height" id="wH1-LI-j45"/>
                             <constraint firstItem="qjo-eB-JtZ" firstAttribute="bottom" secondItem="08Q-hR-ONR" secondAttribute="bottom" constant="2" id="xtt-zr-3ps"/>
                             <constraint firstItem="qjo-eB-JtZ" firstAttribute="leading" secondItem="fBG-Mi-Wle" secondAttribute="leadingMargin" constant="49" id="xys-SV-eLL"/>
+                            <constraint firstItem="eJz-8V-NE0" firstAttribute="leading" secondItem="fBG-Mi-Wle" secondAttribute="leadingMargin" constant="49" id="zar-NZ-Ndp"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="74e-xj-kUh"/>
