@@ -114,7 +114,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qjo-eB-JtZ">
-                                <rect key="frame" x="65" y="137.5" width="250" height="60"/>
+                                <rect key="frame" x="65" y="138" width="250" height="60"/>
                                 <color key="backgroundColor" red="0.57647058819999997" green="0.57647058819999997" blue="0.57647058819999997" alpha="0.5" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="qjo-eB-JtZ" secondAttribute="height" multiplier="25:6" id="ZsK-Hd-xVn"/>
@@ -126,7 +126,7 @@
                                 </userDefinedRuntimeAttributes>
                             </view>
                             <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fe3-1v-f22">
-                                <rect key="frame" x="65" y="205.5" width="250" height="60"/>
+                                <rect key="frame" x="65" y="206" width="250" height="60"/>
                                 <color key="backgroundColor" red="0.57647058819999997" green="0.57647058819999997" blue="0.57647058819999997" alpha="0.5" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="fe3-1v-f22" secondAttribute="height" multiplier="25:6" id="3yF-h0-JgF"/>
@@ -138,7 +138,7 @@
                                 </userDefinedRuntimeAttributes>
                             </view>
                             <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="eJz-8V-NE0">
-                                <rect key="frame" x="65" y="274.5" width="250" height="60"/>
+                                <rect key="frame" x="65" y="275" width="250" height="60"/>
                                 <color key="backgroundColor" red="0.57647058819999997" green="0.57647058819999997" blue="0.57647058819999997" alpha="0.5" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="eJz-8V-NE0" secondAttribute="height" multiplier="25:6" id="10f-au-qlJ"/>
@@ -166,7 +166,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sLU-Hf-W1Y">
-                                <rect key="frame" x="63" y="203.5" width="250" height="60"/>
+                                <rect key="frame" x="63" y="204" width="250" height="60"/>
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="22"/>
                                 <state key="normal" title="使い方">
@@ -181,9 +181,12 @@
                                     <action selector="howButton:" destination="J9b-XF-791" eventType="touchUpInside" id="wJP-RL-Pee"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AKL-ZC-FRP">
-                                <rect key="frame" x="63" y="272" width="250" height="60"/>
+                            <button opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AKL-ZC-FRP">
+                                <rect key="frame" x="63" y="273" width="250" height="60"/>
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="AKL-ZC-FRP" secondAttribute="height" multiplier="25:6" id="KiQ-sD-crO"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="22"/>
                                 <state key="normal" title="レビューを書く"/>
                                 <userDefinedRuntimeAttributes>
@@ -191,11 +194,13 @@
                                         <real key="value" value="10"/>
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="reviewButton:" destination="J9b-XF-791" eventType="touchUpInside" id="o2l-NA-RpD"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="AKL-ZC-FRP" firstAttribute="centerX" secondItem="fBG-Mi-Wle" secondAttribute="centerX" id="0vw-dR-hMf"/>
                             <constraint firstAttribute="trailingMargin" secondItem="fe3-1v-f22" secondAttribute="trailing" constant="44" id="2SE-73-Gop"/>
                             <constraint firstItem="fe3-1v-f22" firstAttribute="width" secondItem="sLU-Hf-W1Y" secondAttribute="width" id="7Ed-gS-bGM"/>
                             <constraint firstItem="08Q-hR-ONR" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="fBG-Mi-Wle" secondAttribute="leading" constant="20" symbolic="YES" id="ABE-tc-NFb"/>
@@ -208,6 +213,8 @@
                             <constraint firstItem="08Q-hR-ONR" firstAttribute="top" relation="greaterThanOrEqual" secondItem="aMa-Jj-75X" secondAttribute="bottom" constant="72" id="aDJ-h9-2c1"/>
                             <constraint firstItem="fe3-1v-f22" firstAttribute="leading" secondItem="fBG-Mi-Wle" secondAttribute="leadingMargin" constant="49" id="aDO-mw-5uC"/>
                             <constraint firstItem="eJz-8V-NE0" firstAttribute="centerX" secondItem="fBG-Mi-Wle" secondAttribute="centerX" constant="2.5" id="aXo-Ws-MTy"/>
+                            <constraint firstItem="AKL-ZC-FRP" firstAttribute="top" secondItem="sLU-Hf-W1Y" secondAttribute="bottom" constant="9" id="dmf-GP-bdE"/>
+                            <constraint firstItem="AKL-ZC-FRP" firstAttribute="leading" secondItem="fBG-Mi-Wle" secondAttribute="leadingMargin" constant="47" id="f2F-Iq-kob"/>
                             <constraint firstItem="fe3-1v-f22" firstAttribute="bottom" secondItem="sLU-Hf-W1Y" secondAttribute="bottom" constant="2" id="ifa-Hs-zMv"/>
                             <constraint firstItem="qjo-eB-JtZ" firstAttribute="width" secondItem="08Q-hR-ONR" secondAttribute="width" id="lHp-kd-i9A"/>
                             <constraint firstItem="qjo-eB-JtZ" firstAttribute="centerY" secondItem="fBG-Mi-Wle" secondAttribute="centerY" priority="750" constant="-166" id="rjX-pe-nsn"/>

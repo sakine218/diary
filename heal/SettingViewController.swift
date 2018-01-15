@@ -24,6 +24,23 @@ class SettingViewController: UIViewController {
         showTutorial()
     }
     
+    @IBAction func reviewButton(_ sender: Any) {
+        let alert = UIAlertController(
+            title: "レビューを書く",
+            message: "ぜひご意見をお聞かせください",
+            preferredStyle: .alert)
+        
+        // アラートにボタンをつける
+        alert.addAction(UIAlertAction(title: "書く", style: .default, handler: { action in
+            print("OK")
+        }))
+        
+        alert.addAction(UIAlertAction(title: "また今度", style: .cancel))
+        
+        // アラート表示
+        self.present(alert, animated: true, completion: nil)
+    }
+    
     func showTutorial() {
         // basic
         let page1: EAIntroPage = EAIntroPage()
@@ -51,6 +68,8 @@ class SettingViewController: UIViewController {
         //UserDefaults.standard.set(1, forKey: "active")
         
     }
+    
+    
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
