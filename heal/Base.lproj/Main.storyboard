@@ -181,12 +181,9 @@
                                     <action selector="howButton:" destination="J9b-XF-791" eventType="touchUpInside" id="wJP-RL-Pee"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AKL-ZC-FRP">
+                            <button opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AKL-ZC-FRP">
                                 <rect key="frame" x="63" y="273" width="250" height="60"/>
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" secondItem="AKL-ZC-FRP" secondAttribute="height" multiplier="25:6" id="KiQ-sD-crO"/>
-                                </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="22"/>
                                 <state key="normal" title="レビューを書く"/>
                                 <userDefinedRuntimeAttributes>
@@ -214,7 +211,6 @@
                             <constraint firstItem="fe3-1v-f22" firstAttribute="leading" secondItem="fBG-Mi-Wle" secondAttribute="leadingMargin" constant="49" id="aDO-mw-5uC"/>
                             <constraint firstItem="eJz-8V-NE0" firstAttribute="centerX" secondItem="fBG-Mi-Wle" secondAttribute="centerX" constant="2.5" id="aXo-Ws-MTy"/>
                             <constraint firstItem="AKL-ZC-FRP" firstAttribute="top" secondItem="sLU-Hf-W1Y" secondAttribute="bottom" constant="9" id="dmf-GP-bdE"/>
-                            <constraint firstItem="AKL-ZC-FRP" firstAttribute="leading" secondItem="fBG-Mi-Wle" secondAttribute="leadingMargin" constant="47" id="f2F-Iq-kob"/>
                             <constraint firstItem="fe3-1v-f22" firstAttribute="bottom" secondItem="sLU-Hf-W1Y" secondAttribute="bottom" constant="2" id="ifa-Hs-zMv"/>
                             <constraint firstItem="qjo-eB-JtZ" firstAttribute="width" secondItem="08Q-hR-ONR" secondAttribute="width" id="lHp-kd-i9A"/>
                             <constraint firstItem="qjo-eB-JtZ" firstAttribute="centerY" secondItem="fBG-Mi-Wle" secondAttribute="centerY" priority="750" constant="-166" id="rjX-pe-nsn"/>

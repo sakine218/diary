@@ -33,6 +33,9 @@ class SettingViewController: UIViewController {
         // アラートにボタンをつける
         alert.addAction(UIAlertAction(title: "書く", style: .default, handler: { action in
             print("OK")
+            if let url = URL(string: "https://itunes.apple.com/us/app/itunes-u/id{YOUR_APP_ID}") {
+                UIApplication.shared.open(url)
+            }
         }))
         
         alert.addAction(UIAlertAction(title: "また今度", style: .cancel))
